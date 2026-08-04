@@ -14,12 +14,12 @@ const JOBS: Job[] = [
     year: "2024",
     role: "Technical Support Engineer",
     company: "4R Digital Limited",
-    where: "UK · Remote · Payments cloud platform",
+    where: "UK · Remote · Cloud platform",
     period: "Dec 2024 – Mar 2026",
-    desc: "Primary technical contact for merchants on a payments-enabled cloud platform. Owned monitoring, Azure identity administration, API security validation, and workflow automation.",
+    desc: "Production support for cloud-hosted platforms integrating software services and connected IoT hardware endpoints. Responsible for cloud infrastructure monitoring, bug investigation/triage, operational automation, and platform reliability.",
     wins: [
       "Cut operational overhead by 40% through targeted automation",
-      "Administered Azure and Entra ID across the merchant estate",
+      "Administered Azure and Entra ID across the platform estate",
       "Ran OWASP ZAP assessments against platform APIs",
     ],
     tags: ["Azure", "Entra ID", "Grafana", "Prometheus", "OWASP ZAP", "Postman"],
@@ -90,20 +90,21 @@ export default function Experience() {
               key={i}
               style={{
                 display: "grid",
-                gridTemplateColumns: "72px 1fr",
+                gridTemplateColumns: "80px 1fr",
                 gap: "clamp(24px,4vw,48px)",
-                paddingTop: i > 0 ? 36 : 0,
-                paddingBottom: 36,
+                paddingTop: i > 0 ? 52 : 0,
+                paddingBottom: 52,
                 borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
               }}
             >
-              {/* Year column */}
+              {/* Year column — fixed width for alignment */}
               <div style={{
                 fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontSize: 13,
                 color: "var(--lt-dim)",
                 paddingTop: 4,
                 fontStyle: "italic",
+                flexShrink: 0,
               }}>
                 {job.year}
               </div>
@@ -111,8 +112,11 @@ export default function Experience() {
               {/* Content */}
               <div>
                 <div style={{
-                  display: "flex", justifyContent: "space-between",
-                  alignItems: "flex-start", gap: 16, marginBottom: 4,
+                  display: "grid",
+                  gridTemplateColumns: "1fr auto",
+                  gap: 24,
+                  alignItems: "start",
+                  marginBottom: 4,
                 }}>
                   <div>
                     <div style={{
@@ -134,7 +138,7 @@ export default function Experience() {
                   </div>
                   <div style={{
                     fontSize: 11.5, color: "var(--lt-dim)", whiteSpace: "nowrap",
-                    paddingTop: 3, flexShrink: 0,
+                    paddingTop: 3,
                   }}>
                     {job.period}
                   </div>

@@ -1,27 +1,23 @@
 const SKILLS = [
   {
-    cat: "Security Operations",
-    items: "Wazuh · SIEM · Log Analysis · Detection Engineering · Incident Response · Threat Intelligence · MITRE ATT&CK · Container Scanning",
-  },
-  {
-    cat: "Offensive Security",
-    items: "Penetration Testing · Web App Testing · API Security · OWASP Top 10 · Burp Suite · OWASP ZAP · BloodHound · Kerberoasting · Active Directory",
+    cat: "Security Operations & AppSec",
+    items: "Wazuh · SIEM · HTTP Security Headers · Trivy · Container Scanning · Docker Image Security · OWASP ZAP · Burp Suite · BloodHound · Zeek · pfSense · API Security Validation",
   },
   {
     cat: "Cloud & Infrastructure",
-    items: "Azure · Entra ID · AWS CloudWatch · Google Cloud · Kubernetes · Docker · Linux · Windows Server · pfSense · VLANs · TCP/IP",
+    items: "Azure · Entra ID · AWS CloudWatch · Google Cloud · Kubernetes · Docker · Linux · Windows Server · Active Directory · VLANs · TCP/IP",
   },
   {
-    cat: "Monitoring & Automation",
-    items: "Grafana · Prometheus · Azure App Insights · SolarWinds · PRTG · Zeek · Wireshark · n8n · Zapier · Python · Bash",
+    cat: "Operations & Monitoring",
+    items: "Grafana · Prometheus · Azure App Insights · Bash Scripting · Azure Logic Apps · Workflow Automation · Real-Time Alerting · Log Correlation · SolarWinds · Wireshark · n8n",
   },
   {
-    cat: "Development",
-    items: "TypeScript · React · Next.js · Flutter · Dart · Supabase · Firebase · REST APIs · SQL · PostgreSQL · Postman",
+    cat: "AI-Assisted Tooling & Engineering",
+    items: "Skywork AI · Suno AI · Highfield · n8n · Ideogram · Replit · Bolt · Base44 · TypeScript · React · Next.js · Supabase · PostgreSQL",
   },
   {
-    cat: "ITSM & Tooling",
-    items: "Jira · ServiceNow · BMC Remedy · MS SQL Server · Sysmon · Claude API · Lovable · Vercel · Git",
+    cat: "ITSM & Support Tooling",
+    items: "Jira · ServiceNow · BMC Remedy · MS SQL Server · Sysmon · Postman · Vercel · Git",
   },
   {
     cat: "Communication",
@@ -46,20 +42,18 @@ export default function Skills() {
         </div>
 
         <div>
-          {SKILLS.map((s, i) => (
-            <div key={s.cat} className="skill-row" style={{
-              paddingBottom: i === SKILLS.length - 1 ? 0 : 18,
-            }}>
+          {SKILLS.map((s) => (
+            <div key={s.cat} className="skill-row">
               <div style={{
                 fontSize: 12, fontWeight: 700, color: "var(--lt-fg)",
-                letterSpacing: ".01em", paddingTop: 1,
+                letterSpacing: ".01em", paddingTop: 4,
               }}>
                 {s.cat}
               </div>
-              <div style={{
-                fontSize: 13.5, color: "var(--lt-muted)", lineHeight: 1.7,
-              }}>
-                {s.items}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {s.items.split(" · ").map((item) => (
+                  <span key={item} className="skill-pill">{item}</span>
+                ))}
               </div>
             </div>
           ))}

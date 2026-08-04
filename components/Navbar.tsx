@@ -28,48 +28,41 @@ export default function Navbar() {
     <>
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        height: 60,
-        background: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.92)",
+        height: 68,
+        background: scrolled ? "rgba(239,236,230,0.97)" : "rgba(239,236,230,0.92)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
-        borderBottom: "1px solid rgba(0,0,0,0.09)",
-        transition: "background .3s, box-shadow .3s",
-        boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.07)" : "none",
+        borderBottom: "1px solid var(--lt-brd)",
+        transition: "background .3s",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 var(--e)",
       }}>
-        {/* Logo — fills full navbar height */}
+        {/* Logo — transparent-blended via multiply, touches top + bottom */}
         <button
           onClick={() => go("top")}
           style={{
             background: "none", border: "none", cursor: "pointer",
             display: "flex", alignItems: "center", padding: 0,
-            height: 60, alignSelf: "stretch",
+            height: 68, alignSelf: "stretch", flexShrink: 0,
           }}
           aria-label="Home"
         >
           <Image
             src="/logo.png"
             alt="Kevin Gitau"
-            width={60}
-            height={60}
-            style={{ display: "block", objectFit: "contain", width: 60, height: 60 }}
+            width={68}
+            height={68}
+            style={{
+              display: "block", objectFit: "contain", width: 68, height: 68,
+              mixBlendMode: "multiply",
+            }}
           />
         </button>
 
-        {/* Desktop nav */}
-        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 4 }}>
+        {/* Desktop nav — vertically centered with logo */}
+        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
           {LINKS.map(({ label, id }) => (
-            <button
-              key={id}
-              onClick={() => go(id)}
-              style={{
-                fontSize: 12, fontWeight: 500, letterSpacing: ".04em",
-                color: "var(--lt-muted)", padding: "5px 12px",
-                borderRadius: 5, background: "none", border: "none",
-                cursor: "pointer", transition: "color .15s, background .15s",
-              }}
-            >
+            <button key={id} onClick={() => go(id)} className="nav-link">
               {label}
             </button>
           ))}
@@ -77,10 +70,10 @@ export default function Navbar() {
             onClick={() => go("contact")}
             style={{
               marginLeft: 10, fontSize: 13, fontWeight: 600,
-              padding: "8px 20px",
+              padding: "9px 22px",
               background: "var(--lt-fg)", color: "var(--lt)",
-              borderRadius: 6, border: "none", cursor: "pointer",
-              transition: "opacity .15s",
+              borderRadius: 7, border: "none", cursor: "pointer",
+              transition: "opacity .2s", letterSpacing: ".01em",
             }}
           >
             Contact
@@ -102,9 +95,9 @@ export default function Navbar() {
 
       {open && (
         <div style={{
-          position: "fixed", top: 60, left: 0, right: 0, zIndex: 199,
-          background: "rgba(255,255,255,0.98)",
-          borderBottom: "1px solid rgba(0,0,0,0.09)",
+          position: "fixed", top: 68, left: 0, right: 0, zIndex: 199,
+          background: "rgba(239,236,230,0.98)",
+          borderBottom: "1px solid var(--lt-brd)",
           padding: "16px var(--e) 24px",
         }}>
           {LINKS.map(({ label, id }) => (
@@ -112,7 +105,7 @@ export default function Navbar() {
               display: "block", width: "100%", textAlign: "left",
               padding: "14px 0", fontSize: 15, fontWeight: 500,
               color: "var(--lt-muted)", background: "none", border: "none",
-              cursor: "pointer", borderBottom: "1px solid rgba(0,0,0,0.06)",
+              cursor: "pointer", borderBottom: "1px solid var(--lt-brd)",
             }}>
               {label}
             </button>

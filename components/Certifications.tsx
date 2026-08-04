@@ -1,5 +1,5 @@
 const CYBER = [
-  { name: "Google Cybersecurity Specialization",  issuer: "Google / Coursera",  year: "2024" },
+  { name: "Google Cybersecurity Specialization",  issuer: "Google / Coursera",  year: "2024", featured: true },
   { name: "Certified Ethical Hacker (prep)",      issuer: "Cisco",              year: "2024" },
   { name: "Cybersecurity Training Programme",     issuer: "Lateral Connect",    year: "2025" },
   { name: "Threat Intelligence Analysis",         issuer: "ArcX",               year: "2025" },
@@ -11,36 +11,44 @@ const OTHER = [
   {
     domain: "API & Application Security",
     certs: [
-      { name: "APIsec Certified Practitioner",  issuer: "APIsec University", year: "2026" },
+      { name: "APIsec Certified Practitioner",  issuer: "APIsec University", year: "2026", featured: true },
       { name: "OWASP API Security Top 10",       issuer: "APIsec University", year: "2026" },
     ],
   },
   {
     domain: "Networking",
     certs: [
-      { name: "Network Security & Firewall Technologies", issuer: "Cisco",           year: "2024" },
+      { name: "Network Security & Firewall Technologies", issuer: "Cisco",           year: "2024", featured: true },
       { name: "CCNA Switching & Routing",                 issuer: "Cisco",           year: "2014" },
     ],
   },
   {
     domain: "Cloud & Infrastructure",
     certs: [
-      { name: "AZ-104 Azure Administrator (prep)", issuer: "Whizlabs",        year: "2025" },
+      { name: "AZ-104 Azure Administrator (prep)", issuer: "Whizlabs",        year: "2025", featured: true },
       { name: "Introduction to Kubernetes",        issuer: "Linux Foundation", year: "2025" },
     ],
   },
 ];
 
-function CertItem({ name, issuer, year }: { name: string; issuer: string; year: string }) {
+function CertItem({ name, issuer, year, featured }: { name: string; issuer: string; year: string; featured?: boolean }) {
   return (
-    <div className="cert-item">
+    <div className={`cert-item${featured ? " cert-item-featured" : ""}`}>
       <div>
-        <div style={{ fontSize: 13, fontWeight: 500, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
+        <div className="cert-name" style={{
+          fontSize: featured ? 13.5 : 13,
+          fontWeight: featured ? 600 : 500,
+          color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2,
+        }}>
           {name}
         </div>
         <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>{issuer}</div>
       </div>
-      <div style={{ fontSize: 11.5, fontWeight: 500, color: "var(--lt-dim)", whiteSpace: "nowrap" }}>
+      <div className="cert-year" style={{
+        fontSize: 11.5, fontWeight: featured ? 600 : 500,
+        color: featured ? "var(--gld)" : "var(--lt-dim)",
+        whiteSpace: "nowrap",
+      }}>
         {year}
       </div>
     </div>

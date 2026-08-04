@@ -1,7 +1,7 @@
 const TOOLS = [
   "Azure", "Entra ID", "Wazuh", "Burp Suite", "OWASP ZAP",
   "Python", "Kubernetes", "Docker", "Linux", "Grafana",
-  "Zeek", "pfSense", "BloodHound", "n8n", "Supabase", "Flutter",
+  "Zeek", "pfSense", "BloodHound", "n8n", "Supabase",
 ];
 
 export default function About() {
@@ -21,7 +21,7 @@ export default function About() {
             alignItems: "start",
           }}
         >
-          {/* Left — pull quote */}
+          {/* Left — pull quote + body */}
           <div>
             <p style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
@@ -40,24 +40,13 @@ export default function About() {
               fontSize: 14.5,
               lineHeight: 1.82,
               color: "var(--lt-muted)",
-              marginBottom: 18,
+              marginBottom: 22,
             }}>
-              Six years as the person who gets paged when production is down.
-              I&apos;ve maintained infrastructure for an enterprise ISP, a distributed
-              IoT platform serving 3,000+ field endpoints, and two fintech platforms
-              in regulated environments.
-            </p>
-
-            <p style={{
-              fontSize: 14.5,
-              lineHeight: 1.82,
-              color: "var(--lt-muted)",
-              marginBottom: 32,
-            }}>
-              That background gives me something most security candidates don&apos;t have:
-              I know what it feels like when a misconfigured firewall takes down a city
-              block&apos;s broadband at 2 a.m. I understand networks, logs, and failure modes
-              from the inside.
+              Six years maintaining production infrastructure across enterprise,
+              fintech, and telecommunications environments has built a solid
+              foundation in real-world systems. Having handled critical incidents
+              firsthand, I bring a practical, root-cause approach to both
+              infrastructure reliability and cybersecurity.
             </p>
 
             <p style={{
@@ -65,9 +54,11 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              Alongside the security work, I build products: a fintech analytics
-              tool for the Kenyan market, an AI-powered SaaS, a family app, and
-              more. I move from concept to deployed product without needing a team.
+              I am deeply passionate about solving complex technical challenges,
+              securing applications at the architectural level, and ensuring
+              high-availability performance for end users. Alongside production
+              operations, I build products, turning ideas into deployed,
+              user-ready applications with modern developer tooling.
             </p>
           </div>
 
@@ -76,7 +67,7 @@ export default function About() {
             {[
               {
                 label: "Operations",
-                text: "Enterprise infrastructure across telecom, climate tech, and fintech. I debug distributed systems, own incidents end-to-end, and build the automation that stops the same incident twice.",
+                text: "Production infrastructure across telecommunications, fintech, and cloud platforms. I debug distributed systems, own incidents end-to-end, and build the automation that stops the same incident twice.",
               },
               {
                 label: "Security",
@@ -84,7 +75,7 @@ export default function About() {
               },
               {
                 label: "Building",
-                text: "SaaS, mobile apps, automation platforms. I know enough of the stack to ship products without waiting for a team to form around me.",
+                text: "SaaS, automation platforms, and developer tooling. I ship products end-to-end without needing a team to form around me.",
               },
             ].map(({ label, text }, i) => (
               <div key={label} style={{

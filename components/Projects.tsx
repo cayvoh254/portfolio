@@ -65,7 +65,7 @@ const PRODUCTS: Project[] = [
   {
     name: "Famio",
     status: "Beta",
-    stack: "Flutter · Firebase",
+    stack: "Firebase · Dart",
     desc: "Gamified family engagement app: shared challenges, progress tracking, milestone celebrations. From product strategy through working prototype.",
     href: "#",
   },
@@ -85,12 +85,74 @@ const PRODUCTS: Project[] = [
   },
 ];
 
+function ProjCard({ p, index }: { p: Project; index: number }) {
+  return (
+    <a
+      href={p.href}
+      target={p.href !== "#" ? "_blank" : undefined}
+      rel={p.href !== "#" ? "noopener noreferrer" : undefined}
+      className="proj-card"
+    >
+      {/* Card top: index + badge */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+        <span style={{
+          fontSize: 11, color: "var(--lt-dim)", fontWeight: 500,
+          fontVariantNumeric: "tabular-nums", letterSpacing: ".02em",
+        }}>
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className={BADGE[p.status]}>{p.status}</span>
+      </div>
+
+      {/* Card body — grows to fill */}
+      <div style={{ flex: 1 }}>
+        <div style={{
+          fontSize: 15, fontWeight: 600, color: "var(--lt-fg)",
+          letterSpacing: "-.01em", marginBottom: 6,
+        }}>
+          {p.name}
+        </div>
+        <div style={{
+          fontSize: 11.5, color: "var(--gld)", fontWeight: 500,
+          marginBottom: 10, letterSpacing: ".01em",
+        }}>
+          {p.stack}
+        </div>
+        <p style={{ fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.72 }}>
+          {p.desc}
+        </p>
+      </div>
+
+      {/* Card footer */}
+      <div style={{
+        display: "flex", justifyContent: "flex-end", alignItems: "center",
+        marginTop: 16, paddingTop: 12,
+        borderTop: "1px solid var(--lt-brd)",
+      }}>
+        {p.href !== "#" ? (
+          <svg viewBox="0 0 24 24" width={14} height={14} fill="none"
+            stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"
+            style={{ color: "var(--gld)" }}>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" width={14} height={14} fill="none"
+            stroke="currentColor" strokeWidth={1.8} strokeLinecap="round"
+            style={{ color: "var(--lt-brd)" }}>
+            <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+          </svg>
+        )}
+      </div>
+    </a>
+  );
+}
+
 function ProjGroup({ title, num, projects }: { title: string; num: string; projects: Project[] }) {
   return (
-    <div style={{ marginBottom: 56 }}>
-      <div style={{
-        display: "flex", alignItems: "center", gap: 14, marginBottom: 0,
-      }}>
+    <div style={{ marginBottom: 64 }}>
+      <div style={{ marginBottom: 20 }}>
         <span style={{
           fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
           textTransform: "uppercase", color: "var(--lt-dim)",
@@ -99,68 +161,9 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
         </span>
       </div>
 
-      <div>
+      <div className="proj-grid">
         {projects.map((p, i) => (
-          <a
-            key={p.name}
-            href={p.href}
-            target={p.href !== "#" ? "_blank" : undefined}
-            rel={p.href !== "#" ? "noopener noreferrer" : undefined}
-            className="proj-row"
-          >
-            {/* Number */}
-            <span style={{
-              fontSize: 11, color: "var(--lt-dim)", fontWeight: 500,
-              paddingTop: 3, fontVariantNumeric: "tabular-nums",
-            }}>
-              {String(i + 1).padStart(2, "0")}
-            </span>
-
-            {/* Content */}
-            <div>
-              <div style={{
-                display: "flex", alignItems: "center", gap: 10, marginBottom: 4,
-              }}>
-                <span style={{
-                  fontSize: 15, fontWeight: 600, color: "var(--lt-fg)",
-                  letterSpacing: "-.01em",
-                }}>
-                  {p.name}
-                </span>
-                <span className={BADGE[p.status]}>{p.status}</span>
-              </div>
-              <div style={{
-                fontSize: 11.5, color: "var(--gld)", fontWeight: 500,
-                marginBottom: 7, letterSpacing: ".01em",
-              }}>
-                {p.stack}
-              </div>
-              <p style={{
-                fontSize: 13.5, color: "var(--lt-muted)", lineHeight: 1.72, maxWidth: "62ch",
-              }}>
-                {p.desc}
-              </p>
-            </div>
-
-            {/* Arrow */}
-            <div className="proj-arrow" style={{ paddingTop: 4, color: "var(--lt-dim)" }}>
-              {p.href !== "#" ? (
-                <svg viewBox="0 0 24 24" width={15} height={15} fill="none"
-                  stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              ) : (
-                <span style={{ color: "var(--lt-brd)", display: "flex" }}>
-                  <svg viewBox="0 0 24 24" width={15} height={15} fill="none"
-                    stroke="currentColor" strokeWidth={1.8} strokeLinecap="round">
-                    <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
-                  </svg>
-                </span>
-              )}
-            </div>
-          </a>
+          <ProjCard key={p.name} p={p} index={i} />
         ))}
       </div>
     </div>
