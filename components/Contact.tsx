@@ -46,7 +46,7 @@ export default function Contact() {
             className="btn-primary"
             style={{ marginBottom: 36 }}
           >
-            kevin.gitau27@gmail.com
+            Send me a message
             <svg viewBox="0 0 16 16" width={13} height={13} fill="none"
               stroke="currentColor" strokeWidth={1.8}>
               <path d="M3 8h10M8 3l5 5-5 5"/>

@@ -77,10 +77,10 @@ const PRODUCTS: Project[] = [
     href: "#",
   },
   {
-    name: "Bedhuvu",
+    name: "DebtHuru",
     status: "Stealth",
-    stack: "In development",
-    desc: "Early-stage product. Details coming soon.",
+    stack: "React · Node.js · Mobile-first",
+    desc: "Debt-freedom platform built for the East African market. Users map all their debts in one place, then the engine generates a personalised payoff plan using avalanche or snowball strategy — with local payment integrations, reminders, and a running tracker so progress feels real. 'Huru' means freedom in Swahili.",
     href: "#",
   },
 ];
@@ -101,7 +101,13 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
 
       <div>
         {projects.map((p, i) => (
-          <div key={p.name} className="proj-row">
+          <a
+            key={p.name}
+            href={p.href}
+            target={p.href !== "#" ? "_blank" : undefined}
+            rel={p.href !== "#" ? "noopener noreferrer" : undefined}
+            className="proj-row"
+          >
             {/* Number */}
             <span style={{
               fontSize: 11, color: "var(--lt-dim)", fontWeight: 500,
@@ -137,22 +143,14 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
             </div>
 
             {/* Arrow */}
-            <div className="proj-arrow" style={{ paddingTop: 4 }}>
+            <div className="proj-arrow" style={{ paddingTop: 4, color: "var(--lt-dim)" }}>
               {p.href !== "#" ? (
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--lt-dim)", display: "flex" }}
-                  title="View project"
-                >
-                  <svg viewBox="0 0 24 24" width={15} height={15} fill="none"
-                    stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                  </svg>
-                </a>
+                <svg viewBox="0 0 24 24" width={15} height={15} fill="none"
+                  stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
               ) : (
                 <span style={{ color: "var(--lt-brd)", display: "flex" }}>
                   <svg viewBox="0 0 24 24" width={15} height={15} fill="none"
@@ -162,7 +160,7 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
                 </span>
               )}
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

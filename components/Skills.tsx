@@ -23,6 +23,18 @@ const SKILLS = [
     cat: "ITSM & Tooling",
     items: "Jira · ServiceNow · BMC Remedy · MS SQL Server · Sysmon · Claude API · Lovable · Vercel · Git",
   },
+  {
+    cat: "Communication",
+    items: "Technical writing · Stakeholder management · Incident communication · Cross-functional collaboration · Documentation · Training delivery · Executive briefings",
+  },
+  {
+    cat: "Analytical",
+    items: "Root cause analysis · Log correlation · Risk assessment · Data-driven troubleshooting · Process gap identification · Metrics reporting · Post-incident reviews",
+  },
+  {
+    cat: "Product Thinking",
+    items: "User research · Problem framing · Roadmap prioritisation · MVP scoping · Feedback loops · Market research · Product specs · Rapid prototyping",
+  },
 ];
 
 export default function Skills() {
