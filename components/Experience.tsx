@@ -1,144 +1,176 @@
 type Job = {
+  year: string;
   role: string;
   company: string;
-  location: string;
+  where: string;
   period: string;
   desc: string;
-  highlights: string[];
+  wins: string[];
   tags: string[];
 };
 
 const JOBS: Job[] = [
   {
+    year: "2024",
     role: "Technical Support Engineer",
     company: "4R Digital Limited",
-    location: "Remote · UK · Payments-enabled cloud platform",
+    where: "UK · Remote · Payments cloud platform",
     period: "Dec 2024 – Mar 2026",
-    desc: "Primary technical contact for merchants on a payments-enabled cloud platform. Owned platform health monitoring, Azure identity administration, API validation, and workflow automation.",
-    highlights: [
-      "Reduced operational overhead by 40% through automation",
+    desc: "Primary technical contact for merchants on a payments-enabled cloud platform. Owned monitoring, Azure identity administration, API security validation, and workflow automation.",
+    wins: [
+      "Cut operational overhead by 40% through targeted automation",
       "Administered Azure and Entra ID across the merchant estate",
-      "Ran OWASP ZAP security assessments against platform APIs",
+      "Ran OWASP ZAP assessments against platform APIs",
     ],
     tags: ["Azure", "Entra ID", "Grafana", "Prometheus", "OWASP ZAP", "Postman"],
   },
   {
+    year: "2023",
     role: "Application Support Analyst",
     company: "Ateo Finance",
-    location: "Remote · US · Fintech trading platform",
+    where: "US · Remote · Regulated fintech / trading",
     period: "Dec 2023 – May 2025",
-    desc: "Technical support for regulated US fintech trading platforms. Led production incident investigation, SQL-based root cause analysis, and cross-team QA testing across staging and production environments.",
-    highlights: [
-      "Cut incident recurrence by 25% through structured post-mortems",
-      "Reduced engineering escalation response time by 20%",
+    desc: "Production support for US fintech trading platforms. Led incident investigation, SQL-based root cause analysis, and QA testing across staging and production.",
+    wins: [
+      "Reduced incident recurrence by 25% through structured post-mortems",
+      "Cut engineering escalation response time by 20%",
     ],
     tags: ["SQL", "MS SQL Server", "Jira", "Log Analysis", "QA Testing"],
   },
   {
+    year: "2022",
     role: "Technical Support Engineer",
-    company: "KOKO Networks Limited",
-    location: "Nairobi, Kenya · Climate tech / IoT",
+    company: "KOKO Networks",
+    where: "Nairobi, Kenya · Climate tech / IoT",
     period: "Apr 2022 – Aug 2024",
-    desc: "Monitored a distributed IoT platform across 3,000+ field endpoints. Built Python automation that cut MTTR from 11 minutes to 3, dramatically reduced field dispatch costs, and sustained 98% platform uptime.",
-    highlights: [
-      "MTTR reduced from 11 min to 3 min via Python-based automation",
+    desc: "Monitored a distributed IoT platform across 3,000+ field endpoints. Built automation that cut MTTR from 11 minutes to 3. Sustained 98% platform uptime across two years.",
+    wins: [
+      "MTTR: 11 min → 3 min via Python automation",
       "98% uptime across 3,000+ IoT endpoints",
       "50% faster troubleshooting through improved diagnostic tooling",
     ],
     tags: ["Python", "Grafana", "AWS CloudWatch", "SQL", "Postman"],
   },
   {
+    year: "2020",
     role: "NOC Engineer",
     company: "Adrian Kenya Limited",
-    location: "Nairobi, Kenya · Enterprise ISP",
+    where: "Nairobi, Kenya · Enterprise ISP",
     period: "Sep 2020 – Mar 2022",
-    desc: "24/7 monitoring of enterprise network infrastructure — OLTs, core nodes, and backhaul links. 99% SLA adherence through structured escalation and field coordination.",
-    highlights: [
+    desc: "24/7 monitoring of enterprise network infrastructure — OLTs, core nodes, backhaul. 99% SLA adherence through structured escalation and field coordination.",
+    wins: [
       "99% SLA adherence across enterprise accounts",
-      "24/7 continuous network coverage across OLT estate",
+      "24/7 continuous coverage across the OLT estate",
     ],
     tags: ["BMC Remedy", "OLT", "Network Monitoring", "SLA Management"],
   },
   {
+    year: "2017",
     role: "IT Support Engineer",
     company: "Decko Africa",
-    location: "Nairobi, Kenya",
+    where: "Nairobi, Kenya",
     period: "Oct 2017 – Jul 2020",
-    desc: "End-to-end IT support — hardware, software, network, and virtualised infrastructure. Windows Server administration with Active Directory, Group Policy, and virtualisation environments.",
-    highlights: [],
-    tags: ["Windows Server", "Active Directory", "GPO", "Virtualisation"],
+    desc: "End-to-end IT support across hardware, software, network, and virtualised infrastructure. Windows Server administration — Active Directory, Group Policy, Hyper-V.",
+    wins: [],
+    tags: ["Windows Server", "Active Directory", "GPO", "Virtualisation", "Hyper-V"],
   },
 ];
 
 export default function Experience() {
   return (
-    <section className="sec" id="experience">
-      <div className="slabel">Experience</div>
-      <h2 className="stitle">Where I&apos;ve worked</h2>
+    <section className="sec sec-alt" id="experience">
+      <div className="wrap">
+        <div style={{ marginBottom: 48 }}>
+          <div className="sec-num">02 — Experience</div>
+        </div>
 
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {JOBS.map((job, i) => (
-          <div
-            key={i}
-            style={{
-              padding: "28px 0",
-              borderTop: "1px solid var(--brd)",
-              borderBottom: i === JOBS.length - 1 ? "1px solid var(--brd)" : "none",
-            }}
-          >
+        <div>
+          {JOBS.map((job, i) => (
             <div
-              className="exp-row"
-              style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 20, alignItems: "start" }}
+              key={i}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "72px 1fr",
+                gap: "clamp(24px,4vw,48px)",
+                paddingTop: i > 0 ? 36 : 0,
+                paddingBottom: 36,
+                borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
+              }}
             >
+              {/* Year column */}
+              <div style={{
+                fontFamily: "var(--font-playfair, Georgia, serif)",
+                fontSize: 13,
+                color: "var(--lt-dim)",
+                paddingTop: 4,
+                fontStyle: "italic",
+              }}>
+                {job.year}
+              </div>
+
+              {/* Content */}
               <div>
                 <div style={{
-                  fontSize: 16.5, fontWeight: 600, color: "var(--fg)",
-                  letterSpacing: "-.01em", marginBottom: 3,
+                  display: "flex", justifyContent: "space-between",
+                  alignItems: "flex-start", gap: 16, marginBottom: 4,
                 }}>
-                  {job.role}
-                </div>
-                <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--accent)", marginBottom: 2 }}>
-                  {job.company}
-                </div>
-                <div style={{ fontSize: 12, color: "var(--fg3)" }}>{job.location}</div>
-              </div>
-              <div style={{
-                fontSize: 12, fontWeight: 500, color: "var(--fg3)",
-                whiteSpace: "nowrap", paddingTop: 2,
-              }}>
-                {job.period}
-              </div>
-            </div>
-
-            <p style={{
-              fontSize: 14, lineHeight: 1.78, color: "var(--fg2)",
-              marginTop: 12, maxWidth: "64ch",
-            }}>
-              {job.desc}
-            </p>
-
-            {job.highlights.length > 0 && (
-              <ul style={{ margin: "10px 0 0 0", padding: 0, listStyle: "none" }}>
-                {job.highlights.map(h => (
-                  <li key={h} style={{
-                    fontSize: 13.5, color: "var(--fg2)", lineHeight: 1.6,
-                    paddingLeft: 16, position: "relative", marginBottom: 2,
+                  <div>
+                    <div style={{
+                      fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
+                      letterSpacing: "-.01em", marginBottom: 2,
+                    }}>
+                      {job.role}
+                    </div>
+                    <div style={{
+                      fontSize: 13.5, fontWeight: 600,
+                      color: "var(--gld)",
+                      marginBottom: 1,
+                    }}>
+                      {job.company}
+                    </div>
+                    <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
+                      {job.where}
+                    </div>
+                  </div>
+                  <div style={{
+                    fontSize: 11.5, color: "var(--lt-dim)", whiteSpace: "nowrap",
+                    paddingTop: 3, flexShrink: 0,
                   }}>
-                    <span style={{
-                      position: "absolute", left: 0, top: "0.55em",
-                      width: 5, height: 1, background: "var(--fg3)",
-                    }} />
-                    {h}
-                  </li>
-                ))}
-              </ul>
-            )}
+                    {job.period}
+                  </div>
+                </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 14 }}>
-              {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                <p style={{
+                  fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)",
+                  marginTop: 12, maxWidth: "62ch",
+                }}>
+                  {job.desc}
+                </p>
+
+                {job.wins.length > 0 && (
+                  <ul style={{ marginTop: 10, listStyle: "none", padding: 0 }}>
+                    {job.wins.map(w => (
+                      <li key={w} style={{
+                        fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.6,
+                        paddingLeft: 14, position: "relative", marginBottom: 2,
+                      }}>
+                        <span style={{
+                          position: "absolute", left: 0, top: ".6em",
+                          width: 5, height: 1, background: "var(--lt-dim)",
+                        }} />
+                        {w}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 14 }}>
+                  {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

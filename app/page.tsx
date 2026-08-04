@@ -16,14 +16,12 @@ export default function Home() {
       <main>
         <Hero />
         <StatsBar />
-        <div className="pg">
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Certifications />
-          <Contact />
-        </div>
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <Contact />
       </main>
       <Footer />
     </>
