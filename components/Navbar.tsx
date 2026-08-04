@@ -38,24 +38,23 @@ export default function Navbar() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 var(--e)",
       }}>
-        {/* Logo */}
+        {/* Logo — fills full navbar height */}
         <button
           onClick={() => go("top")}
-          style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: 0 }}
+          style={{
+            background: "none", border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", padding: 0,
+            height: 60, alignSelf: "stretch",
+          }}
           aria-label="Home"
         >
-          <span style={{
-            display: "block", width: 40, height: 40,
-            borderRadius: "50%", overflow: "hidden", flexShrink: 0,
-          }}>
-            <Image
-              src="/logo.png"
-              alt="Kevin Gitau"
-              width={40}
-              height={40}
-              style={{ objectFit: "cover", objectPosition: "center 28%", width: 40, height: 40 }}
-            />
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Kevin Gitau"
+            width={60}
+            height={60}
+            style={{ display: "block", objectFit: "contain", width: 60, height: 60 }}
+          />
         </button>
 
         {/* Desktop nav */}

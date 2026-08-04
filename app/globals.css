@@ -153,6 +153,23 @@ button { font-family: inherit; }
 }
 .soc-link:hover { color: var(--dk-fg); }
 
+/* ─── Social icon pills (hero, light context) ─── */
+.soc-pill {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 12px 16px; border-radius: 10px;
+  text-decoration: none; color: var(--lt-muted);
+  font-size: 11px; font-weight: 600; letter-spacing: .03em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: color .2s, background .2s, border-color .2s, transform .2s;
+}
+.soc-pill:hover {
+  color: var(--gld);
+  background: rgba(184,147,90,.07);
+  border-color: rgba(184,147,90,.2);
+  transform: translateY(-3px);
+}
+
 /* ─── Project list row ─── */
 .proj-row {
   display: grid;
