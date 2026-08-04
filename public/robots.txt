@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block Next.js internals from crawlers
+Disallow: /_next/
+Disallow: /api/
+
+# Security contact disclosure
+# See /.well-known/security.txt
