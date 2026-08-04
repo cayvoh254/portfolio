@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 const SOCIALS = [
   { href: "mailto:kevin.gitau27@gmail.com", label: "Email" },
@@ -96,7 +95,7 @@ export default function Hero() {
                 <span style={{ color: "var(--dk-fg)", fontWeight: 500 }}>
                   cybersecurity
                 </span>{" "}
-                — backed by the labs, certifications, and operational depth most
+                backed by the labs, certifications, and operational depth most
                 security candidates don&apos;t have.
               </p>
 
@@ -150,22 +149,28 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── Right — photo ── */}
+          {/* Right — photo */}
           <div className="hero-img" style={{ alignSelf: "flex-end" }}>
             <div style={{
               borderRadius: 16,
               overflow: "hidden",
-              aspectRatio: "4/5",
               position: "relative",
+              width: "100%",
+              paddingBottom: "125%",
               background: "#1A1A1A",
             }}>
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/KEV.png"
                 alt="Kevin Gitau"
-                fill
-                sizes="(max-width: 960px) 0px, 400px"
-                style={{ objectFit: "cover", objectPosition: "center top" }}
-                priority
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                }}
               />
             </div>
           </div>

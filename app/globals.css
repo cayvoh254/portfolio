@@ -9,8 +9,8 @@
 
 :root {
   /* Dark surfaces */
-  --dk:      #0B0B0B;
-  --dk2:     #141414;
+  --dk:      #0F1117;
+  --dk2:     #171B26;
   --dk-fg:   #F2F0ED;
   --dk-dim:  rgba(242,240,237,.42);
   --dk-brd:  rgba(242,240,237,.09);

@@ -17,12 +17,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin Gitau — Technical Support & Cybersecurity",
+  title: "Kevin Gitau | Technical Support & Cybersecurity",
   description:
-    "Six years keeping critical infrastructure running across telecom, climate tech, and fintech. Moving deliberately into cybersecurity. Nairobi, Kenya — open to remote roles globally.",
+    "Six years keeping critical infrastructure running across telecom, climate tech, and fintech. Moving deliberately into cybersecurity. Nairobi, Kenya | open to remote roles globally.",
   authors: [{ name: "Kevin Gitau", url: "https://linkedin.com/in/kevinkgitau" }],
   openGraph: {
-    title: "Kevin Gitau — Technical Support & Cybersecurity",
+    title: "Kevin Gitau | Technical Support & Cybersecurity",
     description:
       "Technical support background, growing security practice, and real products shipped. Based in Nairobi.",
     type: "website",

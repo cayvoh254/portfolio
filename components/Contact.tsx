@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="wrap">
         <div style={{ maxWidth: 640 }}>
           <div className="sec-num" style={{ marginBottom: 20 }}>
-            06 — Contact
+            06 · Contact
           </div>
 
           <h2 style={{
@@ -37,7 +37,7 @@ export default function Contact() {
             maxWidth: "42ch",
             marginBottom: 40,
           }}>
-            Open to technical support, cybersecurity, and infrastructure roles —
+            Open to technical support, cybersecurity, and infrastructure roles,
             remote or hybrid. If you have something worth discussing, reach out directly.
           </p>
 

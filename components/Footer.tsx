@@ -13,7 +13,7 @@ export default function Footer() {
       }}
     >
       <span style={{ fontSize: 12, color: "var(--dk-dim)" }}>
-        © {new Date().getFullYear()} Kevin Gitau — Nairobi, Kenya
+        © {new Date().getFullYear()} Kevin Gitau · Nairobi, Kenya
       </span>
       <div style={{ display: "flex", gap: 20 }}>
         {[

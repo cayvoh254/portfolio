@@ -9,7 +9,7 @@ export default function About() {
     <section className="sec" id="about">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">01 — About</div>
+          <div className="sec-num">01 · About</div>
         </div>
 
         <div
@@ -33,7 +33,7 @@ export default function About() {
               marginBottom: 32,
             }}>
               &ldquo;Technical support is where you learn how systems actually
-              break — and who to call when they do.&rdquo;
+              break, and who to call when they do.&rdquo;
             </p>
 
             <p style={{
@@ -65,7 +65,7 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              Alongside the security work, I build products — a fintech analytics
+              Alongside the security work, I build products: a fintech analytics
               tool for the Kenyan market, an AI-powered SaaS, a family app, and
               more. I move from concept to deployed product without needing a team.
             </p>

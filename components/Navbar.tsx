@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const LINKS = [
   { label: "About",    id: "about" },
@@ -28,10 +29,10 @@ export default function Navbar() {
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
         height: 60,
-        background: scrolled ? "rgba(11,11,11,.94)" : "transparent",
-        backdropFilter: scrolled ? "blur(18px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(18px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(242,240,237,.08)" : "none",
+        background: scrolled ? "rgba(15,17,23,.96)" : "rgba(15,17,23,.5)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        borderBottom: "1px solid rgba(242,240,237,.08)",
         transition: "background .3s, border-color .3s",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 var(--e)",
@@ -47,14 +48,20 @@ export default function Navbar() {
           aria-label="Home"
         >
           <span style={{
-            display: "inline-flex", alignItems: "center", justifyContent: "center",
-            width: 38, height: 38, borderRadius: "50%",
-            border: "1.5px solid rgba(184,147,90,.55)",
-            fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontSize: 14, fontWeight: 400, letterSpacing: ".04em",
-            color: "var(--gld)",
+            display: "block", width: 44, height: 44,
+            borderRadius: "50%", overflow: "hidden", flexShrink: 0,
           }}>
-            KG
+            <Image
+              src="/logo.png"
+              alt="Kevin Gitau"
+              width={44}
+              height={44}
+              style={{
+                objectFit: "cover",
+                objectPosition: "center 30%",
+                width: 44, height: 44,
+              }}
+            />
           </span>
         </button>
 

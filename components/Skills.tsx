@@ -42,7 +42,7 @@ export default function Skills() {
     <section className="sec sec-alt" id="skills">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">04 — Skills</div>
+          <div className="sec-num">04 · Skills</div>
         </div>
 
         <div>

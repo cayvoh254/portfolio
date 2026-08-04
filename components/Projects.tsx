@@ -28,7 +28,7 @@ const SECURITY: Project[] = [
     name: "Web App & API Pentesting",
     status: "Live lab",
     stack: "Burp Suite · OWASP ZAP · API Security · OWASP Top 10",
-    desc: "Ongoing OWASP Top 10 testing and API security labs — BOLA, rate limiting bypass, excessive data exposure, auth bypass. All findings documented in structured security reports.",
+    desc: "Ongoing OWASP Top 10 testing and API security labs: BOLA, rate limiting bypass, excessive data exposure, auth bypass. All findings documented in structured security reports.",
     href: "https://github.com/cayvoh254",
   },
   {
@@ -42,7 +42,7 @@ const SECURITY: Project[] = [
     name: "Active Directory Attack & Defense",
     status: "Live lab",
     stack: "Active Directory · BloodHound · Kerberoasting · Sysmon",
-    desc: "Virtualised Windows Server AD environment. Practiced Kerberoasting, Pass-the-Hash, BloodHound enumeration — then hardened the same environment with Sysmon and event log analysis.",
+    desc: "Virtualised Windows Server AD environment. Practiced Kerberoasting, Pass-the-Hash, BloodHound enumeration, then hardened the same environment with Sysmon and event log analysis.",
     href: "https://github.com/cayvoh254",
   },
 ];
@@ -59,14 +59,14 @@ const PRODUCTS: Project[] = [
     name: "GanjiFlow",
     status: "Beta",
     stack: "React · TypeScript · M-Pesa API",
-    desc: "Privacy-first M-Pesa statement analyser. All parsing and computation runs locally in the browser — no financial data leaves the device. Built for the Kenyan mobile-money market.",
+    desc: "Privacy-first M-Pesa statement analyser. All parsing and computation runs locally in the browser; no financial data leaves the device. Built for the Kenyan mobile-money market.",
     href: "#",
   },
   {
     name: "Famio",
     status: "Beta",
     stack: "Flutter · Firebase",
-    desc: "Gamified family engagement app — shared challenges, progress tracking, milestone celebrations. From product strategy through working prototype.",
+    desc: "Gamified family engagement app: shared challenges, progress tracking, milestone celebrations. From product strategy through working prototype.",
     href: "#",
   },
   {
@@ -80,7 +80,7 @@ const PRODUCTS: Project[] = [
     name: "DebtHuru",
     status: "Stealth",
     stack: "React · Node.js · Mobile-first",
-    desc: "Debt-freedom platform built for the East African market. Users map all their debts in one place, then the engine generates a personalised payoff plan using avalanche or snowball strategy — with local payment integrations, reminders, and a running tracker so progress feels real. 'Huru' means freedom in Swahili.",
+    desc: "Debt-freedom platform built for the East African market. Users map all their debts in one place, then the engine generates a personalised payoff plan using avalanche or snowball strategy, with local payment integrations, reminders, and a running tracker so progress feels real. 'Huru' means freedom in Swahili.",
     href: "#",
   },
 ];
@@ -95,7 +95,7 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
           fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
           textTransform: "uppercase", color: "var(--lt-dim)",
         }}>
-          {num} — {title}
+          {num} · {title}
         </span>
       </div>
 
@@ -172,7 +172,7 @@ export default function Projects() {
     <section className="sec" id="projects">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">03 — Projects</div>
+          <div className="sec-num">03 · Projects</div>
         </div>
 
         <ProjGroup title="Security Labs" num="A" projects={SECURITY} />

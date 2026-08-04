@@ -57,7 +57,7 @@ const JOBS: Job[] = [
     company: "Adrian Kenya Limited",
     where: "Nairobi, Kenya · Enterprise ISP",
     period: "Sep 2020 – Mar 2022",
-    desc: "24/7 monitoring of enterprise network infrastructure — OLTs, core nodes, backhaul. 99% SLA adherence through structured escalation and field coordination.",
+    desc: "24/7 monitoring of enterprise network infrastructure: OLTs, core nodes, backhaul. 99% SLA adherence through structured escalation and field coordination.",
     wins: [
       "99% SLA adherence across enterprise accounts",
       "24/7 continuous coverage across the OLT estate",
@@ -70,7 +70,7 @@ const JOBS: Job[] = [
     company: "Decko Africa",
     where: "Nairobi, Kenya",
     period: "Oct 2017 – Jul 2020",
-    desc: "End-to-end IT support across hardware, software, network, and virtualised infrastructure. Windows Server administration — Active Directory, Group Policy, Hyper-V.",
+    desc: "End-to-end IT support across hardware, software, network, and virtualised infrastructure. Windows Server administration: Active Directory, Group Policy, Hyper-V.",
     wins: [],
     tags: ["Windows Server", "Active Directory", "GPO", "Virtualisation", "Hyper-V"],
   },
@@ -81,7 +81,7 @@ export default function Experience() {
     <section className="sec sec-alt" id="experience">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">02 — Experience</div>
+          <div className="sec-num">02 · Experience</div>
         </div>
 
         <div>
