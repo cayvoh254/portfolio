@@ -1,45 +1,46 @@
 const STATS = [
-  { value: "6+",     label: "Years experience" },
-  { value: "30+",    label: "Certifications" },
-  { value: "3,000+", label: "Endpoints monitored" },
-  { value: "99%",    label: "Peak SLA" },
-  { value: "4+",     label: "Products shipped" },
+  { n: "6+",     label: "Years in production environments" },
+  { n: "30+",    label: "Cybersecurity certifications" },
+  { n: "3,000+", label: "IoT endpoints monitored" },
+  { n: "99%",    label: "SLA adherence at peak" },
 ];
 
 export default function StatsBar() {
   return (
-    <div style={{ background: "#1c1c1e", color: "#fff", padding: "0 var(--e)" }}>
+    <div style={{ background: "var(--dark)", borderTop: "1px solid #1A1918" }}>
       <div
-        className="stats-inner"
+        className="stats-row"
         style={{
-          maxWidth: 1180, margin: "0 auto",
-          display: "grid", gridTemplateColumns: "repeat(5,1fr)",
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          maxWidth: 1080,
+          margin: "0 auto",
+          padding: "0 var(--e)",
         }}
       >
-        {STATS.map(({ value, label }, i) => (
+        {STATS.map(({ n, label }, i) => (
           <div
-            key={label}
-            className={i >= 3 ? "sc-hide" : ""}
+            key={n}
             style={{
-              padding: "22px 24px",
-              borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,.08)" : "none",
-              paddingLeft: i === 0 ? 0 : 24,
+              padding: "34px 28px",
+              borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,.07)" : "none",
             }}
           >
-            <div
-              style={{
-                fontFamily: "var(--font-dm-serif, 'DM Serif Display', Georgia, serif)",
-                fontSize: 28, color: "#fff", letterSpacing: "-.02em", lineHeight: 1,
-              }}
-            >
-              {value}
+            <div style={{
+              fontFamily: "var(--font-playfair, Georgia, serif)",
+              fontSize: "clamp(30px, 3.5vw, 42px)",
+              color: "#FFFFFF",
+              letterSpacing: "-.035em",
+              lineHeight: 1,
+              marginBottom: 7,
+            }}>
+              {n}
             </div>
-            <div
-              style={{
-                fontSize: 11, fontWeight: 600, textTransform: "uppercase",
-                letterSpacing: ".06em", color: "rgba(255,255,255,.45)", marginTop: 4,
-              }}
-            >
+            <div style={{
+              fontSize: 12,
+              color: "rgba(255,255,255,.42)",
+              lineHeight: 1.4,
+            }}>
               {label}
             </div>
           </div>

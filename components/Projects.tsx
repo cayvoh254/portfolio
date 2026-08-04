@@ -1,117 +1,177 @@
-type Status = "Active Lab" | "Shipped" | "Beta" | "In Dev";
+type Status = "Live lab" | "Shipped" | "Beta" | "In dev" | "Stealth";
 
 type Project = {
-  icon: string;
-  status: Status;
   name: string;
+  status: Status;
   desc: string;
   tags: string[];
+  href: string;
 };
 
-const STATUS_STYLES: Record<Status, { bg: string; color: string }> = {
-  "Active Lab": { bg: "#ecfdf5", color: "#059669" },
-  "Shipped":    { bg: "#eff6ff", color: "#2563eb" },
-  "Beta":       { bg: "#fefce8", color: "#ca8a04" },
-  "In Dev":     { bg: "#f9fafb", color: "#9ca3af" },
+const STATUS_CLASS: Record<Status, string> = {
+  "Live lab": "status status-live",
+  "Shipped":  "status status-shipped",
+  "Beta":     "status status-beta",
+  "In dev":   "status status-dev",
+  "Stealth":  "status status-stealth",
 };
 
-const PROJECTS: Project[] = [
+const SECURITY: Project[] = [
   {
-    icon: "🛡️", status: "Active Lab", name: "Home SOC Lab",
-    desc: "Deployed Wazuh across Linux and Windows hosts. Multi-source log ingestion, custom detection rules, Grafana dashboards for real-time visibility. Full analyst workflow from signal to investigation.",
-    tags: ["Wazuh", "SIEM", "Detection Engineering", "Log Analysis"],
+    name: "Home SOC Lab",
+    status: "Live lab",
+    desc: "Wazuh deployed across Linux and Windows hosts. Multi-source log ingestion, custom detection rules, Grafana dashboards, and a documented analyst workflow from raw signal to incident report.",
+    tags: ["Wazuh", "SIEM", "Detection Engineering", "Grafana"],
+    href: "https://github.com/cayvoh254",
   },
   {
-    icon: "🔍", status: "Active Lab", name: "Web App & API Pentesting",
-    desc: "OWASP Top 10 testing — XSS, SQL injection, IDOR, auth bypass. API security labs covering BOLA, rate limiting bypass, excessive data exposure. Documented with structured security reports.",
-    tags: ["OWASP ZAP", "Burp Suite", "API Security", "Pentesting"],
+    name: "Web App & API Pentesting",
+    status: "Live lab",
+    desc: "OWASP Top 10 testing with documented findings. API security covering BOLA, excessive data exposure, and rate limiting bypass. All work structured into professional security reports.",
+    tags: ["Burp Suite", "OWASP ZAP", "API Security", "OWASP Top 10"],
+    href: "https://github.com/cayvoh254",
   },
   {
-    icon: "🌐", status: "Active Lab", name: "Home Network Security Lab",
-    desc: "pfSense firewall with strict inter-VLAN routing. Zeek for passive network traffic analysis. Wireshark to validate flows and confirm VLAN isolation. Mirrors enterprise network segmentation.",
+    name: "Home Network Security Lab",
+    status: "Live lab",
+    desc: "pfSense firewall with strict inter-VLAN routing. Zeek for passive traffic analysis. Wireshark to verify VLAN isolation. Mirrors real enterprise network segmentation.",
     tags: ["pfSense", "VLANs", "Zeek", "Wireshark"],
+    href: "https://github.com/cayvoh254",
   },
   {
-    icon: "🏰", status: "Active Lab", name: "Active Directory Attack & Defense",
-    desc: "Virtualized Windows Server AD. Practiced Kerberoasting, Pass-the-Hash, BloodHound enumeration. Defensive hardening with Sysmon and event log analysis.",
+    name: "Active Directory Attack & Defense",
+    status: "Live lab",
+    desc: "Virtualised Windows Server AD environment. Practiced Kerberoasting, Pass-the-Hash, and BloodHound enumeration — then hardened the same environment with Sysmon and event log analysis.",
     tags: ["Active Directory", "BloodHound", "Kerberoasting", "Sysmon"],
-  },
-  {
-    icon: "🤖", status: "Shipped", name: "AI Appointment Reminder SaaS",
-    desc: "Claude API for natural language, n8n for automation, Supabase backend. Full product from concept to deployed MVP with calendar integrations and automated follow-ups.",
-    tags: ["Claude API", "n8n", "Supabase", "SaaS"],
-  },
-  {
-    icon: "💰", status: "Beta", name: "GanjiFlow",
-    desc: "Privacy-first M-Pesa statement analyzer. All parsing and computation local in the browser — no data leaves your device. Financial analytics built on trust.",
-    tags: ["React", "TypeScript", "Privacy-First", "M-Pesa"],
-  },
-  {
-    icon: "👨‍👩‍👧", status: "Beta", name: "Famio",
-    desc: "Gamified family app — shared challenges, progress tracking, milestone celebrations. Flutter and Firebase, from product strategy to working prototype.",
-    tags: ["Flutter", "Firebase", "Mobile", "Gamification"],
-  },
-  {
-    icon: "🔎", status: "In Dev", name: "NamePrint",
-    desc: "Platform for parents to discover baby names by cultural origin, meaning, and phonetics. Build and compare shortlists for one of life's most meaningful decisions.",
-    tags: ["Web App", "Product Design", "UX"],
+    href: "https://github.com/cayvoh254",
   },
 ];
+
+const PRODUCTS: Project[] = [
+  {
+    name: "AI Appointment Reminder",
+    status: "Shipped",
+    desc: "Fully deployed SaaS product. Claude API for natural-language scheduling, n8n for automation, Supabase as the backend. Calendar integration and automated follow-up flows.",
+    tags: ["Claude API", "n8n", "Supabase", "SaaS"],
+    href: "#",
+  },
+  {
+    name: "GanjiFlow",
+    status: "Beta",
+    desc: "Privacy-first M-Pesa statement analyser. All parsing and calculations run locally in the browser — no data leaves the device. Built for the Kenyan mobile-money market.",
+    tags: ["React", "TypeScript", "M-Pesa", "Privacy-first"],
+    href: "#",
+  },
+  {
+    name: "Famio",
+    status: "Beta",
+    desc: "Gamified family engagement app. Shared challenges, progress tracking, milestone celebrations. Flutter and Firebase, from product strategy through working prototype.",
+    tags: ["Flutter", "Firebase", "Mobile", "Gamification"],
+    href: "#",
+  },
+  {
+    name: "NamePrint",
+    status: "In dev",
+    desc: "Platform for parents to explore baby names by cultural origin, meaning, and phonetics — with shortlisting and comparison tools. Designed for one of the most meaningful decisions families make.",
+    tags: ["Web App", "Product Design", "UX"],
+    href: "#",
+  },
+  {
+    name: "Bedhuvu",
+    status: "Stealth",
+    desc: "Early-stage product in development. Full details coming soon.",
+    tags: ["In progress"],
+    href: "#",
+  },
+];
+
+function ProjectCard({ project }: { project: Project }) {
+  const isExternal = project.href !== "#";
+  return (
+    <div className="proj-card">
+      <div style={{
+        display: "flex", justifyContent: "space-between",
+        alignItems: "flex-start", marginBottom: 12,
+      }}>
+        <span className={STATUS_CLASS[project.status]}>{project.status}</span>
+        {isExternal && (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "var(--fg3)", transition: "color .15s",
+              display: "flex", alignItems: "center",
+            }}
+            title="View project"
+          >
+            <svg viewBox="0 0 24 24" width={14} height={14} fill="none"
+              stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        )}
+      </div>
+
+      <div style={{
+        fontFamily: "var(--font-playfair, Georgia, serif)",
+        fontSize: 17, color: "var(--fg)", marginBottom: 8,
+        letterSpacing: "-.02em", lineHeight: 1.2,
+      }}>
+        {project.name}
+      </div>
+
+      <p style={{
+        fontSize: 13.5, lineHeight: 1.72, color: "var(--fg2)", flexGrow: 1,
+      }}>
+        {project.desc}
+      </p>
+
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 14 }}>
+        {project.tags.map(t => <span key={t} className="tag">{t}</span>)}
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   return (
     <section className="sec" id="projects">
       <div className="slabel">Projects</div>
-      <div className="stitle">Things I&apos;ve built</div>
+      <h2 className="stitle">Things I&apos;ve built</h2>
 
-      <div
-        className="proj-grid"
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
-      >
-        {PROJECTS.map(({ icon, status, name, desc, tags }) => {
-          const st = STATUS_STYLES[status];
-          return (
-            <div key={name} className="pc">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                <span style={{ fontSize: 24 }}>{icon}</span>
-                <span
-                  style={{
-                    fontSize: 10, fontWeight: 700, letterSpacing: ".04em",
-                    textTransform: "uppercase", padding: "3px 9px", borderRadius: 20,
-                    background: st.bg, color: st.color,
-                  }}
-                >
-                  {status}
-                </span>
-              </div>
+      {/* Security labs */}
+      <div style={{ marginBottom: 14 }}>
+        <div style={{
+          fontSize: 10.5, fontWeight: 700, letterSpacing: ".12em",
+          textTransform: "uppercase", color: "var(--fg3)", marginBottom: 16,
+        }}>
+          Security labs
+        </div>
+        <div
+          className="proj-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}
+        >
+          {SECURITY.map(p => <ProjectCard key={p.name} project={p} />)}
+        </div>
+      </div>
 
-              <div
-                style={{
-                  fontFamily: "var(--font-dm-serif, 'DM Serif Display', Georgia, serif)",
-                  fontSize: 16, color: "var(--t1)", marginBottom: 8, letterSpacing: "-.01em",
-                }}
-              >
-                {name}
-              </div>
-
-              <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--t2)" }}>{desc}</p>
-
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 12 }}>
-                {tags.map(tag => (
-                  <span
-                    key={tag}
-                    style={{
-                      fontSize: 11, fontWeight: 500, padding: "2px 9px",
-                      borderRadius: 4, background: "var(--blue-l)", color: "var(--blue)",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      {/* Products */}
+      <div style={{ marginTop: 40 }}>
+        <div style={{
+          fontSize: 10.5, fontWeight: 700, letterSpacing: ".12em",
+          textTransform: "uppercase", color: "var(--fg3)", marginBottom: 16,
+        }}>
+          Products
+        </div>
+        <div
+          className="proj-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}
+        >
+          {PRODUCTS.map(p => <ProjectCard key={p.name} project={p} />)}
+        </div>
       </div>
     </section>
   );

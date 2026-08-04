@@ -1,153 +1,96 @@
 "use client";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 
-const NAV_LINKS = [
-  { label: "About",          href: "about" },
-  { label: "Experience",     href: "experience" },
-  { label: "Projects",       href: "projects" },
-  { label: "Certifications", href: "certifications" },
+const NAV = [
+  { label: "About",       id: "about" },
+  { label: "Experience",  id: "experience" },
+  { label: "Projects",    id: "projects" },
+  { label: "Skills",      id: "skills" },
+  { label: "Certs",       id: "certifications" },
 ];
 
-const scrollTo = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-};
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const handleNav = (href: string) => {
-    setOpen(false);
-    scrollTo(href);
-  };
+  const go = (id: string) => { setOpen(false); scrollTo(id); };
 
   return (
     <>
-      <header
-        style={{
-          position: "sticky", top: 0, zIndex: 100,
-          background: "rgba(247,245,242,0.92)",
-          backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid var(--bd)",
-          padding: "0 var(--e)",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          height: 64,
-        }}
-      >
+      <header style={{
+        position: "sticky", top: 0, zIndex: 100,
+        background: "rgba(248,247,244,.92)",
+        backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid var(--brd)",
+        height: 64, padding: "0 var(--e)",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
         <button
           onClick={() => scrollTo("top")}
           style={{
-            fontFamily: "var(--font-dm-serif, 'DM Serif Display', Georgia, serif)",
-            fontSize: 20, color: "var(--t1)", letterSpacing: "-.01em",
-            background: "none", border: "none", cursor: "pointer", whiteSpace: "nowrap",
+            fontFamily: "var(--font-playfair, Georgia, serif)",
+            fontSize: 19, fontWeight: 400, color: "var(--fg)",
+            background: "none", border: "none", cursor: "pointer",
+            letterSpacing: "-.02em", whiteSpace: "nowrap",
           }}
         >
           Kevin Gitau
         </button>
 
-        {/* Desktop nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: 4 }}>
-          {NAV_LINKS.map(({ label, href }) => (
-            <button
-              key={href}
-              onClick={() => handleNav(href)}
-              className="nav-link"
-              style={{
-                fontSize: 13.5, fontWeight: 500, color: "var(--t2)",
-                padding: "6px 12px", borderRadius: 6, transition: "all .15s",
-                background: "none", border: "none", cursor: "pointer",
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = "var(--t1)"; el.style.background = "rgba(0,0,0,.04)";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = "var(--t2)"; el.style.background = "none";
-              }}
-            >
-              {label}
-            </button>
+        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
+          {NAV.map(({ label, id }) => (
+            <button key={id} className="nav-btn" onClick={() => go(id)}>{label}</button>
           ))}
           <button
-            onClick={() => handleNav("contact")}
-            style={{
-              fontSize: 13, fontWeight: 600, color: "var(--blue)",
-              padding: "7px 18px", border: "1.5px solid var(--blue)",
-              borderRadius: 6, marginLeft: 6, transition: "all .2s",
-              background: "none", cursor: "pointer",
-            }}
-            onMouseEnter={e => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = "var(--blue)"; el.style.color = "#fff";
-            }}
-            onMouseLeave={e => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = "none"; el.style.color = "var(--blue)";
-            }}
+            className="nav-cta"
+            onClick={() => go("contact")}
+            style={{ marginLeft: 10 }}
           >
-            Let&apos;s talk
-          </button>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setOpen(v => !v)}
-            style={{
-              display: "none", background: "none", border: "none",
-              cursor: "pointer", color: "var(--t2)", marginLeft: 8,
-            }}
-            className="mob-menu-btn"
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            Contact
           </button>
         </nav>
+
+        {/* Mobile toggle */}
+        <button
+          className="mob-btn"
+          onClick={() => setOpen(v => !v)}
+          style={{
+            display: "none", background: "none", border: "none",
+            cursor: "pointer", color: "var(--fg2)", padding: 4,
+          }}
+          aria-label="Menu"
+        >
+          <svg viewBox="0 0 24 24" width={22} height={22} fill="none" stroke="currentColor" strokeWidth={1.8}>
+            {open
+              ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
+              : <><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></>
+            }
+          </svg>
+        </button>
       </header>
 
-      {/* Mobile drawer */}
       {open && (
-        <div
-          style={{
-            position: "fixed", top: 64, left: 0, right: 0, zIndex: 99,
-            background: "rgba(247,245,242,0.98)", backdropFilter: "blur(16px)",
-            borderBottom: "1px solid var(--bd)", padding: "12px var(--e) 20px",
-          }}
-        >
-          {NAV_LINKS.map(({ label, href }) => (
-            <button
-              key={href}
-              onClick={() => handleNav(href)}
-              style={{
-                display: "block", width: "100%", textAlign: "left",
-                padding: "12px 0", fontSize: 15, fontWeight: 500,
-                color: "var(--t1)", background: "none", border: "none",
-                cursor: "pointer", borderBottom: "1px solid var(--bd)",
-              }}
-            >
-              {label}
-            </button>
+        <div style={{
+          position: "fixed", top: 64, left: 0, right: 0, zIndex: 99,
+          background: "rgba(248,247,244,.97)", backdropFilter: "blur(14px)",
+          borderBottom: "1px solid var(--brd)", padding: "8px var(--e) 20px",
+        }}>
+          {NAV.map(({ label, id }) => (
+            <button key={id} onClick={() => go(id)} style={{
+              display: "block", width: "100%", textAlign: "left",
+              padding: "13px 0", fontSize: 15, fontWeight: 500,
+              color: "var(--fg)", background: "none", border: "none", cursor: "pointer",
+              borderBottom: "1px solid var(--brd)",
+            }}>{label}</button>
           ))}
-          <button
-            onClick={() => handleNav("contact")}
-            style={{
-              marginTop: 12, display: "block", width: "100%",
-              textAlign: "center", padding: "10px 0",
-              fontSize: 14, fontWeight: 600, color: "#fff",
-              background: "var(--blue)", borderRadius: 6, border: "none", cursor: "pointer",
-            }}
-          >
-            Let&apos;s talk
+          <button onClick={() => go("contact")} className="btn-dark" style={{ marginTop: 14, width: "100%", justifyContent: "center" }}>
+            Contact me
           </button>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 640px) {
-          .nav-link { display: none !important; }
-          .mob-menu-btn { display: block !important; }
-        }
-      `}</style>
     </>
   );
 }
