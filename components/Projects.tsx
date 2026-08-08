@@ -22,28 +22,28 @@ const SECURITY: Project[] = [
     status: "Live lab",
     stack: "Wazuh · SIEM · Grafana · Detection Engineering",
     desc: "Wazuh deployed across Linux and Windows hosts with multi-source log ingestion, custom detection rules, and Grafana dashboards. Full analyst workflow from signal through investigation.",
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-01-soc-wazuh-siem",
   },
   {
     name: "Web App & API Pentesting",
     status: "Live lab",
     stack: "Burp Suite · OWASP ZAP · API Security · OWASP Top 10",
     desc: "Ongoing OWASP Top 10 testing and API security labs: BOLA, rate limiting bypass, excessive data exposure, auth bypass. All findings documented in structured security reports.",
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-02-web-api-pentesting",
   },
   {
     name: "Home Network Security Lab",
     status: "Live lab",
     stack: "pfSense · VLANs · Zeek · Wireshark",
     desc: "pfSense firewall with strict inter-VLAN routing, Zeek for passive traffic analysis, Wireshark to verify isolation. Mirrors real enterprise network segmentation architecture.",
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-03-network-security-pfsense",
   },
   {
     name: "Active Directory Attack & Defense",
     status: "Live lab",
     stack: "Active Directory · BloodHound · Kerberoasting · Sysmon",
     desc: "Virtualised Windows Server AD environment. Practiced Kerberoasting, Pass-the-Hash, BloodHound enumeration, then hardened the same environment with Sysmon and event log analysis.",
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-04-active-directory-attack-defense",
   },
 ];
 
