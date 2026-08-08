@@ -17,14 +17,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin Gitau | Technical Support & Cybersecurity",
+  title: "Kevin Gitau | Security Operations Engineer",
   description:
-    "Six years keeping critical infrastructure running across telecom, climate tech, and fintech. Moving deliberately into cybersecurity. Nairobi, Kenya | open to remote roles globally.",
+    "Six years maintaining production infrastructure across enterprise, fintech, and telecommunications environments. Security operations, cloud infrastructure, and product development. Nairobi, Kenya.",
   authors: [{ name: "Kevin Gitau", url: "https://linkedin.com/in/kevinkgitau" }],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "Kevin Gitau | Technical Support & Cybersecurity",
+    title: "Kevin Gitau | Security Operations Engineer",
     description:
-      "Technical support background, growing security practice, and real products shipped. Based in Nairobi.",
+      "Security operations, infrastructure, and real products. Based in Nairobi, Kenya.",
     type: "website",
     locale: "en_US",
   },
