@@ -118,10 +118,10 @@ export default function Hero() {
               marginBottom: 28,
               maxWidth: "54ch",
             }}>
-              Six years maintaining production infrastructure across enterprise,
-              fintech, and telecommunications environments. Experienced in keeping
-              high-availability platforms operational, managing incident responses,
-              and scaling cloud-hosted architecture.
+              Security operations engineer with six years across enterprise cloud,
+              fintech, and telecommunications infrastructure. Threat detection,
+              SIEM deployment, penetration testing, and container security, backed
+              by deep production systems experience.
             </p>
 
             {/* CTAs + social icons on same row */}

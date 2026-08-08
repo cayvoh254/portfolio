@@ -32,8 +32,8 @@ export default function About() {
               fontWeight: 400,
               marginBottom: 32,
             }}>
-              &ldquo;Technical support is where you learn how systems actually
-              break, and who to call when they do.&rdquo;
+              &ldquo;Six years in production taught me exactly how systems fail.
+              Security is learning to close those gaps before someone else finds them.&rdquo;
             </p>
 
             <p style={{
@@ -42,11 +42,12 @@ export default function About() {
               color: "var(--lt-muted)",
               marginBottom: 22,
             }}>
-              Six years maintaining production infrastructure across enterprise,
-              fintech, and telecommunications environments has built a solid
-              foundation in real-world systems. Having handled critical incidents
-              firsthand, I bring a practical, root-cause approach to both
-              infrastructure reliability and cybersecurity.
+              Six years across enterprise cloud, fintech, and telecommunications
+              infrastructure gave me a ground-level view of how systems behave
+              under pressure. That foundation drives the security work: SIEM
+              deployment and alert tuning, web application and API assessments,
+              Active Directory attack paths and detection, container vulnerability
+              scanning. Security grounded in production systems knowledge.
             </p>
 
             <p style={{
@@ -54,11 +55,9 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              I am deeply passionate about solving complex technical challenges,
-              securing applications at the architectural level, and ensuring
-              high-availability performance for end users. Alongside production
-              operations, I build products, turning ideas into deployed,
-              user-ready applications with modern developer tooling.
+              Alongside the security track, I build and ship products
+              independently: SaaS tools, automation workflows, mobile apps. From
+              idea to deployed, without needing a team to form first.
             </p>
           </div>
 
@@ -67,7 +66,7 @@ export default function About() {
             {[
               {
                 label: "Operations",
-                text: "Production infrastructure across telecommunications, fintech, and cloud platforms. I debug distributed systems, own incidents end-to-end, and build the automation that stops the same incident twice.",
+                text: "Cloud and infrastructure operations across fintech, telecommunications, and SaaS platforms. Incident ownership, root-cause analysis, distributed system debugging, and monitoring automation. Six years of production context behind every security decision.",
               },
               {
                 label: "Security",
