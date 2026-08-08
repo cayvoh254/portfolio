@@ -14,7 +14,7 @@ const LABS = [
     ],
     mitre: ["T1110.001 — Brute Force", "T1027 — Obfuscated Files", "T1003.001 — LSASS Memory", "T1053.005 — Scheduled Task"],
     tools: ["Wazuh", "Elasticsearch", "Kibana", "Grafana", "Sysmon", "auditd", "Hydra", "Mimikatz", "VirtualBox"],
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-01-soc-wazuh-siem",
   },
   {
     num: "02",
@@ -32,7 +32,7 @@ const LABS = [
     ],
     mitre: ["API1 — BOLA", "API2 — Broken Auth", "API4 — Rate Limiting", "A03 — Injection", "A10 — SSRF"],
     tools: ["Burp Suite", "OWASP ZAP", "DVWA", "crAPI", "Juice Shop", "hashcat", "Docker", "Postman"],
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-02-web-api-pentesting",
   },
   {
     num: "03",
@@ -50,7 +50,7 @@ const LABS = [
     ],
     mitre: ["T1040 — Network Sniffing", "T1018 — Remote System Discovery"],
     tools: ["pfSense", "Zeek", "Wireshark", "scapy", "VirtualBox", "Ubuntu"],
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-03-network-security-pfsense",
   },
   {
     num: "04",
@@ -70,7 +70,7 @@ const LABS = [
     ],
     mitre: ["T1558.003 — Kerberoasting", "T1550.002 — Pass-the-Hash", "T1069.002 — Domain Groups", "T1003.001 — LSASS Memory"],
     tools: ["Windows Server 2019", "Kali Linux", "BloodHound", "Impacket", "CrackMapExec", "Sysmon", "Wazuh", "hashcat", "VirtualBox"],
-    href: "https://github.com/cayvoh254",
+    href: "https://github.com/cayvoh254/lab-04-active-directory-attack-defense",
   },
 ];
 
