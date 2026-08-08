@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const LINKS = [
-  { label: "About",    id: "about" },
-  { label: "Work",     id: "experience" },
-  { label: "Projects", id: "projects" },
-  { label: "Skills",   id: "skills" },
-  { label: "Certs",    id: "certifications" },
+  { label: "About",     id: "about" },
+  { label: "Work",      id: "experience" },
+  { label: "Projects",  id: "projects" },
+  { label: "Skills",    id: "skills" },
+  { label: "Writeups",  id: "writeups" },
+  { label: "Certs",     id: "certifications" },
 ];
 
 function go(id: string) {

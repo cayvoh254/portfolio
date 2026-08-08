@@ -1,5 +1,6 @@
 const CYBER = [
-  { name: "Google Cybersecurity Specialization",  issuer: "Google / Coursera",  year: "2024", featured: true },
+  { name: "Cloud & Network Security",             issuer: "Cyber Shujaa",       year: "2026", featured: true },
+  { name: "Google Cybersecurity Specialization",  issuer: "Google / Coursera",  year: "2024", featured: false },
   { name: "Certified Ethical Hacker (prep)",      issuer: "Cisco",              year: "2024" },
   { name: "Cybersecurity Training Programme",     issuer: "Lateral Connect",    year: "2025" },
   { name: "Threat Intelligence Analysis",         issuer: "ArcX",               year: "2025" },
@@ -73,7 +74,7 @@ export default function Certifications() {
           alignItems: "flex-end", marginBottom: 48,
           flexWrap: "wrap", gap: 16,
         }}>
-          <div className="sec-num">05 · Certifications</div>
+          <div className="sec-num">06 · Certifications &amp; Education</div>
           <a
             href="https://www.credly.com/users/kevin-kibe"
             target="_blank"
@@ -132,7 +133,7 @@ export default function Certifications() {
           {/* LEFT — Cybersecurity only */}
           <div>
             <div className="cert-domain">
-              <DomainLabel label="Cybersecurity" count={6} />
+              <DomainLabel label="Cybersecurity" count={7} />
               {CYBER.map(c => <CertItem key={c.name} {...c} />)}
             </div>
           </div>
@@ -145,6 +146,34 @@ export default function Certifications() {
                 {g.certs.map(c => <CertItem key={c.name} {...c} />)}
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <div style={{ marginTop: 64, paddingTop: 48, borderTop: "1px solid var(--lt-brd)" }}>
+          <div style={{
+            fontSize: 10, fontWeight: 700, letterSpacing: ".18em",
+            textTransform: "uppercase", color: "var(--lt-dim)",
+            marginBottom: 28,
+          }}>
+            Education
+          </div>
+          <div style={{
+            display: "grid", gridTemplateColumns: "1fr auto",
+            gap: 16, alignItems: "start",
+          }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "var(--lt-fg)", marginBottom: 4 }}>
+                Bachelor of Business Information Technology
+              </div>
+              <div style={{ fontSize: 13, color: "var(--lt-muted)", marginBottom: 4 }}>
+                Jomo Kenyatta University of Agriculture and Technology (JKUAT)
+              </div>
+              <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>Second Class Upper Division</div>
+            </div>
+            <div style={{ fontSize: 12, color: "var(--lt-dim)", whiteSpace: "nowrap", paddingTop: 2 }}>
+              2012 &ndash; 2015
+            </div>
           </div>
         </div>
       </div>

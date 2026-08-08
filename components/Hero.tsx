@@ -80,7 +80,7 @@ export default function Hero() {
                 fontSize: 11, fontWeight: 700, letterSpacing: ".18em",
                 textTransform: "uppercase", color: "var(--lt-dim)",
               }}>
-                Technical Support · Cybersecurity · Product
+                Security Operations Engineer
               </span>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 12, color: "var(--lt-dim)" }}>
                 <span style={{
@@ -134,6 +134,17 @@ export default function Hero() {
               </a>
               <a href="#contact" className="btn-secondary">
                 Let&apos;s talk
+              </a>
+              <a
+                href="/kevin-gitau-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cv-link"
+              >
+                <svg viewBox="0 0 24 24" width={13} height={13} fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download CV
               </a>
 
               {/* Social icons aligned with CTAs */}

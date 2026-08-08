@@ -246,6 +246,16 @@ button { font-family: inherit; }
 .cert-item-featured .cert-name { font-weight: 600; color: var(--lt-fg); }
 .cert-item-featured .cert-year { color: var(--gld); font-weight: 600; }
 
+/* ─── CV download link ─── */
+.cv-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500; color: var(--lt-muted);
+  text-decoration: none; padding: 12px 4px;
+  border-bottom: 1px solid var(--lt-brd);
+  transition: color .2s, border-color .2s;
+}
+.cv-link:hover { color: var(--lt-fg); border-color: var(--lt-fg); }
+
 /* ─── Footer link ─── */
 .foot-link {
   font-size: 13px; color: rgba(242,240,237,.38);

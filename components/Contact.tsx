@@ -1,3 +1,9 @@
+const PLATFORMS = [
+  { href: "#", label: "HackTheBox", placeholder: true },
+  { href: "#", label: "TryHackMe", placeholder: true },
+  { href: "#", label: "LetsDefend", placeholder: true },
+];
+
 const SOCIALS = [
   {
     href: "https://linkedin.com/in/kevinkgitau",
@@ -50,7 +56,7 @@ export default function Contact() {
           {/* Left — headline + CTA */}
           <div>
             <div className="sec-num" style={{ marginBottom: 20 }}>
-              06 · Contact
+              07 · Contact
             </div>
 
             <h2 style={{
@@ -135,6 +141,37 @@ export default function Contact() {
               <span style={{ fontSize: 12.5, color: "rgba(242,240,237,.35)" }}>
                 Typically responds within 24 hours
               </span>
+            </div>
+
+            {/* Learning platforms */}
+            <div style={{ marginBottom: 20 }}>
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
+                textTransform: "uppercase", color: "rgba(242,240,237,.25)",
+                marginBottom: 10,
+              }}>
+                Learning Platforms
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {PLATFORMS.map(({ href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href !== "#" ? "_blank" : undefined}
+                    rel={href !== "#" ? "noopener noreferrer" : undefined}
+                    style={{
+                      fontSize: 12, fontWeight: 500,
+                      padding: "5px 12px", borderRadius: 5,
+                      border: "1px solid rgba(242,240,237,.12)",
+                      color: "rgba(242,240,237,.4)",
+                      textDecoration: "none",
+                      opacity: href === "#" ? 0.5 : 1,
+                    }}
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
             </div>
 
             {/* Social links — consistent arrow alignment */}
