@@ -12,7 +12,7 @@ export default function StatsBar() {
       borderBottom: "1px solid rgba(242,240,237,.06)",
     }}>
       <div className="wrap">
-        <div style={{
+        <div className="stats-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(4,1fr)",
           borderLeft: "1px solid rgba(242,240,237,.06)",

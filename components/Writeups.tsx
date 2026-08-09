@@ -87,7 +87,7 @@ export default function Writeups() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
           {LABS.map((lab) => (
-            <article key={lab.num} style={{
+            <article key={lab.num} className="writeup-card" style={{
               background: "var(--lt)",
               border: "1px solid var(--lt-brd)",
               borderRadius: 12,
@@ -136,7 +136,7 @@ export default function Writeups() {
                 {lab.overview}
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 200px", gap: "0 32px", alignItems: "start" }}>
+              <div className="writeup-body" style={{ display: "grid", gridTemplateColumns: "1fr 200px", gap: "0 32px", alignItems: "start" }}>
                 {/* Techniques */}
                 <div>
                   <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 10 }}>

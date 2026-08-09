@@ -111,7 +111,7 @@ export default function Experience() {
 
               {/* Content */}
               <div>
-                <div style={{
+                <div className="exp-header" style={{
                   display: "grid",
                   gridTemplateColumns: "1fr auto",
                   gap: 24,
@@ -136,7 +136,7 @@ export default function Experience() {
                       {job.where}
                     </div>
                   </div>
-                  <div style={{
+                  <div className="exp-period" style={{
                     fontSize: 11.5, color: "var(--lt-dim)", whiteSpace: "nowrap",
                     paddingTop: 3,
                   }}>
