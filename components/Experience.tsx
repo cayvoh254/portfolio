@@ -81,7 +81,7 @@ export default function Experience() {
     <section className="sec sec-alt" id="experience">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">02 · Experience</div>
+          <div className="sec-num">Experience</div>
         </div>
 
         <div>

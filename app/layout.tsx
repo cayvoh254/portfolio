@@ -16,28 +16,124 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
+const SITE_URL = "https://kevingitau.dev";
+
 export const metadata: Metadata = {
-  title: "Kevin Gitau | Security Operations Engineer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Kevin Gitau | Security Operations Engineer",
+    template: "%s | Kevin Gitau",
+  },
   description:
-    "Six years maintaining production infrastructure across enterprise, fintech, and telecommunications environments. Security operations, cloud infrastructure, and product development. Nairobi, Kenya.",
-  authors: [{ name: "Kevin Gitau", url: "https://linkedin.com/in/kevinkgitau" }],
+    "Security operations engineer based in Nairobi, Kenya. Six years across enterprise cloud, fintech, and telecommunications infrastructure. Specialising in SIEM deployment, penetration testing, Active Directory attack and defence, container security, and incident response. Available for remote roles.",
+  keywords: [
+    "security operations engineer",
+    "SOC analyst",
+    "SIEM",
+    "Wazuh",
+    "penetration testing",
+    "MITRE ATT&CK",
+    "incident response",
+    "Burp Suite",
+    "BloodHound",
+    "Active Directory security",
+    "container security",
+    "cloud security",
+    "Azure security",
+    "cybersecurity Kenya",
+    "technical support engineer",
+    "infrastructure engineer",
+    "Kevin Gitau",
+  ],
+  authors: [{ name: "Kevin Gitau", url: SITE_URL }],
+  creator: "Kevin Gitau",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: "Kevin Gitau",
+    title: "Kevin Gitau | Security Operations Engineer",
+    description:
+      "Security operations engineer with six years across enterprise cloud, fintech, and telecommunications. SIEM, penetration testing, and container security. Based in Nairobi, Kenya.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kevin Gitau — Security Operations Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kevin Gitau | Security Operations Engineer",
+    description:
+      "Security operations engineer with six years across enterprise cloud, fintech, and telecommunications.",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
-  openGraph: {
-    title: "Kevin Gitau | Security Operations Engineer",
-    description:
-      "Security operations, infrastructure, and real products. Based in Nairobi, Kenya.",
-    type: "website",
-    locale: "en_US",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  alternates: {
+    canonical: SITE_URL,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kevin Gitau",
+  jobTitle: "Security Operations Engineer",
+  url: SITE_URL,
+  email: "kevin.gitau27@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Nairobi",
+    addressCountry: "KE",
+  },
+  sameAs: [
+    "https://linkedin.com/in/kevinkgitau",
+    "https://github.com/cayvoh254",
+    "https://www.credly.com/users/kevin-kibe",
+  ],
+  knowsAbout: [
+    "Security Operations",
+    "SIEM",
+    "Wazuh",
+    "Penetration Testing",
+    "MITRE ATT&CK",
+    "Incident Response",
+    "Active Directory",
+    "Container Security",
+    "Cloud Security",
+    "Azure",
+    "Technical Support",
+    "Infrastructure Engineering",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

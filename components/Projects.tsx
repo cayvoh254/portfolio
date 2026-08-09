@@ -175,7 +175,7 @@ export default function Projects() {
     <section className="sec" id="projects">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">03 · Projects</div>
+          <div className="sec-num">Projects</div>
         </div>
 
         <ProjGroup title="Security Labs" num="A" projects={SECURITY} />

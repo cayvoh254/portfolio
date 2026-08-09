@@ -56,7 +56,7 @@ export default function Contact() {
           {/* Left — headline + CTA */}
           <div>
             <div className="sec-num" style={{ marginBottom: 20 }}>
-              07 · Contact
+              Contact
             </div>
 
             <h2 style={{

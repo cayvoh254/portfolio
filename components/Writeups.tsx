@@ -79,7 +79,7 @@ export default function Writeups() {
     <section className="sec sec-alt" id="writeups">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">05 · Writeups</div>
+          <div className="sec-num">Writeups</div>
           <p style={{ fontSize: 14, color: "var(--lt-muted)", marginTop: 8, maxWidth: "52ch", lineHeight: 1.7 }}>
             Lab documentation written to professional report standard: setup, methodology, findings, detections, and lessons learned.
           </p>

@@ -9,7 +9,7 @@ export default function About() {
     <section className="sec" id="about">
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">01 · About</div>
+          <div className="sec-num">About</div>
         </div>
 
         <div

@@ -2,12 +2,6 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 
-/**
- * Content Security Policy
- * - 'unsafe-eval' is needed in development for Turbopack HMR
- * - 'unsafe-inline' is needed for Next.js hydration scripts and Tailwind inline styles
- * - Google Fonts are explicitly allowlisted
- */
 const csp = [
   "default-src 'self'",
   isDev
@@ -26,25 +20,14 @@ const csp = [
 ].join("; ");
 
 const securityHeaders = [
-  // Prevent browsers from MIME-sniffing a response away from declared content-type
-  { key: "X-Content-Type-Options", value: "nosniff" },
-
-  // Block clickjacking — no framing allowed from any origin
-  { key: "X-Frame-Options", value: "DENY" },
-
-  // Enable browser XSS filter (legacy browsers)
-  { key: "X-XSS-Protection", value: "1; mode=block" },
-
-  // Control how much referrer info is sent
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-
-  // Enforce HTTPS for 2 years, including subdomains — enable preload when on a real domain
+  { key: "X-Content-Type-Options",  value: "nosniff" },
+  { key: "X-Frame-Options",         value: "DENY" },
+  { key: "X-XSS-Protection",        value: "1; mode=block" },
+  { key: "Referrer-Policy",         value: "strict-origin-when-cross-origin" },
   {
     key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains",
+    value: "max-age=63072000; includeSubDomains; preload",
   },
-
-  // Disable unused browser features
   {
     key: "Permissions-Policy",
     value: [
@@ -55,26 +38,31 @@ const securityHeaders = [
       "interest-cohort=()",
       "payment=()",
       "usb=()",
+      "autoplay=()",
+      "fullscreen=(self)",
     ].join(", "),
   },
-
-  // Enable DNS prefetch for performance
-  { key: "X-DNS-Prefetch-Control", value: "on" },
-
-  // Content Security Policy
+  { key: "X-DNS-Prefetch-Control",  value: "on" },
   { key: "Content-Security-Policy", value: csp },
 ];
 
 const nextConfig: NextConfig = {
-  // Remove the X-Powered-By: Next.js header to reduce fingerprinting
   poweredByHeader: false,
-
-  // Apply security headers to all routes
+  compress: true,
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/index",
+        destination: "/",
+        permanent: true,
       },
     ];
   },

@@ -1,38 +1,41 @@
-const CYBER = [
-  { name: "Cloud & Network Security",             issuer: "Cyber Shujaa",       year: "2026", featured: true },
-  { name: "Google Cybersecurity Specialization",  issuer: "Google / Coursera",  year: "2024", featured: false },
-  { name: "Certified Ethical Hacker (prep)",      issuer: "Cisco",              year: "2024" },
-  { name: "Cybersecurity Training Programme",     issuer: "Lateral Connect",    year: "2025" },
-  { name: "Threat Intelligence Analysis",         issuer: "ArcX",               year: "2025" },
-  { name: "Penetration Testing, IR & Forensics",  issuer: "IBM",                year: "2023" },
-  { name: "Operationalizing MITRE ATT&CK",        issuer: "AttackIQ Academy",   year: "2023" },
+type Cert = { name: string; issuer: string; featured?: boolean };
+type CertGroup = { domain: string; certs: Cert[] };
+
+const CYBER: Cert[] = [
+  { name: "Cloud & Network Security",            issuer: "Cyber Shujaa",      featured: true },
+  { name: "Google Cybersecurity Specialization", issuer: "Google / Coursera", featured: false },
+  { name: "Certified Ethical Hacker (prep)",     issuer: "Cisco" },
+  { name: "Cybersecurity Training Programme",    issuer: "Lateral Connect" },
+  { name: "Threat Intelligence Analysis",        issuer: "ArcX" },
+  { name: "Penetration Testing, IR & Forensics", issuer: "IBM" },
+  { name: "Operationalizing MITRE ATT&CK",       issuer: "AttackIQ Academy" },
 ];
 
-const OTHER = [
+const OTHER: CertGroup[] = [
   {
     domain: "API & Application Security",
     certs: [
-      { name: "APIsec Certified Practitioner",  issuer: "APIsec University", year: "2026", featured: true },
-      { name: "OWASP API Security Top 10",       issuer: "APIsec University", year: "2026" },
+      { name: "APIsec Certified Practitioner", issuer: "APIsec University", featured: true },
+      { name: "OWASP API Security Top 10",      issuer: "APIsec University" },
     ],
   },
   {
     domain: "Networking",
     certs: [
-      { name: "Network Security & Firewall Technologies", issuer: "Cisco",           year: "2024", featured: true },
-      { name: "CCNA Switching & Routing",                 issuer: "Cisco",           year: "2014" },
+      { name: "Network Security & Firewall Technologies", issuer: "Cisco", featured: true },
+      { name: "CCNA Switching & Routing",                 issuer: "Cisco" },
     ],
   },
   {
     domain: "Cloud & Infrastructure",
     certs: [
-      { name: "AZ-104 Azure Administrator (prep)", issuer: "Whizlabs",        year: "2025", featured: true },
-      { name: "Introduction to Kubernetes",        issuer: "Linux Foundation", year: "2025" },
+      { name: "AZ-104 Azure Administrator (prep)", issuer: "Whizlabs",        featured: true },
+      { name: "Introduction to Kubernetes",        issuer: "Linux Foundation" },
     ],
   },
 ];
 
-function CertItem({ name, issuer, year, featured }: { name: string; issuer: string; year: string; featured?: boolean }) {
+function CertItem({ name, issuer, featured }: Cert) {
   return (
     <div className={`cert-item${featured ? " cert-item-featured" : ""}`}>
       <div>
@@ -44,13 +47,6 @@ function CertItem({ name, issuer, year, featured }: { name: string; issuer: stri
           {name}
         </div>
         <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>{issuer}</div>
-      </div>
-      <div className="cert-year" style={{
-        fontSize: 11.5, fontWeight: featured ? 600 : 500,
-        color: featured ? "var(--gld)" : "var(--lt-dim)",
-        whiteSpace: "nowrap",
-      }}>
-        {year}
       </div>
     </div>
   );
@@ -68,13 +64,12 @@ export default function Certifications() {
   return (
     <section className="sec" id="certifications">
       <div className="wrap">
-        {/* Header row */}
         <div style={{
           display: "flex", justifyContent: "space-between",
           alignItems: "flex-end", marginBottom: 48,
           flexWrap: "wrap", gap: 16,
         }}>
-          <div className="sec-num">06 · Certifications &amp; Education</div>
+          <div className="sec-num">Certifications &amp; Education</div>
           <a
             href="https://www.credly.com/users/kevin-kibe"
             target="_blank"
@@ -91,7 +86,6 @@ export default function Certifications() {
           </a>
         </div>
 
-        {/* Banner */}
         <div style={{
           display: "grid", gridTemplateColumns: "auto 1fr",
           gap: "clamp(24px,5vw,60px)", alignItems: "center",
@@ -122,23 +116,18 @@ export default function Certifications() {
           </p>
         </div>
 
-        {/* Balanced two-column layout */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "0 clamp(40px,6vw,80px)",
           alignItems: "start",
         }} className="cert-cols">
-
-          {/* LEFT — Cybersecurity only */}
           <div>
             <div className="cert-domain">
-              <DomainLabel label="Cybersecurity" count={7} />
+              <DomainLabel label="Cybersecurity" count={CYBER.length} />
               {CYBER.map(c => <CertItem key={c.name} {...c} />)}
             </div>
           </div>
-
-          {/* RIGHT — API, Networking, Cloud stacked */}
           <div>
             {OTHER.map(g => (
               <div key={g.domain} className="cert-domain">
@@ -149,7 +138,6 @@ export default function Certifications() {
           </div>
         </div>
 
-        {/* Education */}
         <div style={{ marginTop: 64, paddingTop: 48, borderTop: "1px solid var(--lt-brd)" }}>
           <div style={{
             fontSize: 10, fontWeight: 700, letterSpacing: ".18em",

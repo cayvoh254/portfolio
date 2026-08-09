@@ -237,14 +237,11 @@ button { font-family: inherit; }
   margin-bottom: 4px;
 }
 .cert-item {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 16px; padding: 13px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--lt-brd);
-  align-items: center;
 }
 .cert-item:last-child { border-bottom: none; }
 .cert-item-featured .cert-name { font-weight: 600; color: var(--lt-fg); }
-.cert-item-featured .cert-year { color: var(--gld); font-weight: 600; }
 
 /* ─── CV download link ─── */
 .cv-link {
