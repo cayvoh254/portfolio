@@ -12,7 +12,12 @@ const LINKS = [
 ];
 
 function go(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = `/#${id}`;
+  }
 }
 
 function ThemeIcon({ dark }: { dark: boolean }) {

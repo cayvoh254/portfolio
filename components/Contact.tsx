@@ -68,18 +68,20 @@ const labelStyle: React.CSSProperties = {
 };
 
 export default function Contact() {
-  const [fields, setFields] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
-  const [sent, setSent] = useState(false);
+  const [fields, setFields]       = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors]       = useState<Partial<Record<Field, string>>>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent]           = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function validate(): boolean {
     const next: Partial<Record<Field, string>> = {};
-    if (!fields.name.trim()) next.name = "Name is required.";
-    else if (fields.name.trim().length > 120) next.name = "Name is too long.";
-    if (!fields.email.trim()) next.email = "Email is required.";
-    else if (!EMAIL_RE.test(fields.email.trim())) next.email = "Enter a valid email address.";
-    if (!fields.message.trim()) next.message = "Message is required.";
-    else if (fields.message.trim().length < 10) next.message = "Message is too short.";
+    if (!fields.name.trim())                                     next.name    = "Name is required.";
+    else if (fields.name.trim().length > 120)                    next.name    = "Name is too long.";
+    if (!fields.email.trim())                                    next.email   = "Email is required.";
+    else if (!EMAIL_RE.test(fields.email.trim()))                next.email   = "Enter a valid email address.";
+    if (!fields.message.trim())                                  next.message = "Message is required.";
+    else if (fields.message.trim().length < 10)                  next.message = "Message is too short.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -88,25 +90,43 @@ export default function Contact() {
     const { name, value } = e.target;
     setFields(prev => ({ ...prev, [name]: value }));
     if (errors[name as Field]) setErrors(prev => ({ ...prev, [name]: undefined }));
+    if (submitError) setSubmitError(null);
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!validate()) return;
-    const name = sanitize(fields.name);
-    const email = sanitize(fields.email);
-    const message = sanitize(fields.message);
-    const subject = encodeURIComponent(`Message from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:kevin.gitau27@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+    setSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name:    sanitize(fields.name),
+          email:   sanitize(fields.email),
+          message: sanitize(fields.message),
+        }),
+      });
+      const data: { ok: boolean; error?: string } = await res.json();
+      if (data.ok) {
+        setSent(true);
+      } else {
+        setSubmitError(data.error ?? "Something went wrong. Please try again.");
+      }
+    } catch {
+      setSubmitError("Network error. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
     <section
       className="dark-sec"
       id="contact"
-      style={{ padding: "clamp(80px,10vw,120px) 0" }}
+      style={{ padding: "clamp(72px,9vw,108px) 0" }}
     >
       <div className="wrap">
         <FadeIn>
@@ -115,39 +135,39 @@ export default function Contact() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(48px,7vw,96px)",
+            gap: "clamp(40px,6vw,88px)",
             alignItems: "start",
           }}
         >
-          {/* Left — headline + social */}
+          {/* Left */}
           <div>
             <div className="sec-num" style={{ marginBottom: 20 }}>Contact</div>
 
             <h2 style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontSize: "clamp(38px,5.5vw,64px)",
+              fontSize: "clamp(36px,5vw,58px)",
               color: "var(--dk-fg)",
               letterSpacing: "-.04em",
-              lineHeight: 1.0,
+              lineHeight: 1.05,
               fontWeight: 400,
-              marginBottom: 24,
+              marginBottom: 20,
             }}>
               Let&apos;s work<br />
               <em style={{ fontStyle: "italic", color: "var(--dk-dim)" }}>together.</em>
             </h2>
 
             <p style={{
-              fontSize: 15,
-              lineHeight: 1.78,
+              fontSize: 14.5,
+              lineHeight: 1.75,
               color: "var(--dk-dim)",
-              maxWidth: "38ch",
-              marginBottom: 40,
+              maxWidth: "36ch",
+              marginBottom: 32,
             }}>
-              Based in Nairobi, Kenya. If you have something worth discussing,
-              reach out directly.
+              Based in Nairobi, Kenya. Open to roles in IT operations,
+              application support, and cybersecurity.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {SOCIALS.map(({ href, label, icon }) => (
                 <a
                   key={label}
@@ -174,8 +194,8 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — contact form */}
-          <div style={{ paddingTop: 8 }}>
+          {/* Right — form */}
+          <div style={{ paddingTop: 4 }}>
             {sent ? (
               <div style={{
                 padding: "32px 28px",
@@ -183,14 +203,11 @@ export default function Contact() {
                 borderRadius: 10,
                 textAlign: "center",
               }}>
-                <div style={{
-                  fontSize: 13, color: "var(--gld)", fontWeight: 600,
-                  letterSpacing: ".04em", marginBottom: 8,
-                }}>
-                  Message ready
+                <div style={{ fontSize: 13, color: "var(--gld)", fontWeight: 600, letterSpacing: ".04em", marginBottom: 8 }}>
+                  Message sent
                 </div>
                 <p style={{ fontSize: 13.5, color: "rgba(242,240,237,.45)", lineHeight: 1.7 }}>
-                  Your email client has opened with the message pre-filled. Hit send when ready.
+                  Thanks for reaching out. I&apos;ll get back to you soon.
                 </p>
                 <button
                   onClick={() => { setSent(false); setFields({ name: "", email: "", message: "" }); }}
@@ -204,7 +221,7 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <div>
                   <label htmlFor="contact-name" style={labelStyle}>Name</label>
                   <input
@@ -216,16 +233,9 @@ export default function Contact() {
                     value={fields.name}
                     onChange={handleChange}
                     placeholder="Your name"
-                    style={{
-                      ...inputStyle,
-                      borderColor: errors.name ? "rgba(220,60,60,.6)" : undefined,
-                    }}
+                    style={{ ...inputStyle, borderColor: errors.name ? "rgba(220,60,60,.6)" : undefined }}
                   />
-                  {errors.name && (
-                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
-                      {errors.name}
-                    </div>
-                  )}
+                  {errors.name && <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>{errors.name}</div>}
                 </div>
 
                 <div>
@@ -239,16 +249,9 @@ export default function Contact() {
                     value={fields.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    style={{
-                      ...inputStyle,
-                      borderColor: errors.email ? "rgba(220,60,60,.6)" : undefined,
-                    }}
+                    style={{ ...inputStyle, borderColor: errors.email ? "rgba(220,60,60,.6)" : undefined }}
                   />
-                  {errors.email && (
-                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
-                      {errors.email}
-                    </div>
-                  )}
+                  {errors.email && <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>{errors.email}</div>}
                 </div>
 
                 <div>
@@ -261,26 +264,34 @@ export default function Contact() {
                     value={fields.message}
                     onChange={handleChange}
                     placeholder="Leave a message"
-                    style={{
-                      ...inputStyle,
-                      resize: "vertical",
-                      minHeight: 120,
-                      borderColor: errors.message ? "rgba(220,60,60,.6)" : undefined,
-                    }}
+                    style={{ ...inputStyle, resize: "vertical", minHeight: 116, borderColor: errors.message ? "rgba(220,60,60,.6)" : undefined }}
                   />
-                  {errors.message && (
-                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
-                      {errors.message}
-                    </div>
-                  )}
+                  {errors.message && <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>{errors.message}</div>}
                 </div>
 
-                <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
-                  Send message
-                  <svg viewBox="0 0 16 16" width={13} height={13} fill="none"
-                    stroke="currentColor" strokeWidth={1.8}>
-                    <path d="M3 8h10M8 3l5 5-5 5"/>
-                  </svg>
+                {submitError && (
+                  <div style={{
+                    fontSize: 12.5, color: "rgba(220,80,80,.9)",
+                    padding: "10px 14px",
+                    background: "rgba(220,60,60,.08)",
+                    borderRadius: 6, lineHeight: 1.55,
+                  }}>
+                    {submitError}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  style={{ alignSelf: "flex-start", opacity: submitting ? .65 : 1 }}
+                  disabled={submitting}
+                >
+                  {submitting ? "Sending..." : "Send message"}
+                  {!submitting && (
+                    <svg viewBox="0 0 16 16" width={13} height={13} fill="none" stroke="currentColor" strokeWidth={1.8}>
+                      <path d="M3 8h10M8 3l5 5-5 5"/>
+                    </svg>
+                  )}
                 </button>
               </form>
             )}

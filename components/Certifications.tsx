@@ -1,150 +1,110 @@
+import Link from "next/link";
 import { FadeIn } from "./FadeIn";
 
-type Cert = { name: string; issuer: string; featured?: boolean };
-type CertGroup = { domain: string; certs: Cert[] };
-
-const CYBER: Cert[] = [
-  { name: "Cloud & Network Security",            issuer: "Cyber Shujaa",      featured: true },
-  { name: "Google Cybersecurity Specialization", issuer: "Google / Coursera", featured: false },
-  { name: "Certified Ethical Hacker (prep)",     issuer: "Cisco" },
-  { name: "Cybersecurity Training Programme",    issuer: "Lateral Connect" },
-  { name: "Threat Intelligence Analysis",        issuer: "ArcX" },
-  { name: "Penetration Testing, IR & Forensics", issuer: "IBM" },
-  { name: "Operationalizing MITRE ATT&CK",       issuer: "AttackIQ Academy" },
+const FEATURED = [
+  { name: "Cloud & Network Security",       issuer: "Cyber Shujaa" },
+  { name: "APIsec Certified Practitioner",  issuer: "APIsec University" },
+  { name: "CCNA Switching & Routing",       issuer: "Cisco" },
+  { name: "AZ-104 Azure Administrator",     issuer: "Whizlabs" },
 ];
-
-const OTHER: CertGroup[] = [
-  {
-    domain: "API & Application Security",
-    certs: [
-      { name: "APIsec Certified Practitioner", issuer: "APIsec University", featured: true },
-      { name: "OWASP API Security Top 10",      issuer: "APIsec University" },
-    ],
-  },
-  {
-    domain: "Networking",
-    certs: [
-      { name: "Network Security & Firewall Technologies", issuer: "Cisco", featured: true },
-      { name: "CCNA Switching & Routing",                 issuer: "Cisco" },
-    ],
-  },
-  {
-    domain: "Cloud & Infrastructure",
-    certs: [
-      { name: "AZ-104 Azure Administrator (prep)", issuer: "Whizlabs",        featured: true },
-      { name: "Introduction to Kubernetes",        issuer: "Linux Foundation" },
-    ],
-  },
-];
-
-function CertItem({ name, issuer, featured }: Cert) {
-  return (
-    <div className={`cert-item${featured ? " cert-item-featured" : ""}`}>
-      <div>
-        <div className="cert-name" style={{
-          fontSize: featured ? 13.5 : 13,
-          fontWeight: featured ? 600 : 500,
-          color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2,
-        }}>
-          {name}
-        </div>
-        <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>{issuer}</div>
-      </div>
-    </div>
-  );
-}
-
-function DomainLabel({ label, count }: { label: string; count: number }) {
-  return (
-    <div className="cert-domain-label">
-      {label} <span style={{ color: "var(--lt-brd)" }}>({count})</span>
-    </div>
-  );
-}
 
 export default function Certifications() {
   return (
     <section className="sec" id="certifications">
       <div className="wrap">
         <FadeIn>
-        <div style={{
-          display: "flex", justifyContent: "space-between",
-          alignItems: "flex-end", marginBottom: 32,
-          flexWrap: "wrap", gap: 16,
-        }}>
-          <div className="sec-num">Certifications &amp; Education</div>
-          <a
-            href="https://www.credly.com/users/kevin-kibe"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: 12.5, fontWeight: 600, color: "var(--gld)",
-              display: "inline-flex", alignItems: "center", gap: 5,
-            }}
-          >
-            View all 30+ on Credly
-            <svg viewBox="0 0 16 16" width={12} height={12} fill="none" stroke="currentColor" strokeWidth={1.8}>
-              <path d="M3 8h10M8 3l5 5-5 5"/>
-            </svg>
-          </a>
-        </div>
-        </FadeIn>
-
-        <FadeIn delay={0.1}>
-        <div style={{
-          display: "grid", gridTemplateColumns: "auto 1fr",
-          gap: "clamp(24px,5vw,60px)", alignItems: "center",
-          background: "var(--dk)", borderRadius: 10,
-          padding: "clamp(28px,4vw,44px)",
-          marginBottom: 56,
-        }}>
-          <span style={{
-            fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontSize: "clamp(52px,8vw,80px)",
-            color: "var(--dk-fg)", lineHeight: 1,
-            letterSpacing: "-.05em",
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            alignItems: "flex-end", marginBottom: 32,
+            flexWrap: "wrap", gap: 16,
           }}>
-            30<span style={{ color: "var(--dk-dim)" }}>+</span>
-          </span>
-          <p style={{ fontSize: "clamp(14px,1.6vw,16px)", color: "rgba(242,240,237,.55)", lineHeight: 1.75, maxWidth: "44ch" }}>
-            Credentials across cybersecurity, cloud, networking, and AI, from
-            foundational CCNA through Google Cybersecurity, IBM Pentesting,
-            Cisco CEH, APIsec, and Kubernetes. All verifiable on{" "}
-            <a href="https://www.credly.com/users/kevin-kibe" target="_blank" rel="noopener noreferrer"
-              style={{ color: "var(--gld)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              Credly
-            </a>{" "}and{" "}
-            <a href="https://linkedin.com/in/kevinkgitau" target="_blank" rel="noopener noreferrer"
-              style={{ color: "var(--gld)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              LinkedIn
-            </a>.
-          </p>
-        </div>
+            <div className="sec-num">Certifications &amp; Education</div>
+            <Link
+              href="/certifications"
+              style={{
+                fontSize: 12.5, fontWeight: 600, color: "var(--gld)",
+                display: "inline-flex", alignItems: "center", gap: 5,
+                textDecoration: "none",
+              }}
+            >
+              View all credentials
+              <svg viewBox="0 0 16 16" width={12} height={12} fill="none" stroke="currentColor" strokeWidth={1.8}>
+                <path d="M3 8h10M8 3l5 5-5 5"/>
+              </svg>
+            </Link>
+          </div>
         </FadeIn>
 
-        <FadeIn delay={0.15}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "0 clamp(40px,6vw,80px)",
-          alignItems: "start",
-        }} className="cert-cols">
-          <div>
-            <div className="cert-domain">
-              <DomainLabel label="Cybersecurity" count={CYBER.length} />
-              {CYBER.map(c => <CertItem key={c.name} {...c} />)}
-            </div>
-          </div>
-          <div>
-            {OTHER.map(g => (
-              <div key={g.domain} className="cert-domain">
-                <DomainLabel label={g.domain} count={g.certs.length} />
-                {g.certs.map(c => <CertItem key={c.name} {...c} />)}
-              </div>
-            ))}
-          </div>
-        </div>
+        <FadeIn delay={0.08}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 clamp(40px,6vw,80px)" }} className="cert-cols">
 
+            {/* Left — selected credentials */}
+            <div>
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
+                textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 4,
+              }}>
+                Selected Credentials
+              </div>
+              {FEATURED.map((c, i) => (
+                <div key={c.name} style={{
+                  padding: "13px 0",
+                  borderBottom: i < FEATURED.length - 1 ? "1px solid var(--lt-brd)" : "none",
+                }}>
+                  <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
+                    {c.name}
+                  </div>
+                  <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>{c.issuer}</div>
+                </div>
+              ))}
+              <a
+                href="https://www.credly.com/users/kevin-kibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 5,
+                  marginTop: 16, fontSize: 12, fontWeight: 600, color: "var(--lt-muted)",
+                  textDecoration: "none",
+                }}
+              >
+                30+ credentials on Credly
+                <svg viewBox="0 0 16 16" width={11} height={11} fill="none" stroke="currentColor" strokeWidth={1.8}>
+                  <path d="M3 8h10M8 3l5 5-5 5"/>
+                </svg>
+              </a>
+            </div>
+
+            {/* Right — education */}
+            <div>
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
+                textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 4,
+              }}>
+                Education
+              </div>
+              <div style={{ padding: "13px 0", borderBottom: "1px solid var(--lt-brd)" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
+                  B.Sc. Business Information Technology
+                </div>
+                <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>Jomo Kenyatta University · Second Class Upper</div>
+              </div>
+
+              <div style={{ padding: "13px 0", borderBottom: "1px solid var(--lt-brd)" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
+                  Google Cybersecurity Specialization
+                </div>
+                <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>Google / Coursera</div>
+              </div>
+
+              <div style={{ padding: "13px 0" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
+                  Penetration Testing, IR &amp; Forensics
+                </div>
+                <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>IBM</div>
+              </div>
+            </div>
+
+          </div>
         </FadeIn>
       </div>
     </section>

@@ -341,13 +341,20 @@ button { font-family: inherit; }
 }
 :root[data-theme="dark"] .rule { border-top-color: rgba(242,240,237,.1); }
 
-/* ─── Experience inner content grid ─── */
-.exp-content-grid {
-  display: grid;
-  grid-template-columns: 1fr 200px;
-  gap: 0 40px;
-  align-items: start;
+/* ─── Writeup list row hover ─── */
+.writeup-row:hover { opacity: .82; }
+
+/* ─── Footer social icons ─── */
+.foot-soc {
+  color: rgba(242,240,237,.32);
+  display: inline-flex;
+  text-decoration: none;
+  transition: color .2s;
 }
+.foot-soc:hover { color: var(--dk-fg); }
+
+/* ─── Homepage Skills 2-col grid ─── */
+.skills-home-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
 
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
@@ -373,5 +380,6 @@ button { font-family: inherit; }
   .exp-header { grid-template-columns: 1fr !important; }
   .exp-period { display: none !important; }
   .exp-content-grid { grid-template-columns: 1fr !important; }
-  .writeup-sidebar  { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .writeup-sidebar    { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .skills-home-grid   { grid-template-columns: 1fr !important; }
 }
