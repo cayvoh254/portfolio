@@ -72,7 +72,7 @@ export default function Navbar() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 var(--e)",
       }}>
-        {/* Logo */}
+        {/* Logo — left anchor */}
         <button
           onClick={() => go("top")}
           style={{
@@ -89,39 +89,52 @@ export default function Navbar() {
             height={68}
             style={{
               display: "block", objectFit: "contain", width: 68, height: 68,
-              mixBlendMode: dark ? "normal" : "multiply",
-              filter: dark ? "invert(1) brightness(1.2)" : "none",
+              mixBlendMode: dark ? "screen" : "multiply",
+              filter: dark ? "invert(1)" : "none",
               transition: "filter .3s",
             }}
           />
         </button>
 
-        {/* Desktop nav links */}
-        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
-          {LINKS.map(({ label, id }) => (
-            <button key={id} onClick={() => go(id)} className="nav-link">
-              {label}
+        {/* Right group — nav + controls, all pushed to far right */}
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          {/* Desktop nav links — hidden on mobile via .nav-links */}
+          <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
+            {LINKS.map(({ label, id }) => (
+              <button key={id} onClick={() => go(id)} className="nav-link">
+                {label}
+              </button>
+            ))}
+            <button
+              onClick={() => go("contact")}
+              style={{
+                marginLeft: 8, fontSize: 13, fontWeight: 600,
+                padding: "9px 22px",
+                background: "var(--lt-fg)", color: "var(--lt)",
+                borderRadius: 7, border: "none", cursor: "pointer",
+                transition: "opacity .2s", letterSpacing: ".01em",
+              }}
+            >
+              Contact
             </button>
-          ))}
-          <button
-            onClick={() => go("contact")}
-            style={{
-              marginLeft: 10, fontSize: 13, fontWeight: 600,
-              padding: "9px 22px",
-              background: "var(--lt-fg)", color: "var(--lt)",
-              borderRadius: 7, border: "none", cursor: "pointer",
-              transition: "opacity .2s", letterSpacing: ".01em",
-            }}
-          >
-            Contact
-          </button>
-        </nav>
+          </nav>
 
-        {/* Right-side controls — theme toggle always visible, hamburger mobile-only */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {/* Divider between nav and controls — desktop only */}
+          <div
+            className="nav-links"
+            style={{
+              width: 1, height: 18,
+              background: "var(--lt-brd)",
+              margin: "0 2px", flexShrink: 0,
+            }}
+          />
+
+          {/* Theme toggle — always visible */}
           <button onClick={toggleTheme} aria-label="Toggle theme" style={toggleBtnStyle}>
             <ThemeIcon dark={dark} />
           </button>
+
+          {/* Hamburger — mobile only */}
           <button
             className="mob-toggle"
             onClick={() => setOpen(v => !v)}
@@ -157,7 +170,7 @@ export default function Navbar() {
             fontSize: 14, fontWeight: 600, color: "var(--lt)",
             background: "var(--lt-fg)", borderRadius: 6, border: "none", cursor: "pointer",
           }}>
-            Contact me
+            Contact
           </button>
         </div>
       )}

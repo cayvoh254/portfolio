@@ -73,8 +73,8 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              I also build and ship products independently — SaaS tools, automation
-              workflows, mobile apps — from idea to deployed. Holds a B.Sc. in
+              I also build and ship products independently: SaaS tools, automation
+              workflows, and mobile apps, from concept to deployed. Holds a B.Sc. in
               Business Information Technology (JKUAT, Second Class Upper).
             </p>
           </div>

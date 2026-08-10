@@ -216,6 +216,7 @@ button { font-family: inherit; }
 }
 .proj-card {
   display: flex; flex-direction: column;
+  height: 100%;
   padding: 24px 26px;
   border: 1px solid var(--lt-brd); border-radius: 12px;
   text-decoration: none; color: inherit;
@@ -340,6 +341,14 @@ button { font-family: inherit; }
 }
 :root[data-theme="dark"] .rule { border-top-color: rgba(242,240,237,.1); }
 
+/* ─── Experience inner content grid ─── */
+.exp-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 0 40px;
+  align-items: start;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
   .hero-grid    { grid-template-columns: 1fr !important; }
@@ -362,4 +371,5 @@ button { font-family: inherit; }
   .writeup-card { padding: 20px 16px !important; }
   .exp-header { grid-template-columns: 1fr !important; }
   .exp-period { display: none !important; }
+  .exp-content-grid { grid-template-columns: 1fr !important; }
 }

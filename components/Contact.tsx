@@ -260,7 +260,7 @@ export default function Contact() {
                     maxLength={2000}
                     value={fields.message}
                     onChange={handleChange}
-                    placeholder="What would you like to discuss?"
+                    placeholder="Describe the role, project, or question"
                     style={{
                       ...inputStyle,
                       resize: "vertical",

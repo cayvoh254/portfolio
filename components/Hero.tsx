@@ -1,9 +1,30 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const item = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } } };
+
+function CountUp({ to, suffix = "", duration = 1400, delay = 600 }: {
+  to: number; suffix?: string; duration?: number; delay?: number;
+}) {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const start = performance.now();
+      const step = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setN(Math.round(eased * to));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, delay);
+    return () => clearTimeout(t);
+  }, [to, duration, delay]);
+  return <>{n.toLocaleString()}{suffix}</>;
+}
 
 const SOCIALS = [
   {
@@ -48,10 +69,9 @@ const SOCIALS = [
 ];
 
 const STATS = [
-  { value: "6+",     label: "Years experience" },
-  { value: "30+",    label: "Certifications" },
-  { value: "3,000+", label: "Endpoints managed" },
-  { value: "Remote", label: "Ready" },
+  { to: 6,    suffix: "+", label: "Years experience" },
+  { to: 30,   suffix: "+", label: "Certifications" },
+  { to: 3000, suffix: "+", label: "Endpoints managed" },
 ];
 
 export default function Hero() {
@@ -76,21 +96,19 @@ export default function Hero() {
             alignItems: "center",
           }}
         >
-          {/* ── Left ── */}
+          {/* Left */}
           <motion.div variants={stagger} initial="hidden" animate="show">
-            {/* Label row */}
             <motion.div variants={item} style={{ marginBottom: 28 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: ".18em",
                 textTransform: "uppercase", color: "var(--lt-dim)",
               }}>
-                Security Operations Engineer
+                Support Engineering &amp; Cybersecurity
               </span>
             </motion.div>
 
             <motion.hr variants={item} className="rule" />
 
-            {/* Name */}
             <motion.h1 variants={item} style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
               fontSize: "clamp(60px, 9vw, 108px)",
@@ -106,7 +124,6 @@ export default function Hero() {
 
             <motion.hr variants={item} className="rule" />
 
-            {/* Bio */}
             <motion.p variants={item} style={{
               fontSize: "clamp(14px, 1.3vw, 16px)",
               lineHeight: 1.82,
@@ -115,13 +132,14 @@ export default function Hero() {
               marginBottom: 28,
               maxWidth: "54ch",
             }}>
-              Infrastructure and security professional across enterprise cloud,
-              fintech, and telecommunications environments. Production incident
-              response, platform reliability, SIEM deployment, penetration
-              testing — grounded in real operational depth.
+              Five years diagnosing production failures across cloud platforms,
+              fintech systems, and large-scale IoT networks. Reading logs, tracing
+              APIs, and monitoring with Grafana and Prometheus before customers
+              know anything is wrong. The security work grows directly from that
+              operational knowledge: SIEM deployment, web application assessment,
+              Active Directory hardening.
             </motion.p>
 
-            {/* CTAs + social icons on same row */}
             <motion.div variants={item} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
               <a href="#projects" className="btn-primary">
                 View my work
@@ -130,7 +148,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a href="#contact" className="btn-secondary">
-                Let&apos;s talk
+                Get in touch
               </a>
               <a
                 href="/kevin-gitau-cv.pdf"
@@ -144,7 +162,6 @@ export default function Hero() {
                 Download CV
               </a>
 
-              {/* Social icons aligned with CTAs */}
               <div style={{ display: "flex", gap: 8, marginLeft: 4 }}>
                 {SOCIALS.map(({ href, label, icon }) => (
                   <a
@@ -162,7 +179,6 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Location */}
             <motion.div variants={item} style={{
               display: "flex", alignItems: "center", gap: 6,
               fontSize: 12, color: "var(--lt-dim)",
@@ -170,13 +186,12 @@ export default function Hero() {
               <svg viewBox="0 0 24 24" width={12} height={12} fill="currentColor" style={{ opacity: .45, flexShrink: 0 }}>
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
-              Nairobi, Kenya · EAT (UTC+3) · Remote-ready
+              Nairobi, Kenya · EAT (UTC+3)
             </motion.div>
           </motion.div>
 
-          {/* ── Right — photo (10% larger column) + stats card directly below ── */}
+          {/* Right — photo + stats */}
           <div className="hero-img" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {/* Photo */}
             <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -193,28 +208,28 @@ export default function Hero() {
               />
             </div>
 
-            {/* Stats card — anchored directly under photo */}
+            {/* Stats — 3 columns, animated counters */}
             <div style={{
-              display: "grid", gridTemplateColumns: "1fr 1fr",
+              display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
               gap: 1,
               borderRadius: 10,
               overflow: "hidden",
               border: "1px solid var(--lt-brd)",
               background: "var(--lt-brd)",
             }}>
-              {STATS.map(({ value, label }) => (
+              {STATS.map(({ to, suffix, label }) => (
                 <div key={label} style={{
                   background: "var(--lt)",
-                  padding: "16px 18px",
+                  padding: "16px 14px",
                 }}>
                   <div style={{
                     fontFamily: "var(--font-playfair, Georgia, serif)",
                     fontSize: 22, fontWeight: 400, letterSpacing: "-.03em",
                     color: "var(--lt-fg)", lineHeight: 1, marginBottom: 4,
                   }}>
-                    {value}
+                    <CountUp to={to} suffix={suffix} />
                   </div>
-                  <div style={{ fontSize: 11, color: "var(--lt-muted)", fontWeight: 500 }}>
+                  <div style={{ fontSize: 10.5, color: "var(--lt-muted)", fontWeight: 500, lineHeight: 1.3 }}>
                     {label}
                   </div>
                 </div>

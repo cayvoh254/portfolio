@@ -18,7 +18,7 @@ const JOBS: Job[] = [
     company: "4R Digital Limited",
     where: "UK · Remote · Cloud platform",
     period: "Dec 2024 – Mar 2026",
-    desc: "Production support for cloud-hosted platforms integrating software services and connected IoT hardware endpoints. Responsible for cloud infrastructure monitoring, bug investigation/triage, operational automation, and platform reliability.",
+    desc: "Production support for cloud-hosted platforms integrating software services and connected IoT hardware endpoints. Responsible for cloud infrastructure monitoring, bug investigation and triage, operational automation, and platform reliability.",
     wins: [
       "Cut operational overhead by 40% through targeted automation",
       "Administered Azure and Entra ID across the platform estate",
@@ -32,7 +32,7 @@ const JOBS: Job[] = [
     company: "Ateo Finance",
     where: "US · Remote · Regulated fintech / trading",
     period: "Dec 2023 – May 2025",
-    desc: "Production support for US fintech trading platforms. Led incident investigation, SQL-based root cause analysis, and QA testing across staging and production.",
+    desc: "Production support for US fintech trading platforms. Led incident investigation, SQL-based root cause analysis, and QA testing across staging and production environments.",
     wins: [
       "Reduced incident recurrence by 25% through structured post-mortems",
       "Cut engineering escalation response time by 20%",
@@ -47,7 +47,7 @@ const JOBS: Job[] = [
     period: "Apr 2022 – Aug 2024",
     desc: "Monitored a distributed IoT platform across 3,000+ field endpoints. Built automation that cut MTTR from 11 minutes to 3. Sustained 98% platform uptime across two years.",
     wins: [
-      "MTTR: 11 min → 3 min via Python automation",
+      "MTTR: 11 min to 3 min via Python automation",
       "98% uptime across 3,000+ IoT endpoints",
       "50% faster troubleshooting through improved diagnostic tooling",
     ],
@@ -101,7 +101,7 @@ export default function Experience() {
                 borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
               }}
             >
-              {/* Year column — fixed width for alignment */}
+              {/* Year column */}
               <div style={{
                 fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontSize: 13,
@@ -113,55 +113,61 @@ export default function Experience() {
                 {job.year}
               </div>
 
-              {/* Content */}
-              <div>
-                <div style={{ marginBottom: 4 }}>
-                  <div style={{
-                    fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
-                    letterSpacing: "-.01em", marginBottom: 4,
+              {/* Content — inner 2-col: left body, right tags */}
+              <div className="exp-content-grid">
+                {/* Left: role, company, description, wins */}
+                <div>
+                  <div style={{ marginBottom: 4 }}>
+                    <div style={{
+                      fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
+                      letterSpacing: "-.01em", marginBottom: 4,
+                    }}>
+                      {job.role}
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "3px 8px", marginBottom: 2 }}>
+                      <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--gld)" }}>
+                        {job.company}
+                      </span>
+                      <span style={{ fontSize: 11, color: "var(--lt-brd)" }}>·</span>
+                      <span style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>
+                        {job.period}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
+                      {job.where}
+                    </div>
+                  </div>
+
+                  <p style={{
+                    fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)",
+                    marginTop: 12,
                   }}>
-                    {job.role}
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "3px 8px", marginBottom: 2 }}>
-                    <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--gld)" }}>
-                      {job.company}
-                    </span>
-                    <span style={{ fontSize: 11, color: "var(--lt-brd)" }}>·</span>
-                    <span style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>
-                      {job.period}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
-                    {job.where}
-                  </div>
+                    {job.desc}
+                  </p>
+
+                  {job.wins.length > 0 && (
+                    <ul style={{ marginTop: 10, listStyle: "none", padding: 0 }}>
+                      {job.wins.map(w => (
+                        <li key={w} style={{
+                          fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.6,
+                          paddingLeft: 14, position: "relative", marginBottom: 2,
+                        }}>
+                          <span style={{
+                            position: "absolute", left: 0, top: ".6em",
+                            width: 5, height: 1, background: "var(--lt-dim)",
+                          }} />
+                          {w}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
-                <p style={{
-                  fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)",
-                  marginTop: 12, maxWidth: "62ch",
-                }}>
-                  {job.desc}
-                </p>
-
-                {job.wins.length > 0 && (
-                  <ul style={{ marginTop: 10, listStyle: "none", padding: 0 }}>
-                    {job.wins.map(w => (
-                      <li key={w} style={{
-                        fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.6,
-                        paddingLeft: 14, position: "relative", marginBottom: 2,
-                      }}>
-                        <span style={{
-                          position: "absolute", left: 0, top: ".6em",
-                          width: 5, height: 1, background: "var(--lt-dim)",
-                        }} />
-                        {w}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 14 }}>
-                  {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                {/* Right: tags */}
+                <div style={{ paddingTop: 4 }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                    {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                  </div>
                 </div>
               </div>
             </div>
