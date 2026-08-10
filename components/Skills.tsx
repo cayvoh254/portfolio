@@ -43,21 +43,11 @@ export default function Skills() {
           </div>
         </FadeIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0 clamp(40px,6vw,80px)" }} className="skills-home-grid">
+        <div className="skills-home-grid">
           {GROUPS.map((g, i) => (
             <FadeIn key={g.label} delay={i * 0.06}>
-              <div style={{
-                paddingTop: i >= 2 ? 28 : 0,
-                paddingBottom: 28,
-                borderBottom: "1px solid var(--lt-brd)",
-              }}>
-                <div style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: ".14em",
-                  textTransform: "uppercase", color: "var(--lt-fg)",
-                  marginBottom: 12,
-                }}>
-                  {g.label}
-                </div>
+              <div className="skill-group-card">
+                <div className="skill-group-label">{g.label}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {g.items.map(item => (
                     <span key={item} className="skill-pill">{item}</span>

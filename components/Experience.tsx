@@ -82,16 +82,18 @@ export default function Experience() {
           </div>
         </FadeIn>
 
-        <div>
+        <div className="exp-tl">
           {JOBS.map((job, i) => (
             <FadeIn key={i} delay={i * 0.06}>
             <div
               style={{
+                position: "relative",
                 paddingTop: i > 0 ? 36 : 0,
                 paddingBottom: 36,
                 borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
               }}
             >
+              <div aria-hidden="true" className="exp-tl-dot" />
               {/* Header row: role + period right-aligned */}
               <div style={{
                 display: "flex", justifyContent: "space-between",

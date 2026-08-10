@@ -22,35 +22,25 @@ export default function Writeups() {
               <Link
                 href={`/projects/${lab.slug}`}
                 style={{
-                  display: "flex", justifyContent: "space-between",
-                  alignItems: "center", gap: 16,
-                  padding: "18px 0",
+                  display: "flex", alignItems: "center", gap: 20,
+                  padding: "20px 0",
                   borderBottom: "1px solid var(--lt-brd)",
                   textDecoration: "none", color: "inherit",
                 }}
                 className="writeup-row"
               >
+                <span className="wu-num">{String(i + 1).padStart(2, "0")}</span>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{
-                    fontSize: 14.5, fontWeight: 600, color: "var(--lt-fg)",
-                    letterSpacing: "-.01em", marginBottom: 4,
-                  }}>
-                    {lab.title}
-                  </div>
-                  <div style={{ fontSize: 11.5, color: "var(--gld)", fontWeight: 500 }}>
-                    {lab.subtitle}
-                  </div>
+                  <div className="wu-title">{lab.title}</div>
+                  <div className="wu-sub">{lab.subtitle}</div>
                 </div>
-                <span style={{
-                  fontSize: 12, fontWeight: 600, color: "var(--lt-dim)",
-                  display: "inline-flex", alignItems: "center", gap: 4,
-                  flexShrink: 0, whiteSpace: "nowrap",
-                }}>
-                  Read writeup
-                  <svg viewBox="0 0 16 16" width={11} height={11} fill="none" stroke="currentColor" strokeWidth={1.8}>
-                    <path d="M3 8h10M8 3l5 5-5 5"/>
-                  </svg>
-                </span>
+                <svg
+                  viewBox="0 0 16 16" width={12} height={12} fill="none"
+                  stroke="currentColor" strokeWidth={1.8} strokeLinecap="round"
+                  style={{ flexShrink: 0, color: "var(--lt-dim)" }}
+                >
+                  <path d="M3 8h10M8 3l5 5-5 5"/>
+                </svg>
               </Link>
             </FadeIn>
           ))}

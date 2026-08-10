@@ -360,7 +360,149 @@ button { font-family: inherit; }
 .foot-soc:hover { color: var(--dk-fg); }
 
 /* ─── Homepage Skills 2-col grid ─── */
-.skills-home-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+.skills-home-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+/* ─── Skill group cards (homepage) ─── */
+.skill-group-card {
+  padding: 22px 24px 24px;
+  border: 1px solid var(--lt-brd);
+  border-radius: 10px;
+  background: var(--lt);
+  transition: border-color .22s, box-shadow .22s;
+}
+.skill-group-card:hover {
+  border-color: rgba(184,134,11,.2);
+  box-shadow: 0 4px 18px rgba(0,0,0,.055);
+}
+.skill-group-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: .17em;
+  text-transform: uppercase; color: var(--gld);
+  margin-bottom: 14px;
+}
+
+/* ─── Section background differentiation ─── */
+#projects { background: #E5E8ED; position: relative; }
+#writeups  { background: #E9EAED; }
+
+:root[data-theme="dark"] #projects { background: #13161D; }
+:root[data-theme="dark"] #writeups  { background: #111419; }
+
+/* ─── Experience timeline ─── */
+.exp-tl {
+  position: relative;
+  padding-left: 28px;
+}
+.exp-tl::before {
+  content: '';
+  position: absolute;
+  left: 5px; top: 10px; bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gld) 0%, rgba(184,134,11,.22) 65%, transparent 100%);
+}
+.exp-tl-dot {
+  position: absolute;
+  left: -30px; top: 18px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gld);
+  background: var(--lt-alt);
+  box-shadow: 0 0 0 3px rgba(184,134,11,.09);
+  z-index: 1;
+}
+
+/* ─── Writeup numbered index ─── */
+.wu-num {
+  font-family: var(--font-playfair, Georgia, serif);
+  font-size: 21px; font-weight: 400;
+  color: var(--lt-brd); letter-spacing: -.04em;
+  line-height: 1; min-width: 40px; flex-shrink: 0;
+  transition: color .18s;
+}
+.writeup-row:hover .wu-num { color: var(--gld); }
+.wu-title {
+  font-size: 14.5px; font-weight: 600; color: var(--lt-fg);
+  letter-spacing: -.01em; margin-bottom: 3px;
+}
+.wu-sub {
+  font-size: 11.5px; color: var(--gld); font-weight: 500;
+}
+
+/* ─── Lab Carousel ─── */
+.lab-carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--lt-brd);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--lt);
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+.lab-carousel:active { cursor: grabbing; }
+.lab-preview { overflow: hidden; }
+.lab-preview svg { display: block; width: 100%; height: 100%; }
+.lab-body {
+  padding: 32px 32px 28px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.lab-name {
+  font-size: 18px; font-weight: 600; color: var(--lt-fg);
+  letter-spacing: -.02em; margin-bottom: 10px; line-height: 1.25;
+}
+.lab-desc {
+  font-size: 13px; color: var(--lt-muted); line-height: 1.72;
+  margin-bottom: 14px; max-width: 44ch;
+}
+.lab-stack {
+  font-size: 11px; color: var(--gld); font-weight: 500;
+  letter-spacing: .01em; margin-bottom: 24px;
+}
+.lab-footer {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.lab-nav { display: flex; align-items: center; gap: 8px; }
+.carousel-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  background: none; border: 1px solid var(--lt-brd);
+  border-radius: 7px; cursor: pointer; color: var(--lt-muted);
+  transition: border-color .18s, color .18s; flex-shrink: 0;
+}
+.carousel-btn:hover { border-color: var(--gld); color: var(--gld); }
+.carousel-dots { display: flex; align-items: center; gap: 6px; }
+.carousel-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: var(--lt-brd); border: none; cursor: pointer; padding: 0;
+  transition: width .22s ease, background .22s ease;
+}
+.carousel-dot-active { width: 20px; background: var(--gld); }
+
+/* Dark mode — carousel */
+:root[data-theme="dark"] .lab-carousel {
+  background: #1A1D24;
+  border-color: rgba(242,240,237,.09);
+}
+:root[data-theme="dark"] .carousel-btn {
+  border-color: rgba(242,240,237,.12);
+  color: rgba(242,240,237,.4);
+}
+:root[data-theme="dark"] .carousel-dot { background: rgba(242,240,237,.16); }
+:root[data-theme="dark"] .carousel-dot-active { background: var(--gld); }
+
+/* Dark mode — skill cards */
+:root[data-theme="dark"] .skill-group-card {
+  background: rgba(255,255,255,.025);
+  border-color: rgba(242,240,237,.08);
+}
+:root[data-theme="dark"] .skill-group-card:hover {
+  border-color: rgba(184,134,11,.25);
+  box-shadow: 0 4px 18px rgba(0,0,0,.28);
+}
+
+/* Dark mode — experience timeline */
+:root[data-theme="dark"] .exp-tl-dot { background: var(--lt-alt); }
 
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
@@ -372,6 +514,12 @@ button { font-family: inherit; }
   .cert-cols    { grid-template-columns: 1fr !important; }
   .contact-grid { grid-template-columns: 1fr !important; }
   .writeup-body { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  .lab-carousel { grid-template-columns: 1fr; }
+  .lab-preview  { aspect-ratio: 16/9; }
+  .lab-body     { padding: 24px 22px 22px; }
 }
 
 @media (max-width: 640px) {
@@ -386,8 +534,11 @@ button { font-family: inherit; }
   .exp-header { grid-template-columns: 1fr !important; }
   .exp-period { display: none !important; }
   .exp-content-grid { grid-template-columns: 1fr !important; }
-  .writeup-sidebar    { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .skills-home-grid   { grid-template-columns: 1fr !important; }
+  .writeup-sidebar  { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .skills-home-grid { grid-template-columns: 1fr !important; }
+  .exp-tl           { padding-left: 0; }
+  .exp-tl::before   { display: none; }
+  .exp-tl-dot       { display: none; }
 }
 
 /* ─── Hero ambient background canvas ─── */
