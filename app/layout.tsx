@@ -21,14 +21,14 @@ const SITE_URL = "https://kevingitau.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kevin Gitau | Security Operations Engineer",
+    default: "Kevin Gitau | Technical Support & Security Engineer",
     template: "%s | Kevin Gitau",
   },
   description:
-    "Security operations engineer based in Nairobi, Kenya. Six years across enterprise cloud, fintech, and telecommunications infrastructure. Specialising in SIEM deployment, penetration testing, Active Directory attack and defence, container security, and incident response. Available for remote roles.",
+    "Technical support and security engineer based in Nairobi, Kenya. Five years across enterprise cloud, fintech, and telecommunications infrastructure. Production incident response, API troubleshooting, SIEM deployment, penetration testing, and Active Directory security.",
   keywords: [
-    "security operations engineer",
-    "SOC analyst",
+    "technical support engineer",
+    "cybersecurity engineer",
     "SIEM",
     "Wazuh",
     "penetration testing",
@@ -39,9 +39,10 @@ export const metadata: Metadata = {
     "Active Directory security",
     "container security",
     "cloud security",
-    "Azure security",
+    "Azure",
+    "Grafana",
+    "Prometheus",
     "cybersecurity Kenya",
-    "technical support engineer",
     "infrastructure engineer",
     "Kevin Gitau",
   ],
@@ -52,23 +53,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Kevin Gitau",
-    title: "Kevin Gitau | Security Operations Engineer",
+    title: "Kevin Gitau | Technical Support & Security Engineer",
     description:
-      "Security operations engineer with six years across enterprise cloud, fintech, and telecommunications. SIEM, penetration testing, and container security. Based in Nairobi, Kenya.",
+      "Technical support and security engineer with five years across enterprise cloud, fintech, and telecommunications. Production incident response, SIEM, and penetration testing. Based in Nairobi, Kenya.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Kevin Gitau — Security Operations Engineer",
+        alt: "Kevin Gitau, Technical Support and Security Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin Gitau | Security Operations Engineer",
+    title: "Kevin Gitau | Technical Support & Security Engineer",
     description:
-      "Security operations engineer with six years across enterprise cloud, fintech, and telecommunications.",
+      "Technical support and security engineer with five years across enterprise cloud, fintech, and telecommunications.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -96,7 +97,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kevin Gitau",
-  jobTitle: "Security Operations Engineer",
+  jobTitle: "Technical Support & Security Engineer",
   url: SITE_URL,
   email: "kevin.gitau27@gmail.com",
   address: {
