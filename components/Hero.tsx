@@ -56,6 +56,7 @@ export default function Hero() {
     <section
       id="top"
       style={{
+        position: "relative",
         background: "var(--lt)",
         minHeight: "100vh",
         display: "flex",
@@ -63,7 +64,8 @@ export default function Hero() {
         padding: "clamp(88px,10vh,120px) var(--e) clamp(48px,6vh,80px)",
       }}
     >
-      <div style={{ width: "100%", maxWidth: "var(--max)", margin: "0 auto" }}>
+      <div aria-hidden="true" className="hero-bg" />
+      <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: "var(--max)", margin: "0 auto" }}>
         <div
           className="hero-grid"
           style={{

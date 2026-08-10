@@ -63,7 +63,7 @@ button { font-family: inherit; }
 
 /* ─── Surface classes ─── */
 .dark-sec { background: var(--dk); color: var(--dk-fg); }
-.sec      { padding: 72px 0; }
+.sec      { padding: 64px 0; }
 .sec-alt  { background: var(--lt-alt); }
 
 /* ─── Section label ─── */
@@ -221,12 +221,12 @@ button { font-family: inherit; }
   border: 1px solid var(--lt-brd); border-radius: 12px;
   text-decoration: none; color: inherit;
   background: var(--lt);
-  transition: transform .25s, box-shadow .25s, border-color .25s;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
 .proj-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,.08);
-  border-color: rgba(28,29,31,.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.1), 0 0 28px rgba(184,134,11,.06);
+  border-color: rgba(184,134,11,.22);
 }
 
 /* ─── Cert domain ─── */
@@ -307,7 +307,10 @@ button { font-family: inherit; }
   background: #1E2025;
   border-color: rgba(242,240,237,.08);
 }
-:root[data-theme="dark"] .proj-card:hover { border-color: rgba(242,240,237,.22); }
+:root[data-theme="dark"] .proj-card:hover {
+  border-color: rgba(184,134,11,.28);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 28px rgba(184,134,11,.09);
+}
 
 :root[data-theme="dark"] .proj-row:hover { background: rgba(255,255,255,.03); }
 
@@ -342,7 +345,10 @@ button { font-family: inherit; }
 :root[data-theme="dark"] .rule { border-top-color: rgba(242,240,237,.1); }
 
 /* ─── Writeup list row hover ─── */
-.writeup-row:hover { opacity: .82; }
+.writeup-row { transition: opacity .18s; }
+.writeup-row:hover { opacity: 1; }
+.writeup-row svg { transition: transform .18s ease; }
+.writeup-row:hover svg:last-child { transform: translateX(5px); }
 
 /* ─── Footer social icons ─── */
 .foot-soc {
@@ -369,7 +375,7 @@ button { font-family: inherit; }
 }
 
 @media (max-width: 640px) {
-  .sec { padding: 52px 0; }
+  .sec { padding: 48px 0; }
   .nav-links  { display: none !important; }
   .mob-toggle { display: block !important; }
   .proj-row   { grid-template-columns: 28px 1fr !important; }
@@ -382,4 +388,59 @@ button { font-family: inherit; }
   .exp-content-grid { grid-template-columns: 1fr !important; }
   .writeup-sidebar    { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .skills-home-grid   { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Hero ambient background canvas ─── */
+.hero-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
+}
+
+/* Subtle dot grid — masked to center-right so text area stays clean */
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 1.5px 1.5px, rgba(90,94,99,.085) 1.5px, transparent 0);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 75% 65% at 68% 44%, rgba(0,0,0,.65) 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 68% 44%, rgba(0,0,0,.65) 0%, transparent 85%);
+}
+
+/* Slowly drifting warm glow — top right, behind photo area */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: -20%; right: -8%;
+  width: min(660px, 58vw);
+  height: min(660px, 58vw);
+  background: radial-gradient(circle, rgba(184,134,11,.048) 0%, transparent 68%);
+  animation: hero-glow-drift 22s ease-in-out infinite;
+}
+
+@keyframes hero-glow-drift {
+  0%, 100% { transform: translate(0, 0); }
+  38%       { transform: translate(-22px, 18px); }
+  72%       { transform: translate(14px, -14px); }
+}
+
+/* Reduce effects on mobile — performance first */
+@media (max-width: 640px) {
+  .hero-bg::before { opacity: .4; }
+  .hero-bg::after  { display: none; }
+}
+
+/* Dark theme adjustments */
+:root[data-theme="dark"] .hero-bg::before {
+  background-image:
+    radial-gradient(circle at 1.5px 1.5px, rgba(242,240,237,.042) 1.5px, transparent 0);
+  background-size: 32px 32px;
+}
+:root[data-theme="dark"] .hero-bg::after {
+  background: radial-gradient(circle, rgba(184,134,11,.075) 0%, transparent 68%);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::after { animation: none; }
 }
