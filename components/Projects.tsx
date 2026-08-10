@@ -51,13 +51,6 @@ const SECURITY: Project[] = [
 
 const PRODUCTS: Project[] = [
   {
-    name: "AI Appointment Reminder",
-    status: "Shipped",
-    stack: "Claude API · n8n · Supabase",
-    desc: "Deployed SaaS product. Natural-language scheduling via Claude, n8n for automation, Supabase backend. Calendar integrations and automated follow-up flows.",
-    href: "#",
-  },
-  {
     name: "GanjiFlow",
     status: "Beta",
     stack: "React · TypeScript · M-Pesa API",

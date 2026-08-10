@@ -145,32 +145,6 @@ export default function Certifications() {
           </div>
         </div>
 
-        <div style={{ marginTop: 64, paddingTop: 48, borderTop: "1px solid var(--lt-brd)" }}>
-          <div style={{
-            fontSize: 10, fontWeight: 700, letterSpacing: ".18em",
-            textTransform: "uppercase", color: "var(--lt-dim)",
-            marginBottom: 28,
-          }}>
-            Education
-          </div>
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr auto",
-            gap: 16, alignItems: "start",
-          }}>
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "var(--lt-fg)", marginBottom: 4 }}>
-                Bachelor of Business Information Technology
-              </div>
-              <div style={{ fontSize: 13, color: "var(--lt-muted)", marginBottom: 4 }}>
-                Jomo Kenyatta University of Agriculture and Technology (JKUAT)
-              </div>
-              <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>Second Class Upper Division</div>
-            </div>
-            <div style={{ fontSize: 12, color: "var(--lt-dim)", whiteSpace: "nowrap", paddingTop: 2 }}>
-              2012 &ndash; 2015
-            </div>
-          </div>
-        </div>
         </FadeIn>
       </div>
     </section>

@@ -1,10 +1,7 @@
-import { FadeIn } from "./FadeIn";
+"use client";
 
-const PLATFORMS = [
-  { href: "#", label: "HackTheBox", placeholder: true },
-  { href: "#", label: "TryHackMe", placeholder: true },
-  { href: "#", label: "LetsDefend", placeholder: true },
-];
+import { useState, FormEvent } from "react";
+import { FadeIn } from "./FadeIn";
 
 const SOCIALS = [
   {
@@ -38,7 +35,73 @@ const SOCIALS = [
   },
 ];
 
+type Field = "name" | "email" | "message";
+
+function sanitize(value: string): string {
+  return value.trim().replace(/[<>]/g, "").slice(0, 2000);
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  background: "rgba(242,240,237,.05)",
+  border: "1px solid rgba(242,240,237,.12)",
+  borderRadius: 6,
+  padding: "11px 14px",
+  fontSize: 13.5,
+  color: "var(--dk-fg)",
+  outline: "none",
+  boxSizing: "border-box",
+  fontFamily: "inherit",
+  transition: "border-color .15s",
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 10,
+  fontWeight: 700,
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "rgba(242,240,237,.35)",
+  marginBottom: 7,
+};
+
 export default function Contact() {
+  const [fields, setFields] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
+  const [sent, setSent] = useState(false);
+
+  function validate(): boolean {
+    const next: Partial<Record<Field, string>> = {};
+    if (!fields.name.trim()) next.name = "Name is required.";
+    else if (fields.name.trim().length > 120) next.name = "Name is too long.";
+    if (!fields.email.trim()) next.email = "Email is required.";
+    else if (!EMAIL_RE.test(fields.email.trim())) next.email = "Enter a valid email address.";
+    if (!fields.message.trim()) next.message = "Message is required.";
+    else if (fields.message.trim().length < 10) next.message = "Message is too short.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target;
+    setFields(prev => ({ ...prev, [name]: value }));
+    if (errors[name as Field]) setErrors(prev => ({ ...prev, [name]: undefined }));
+  }
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!validate()) return;
+    const name = sanitize(fields.name);
+    const email = sanitize(fields.email);
+    const message = sanitize(fields.message);
+    const subject = encodeURIComponent(`Message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:kevin.gitau27@gmail.com?subject=${subject}&body=${body}`;
+    setSent(true);
+  }
+
   return (
     <section
       className="dark-sec"
@@ -56,11 +119,9 @@ export default function Contact() {
             alignItems: "start",
           }}
         >
-          {/* Left — headline + CTA */}
+          {/* Left — headline + social */}
           <div>
-            <div className="sec-num" style={{ marginBottom: 20 }}>
-              Contact
-            </div>
+            <div className="sec-num" style={{ marginBottom: 20 }}>Contact</div>
 
             <h2 style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
@@ -80,72 +141,12 @@ export default function Contact() {
               lineHeight: 1.78,
               color: "var(--dk-dim)",
               maxWidth: "38ch",
-              marginBottom: 36,
+              marginBottom: 40,
             }}>
               Based in Nairobi, Kenya. If you have something worth discussing,
               reach out directly.
             </p>
 
-            <a href="mailto:kevin.gitau27@gmail.com" className="btn-primary">
-              Send me a message
-              <svg viewBox="0 0 16 16" width={13} height={13} fill="none"
-                stroke="currentColor" strokeWidth={1.8}>
-                <path d="M3 8h10M8 3l5 5-5 5"/>
-              </svg>
-            </a>
-          </div>
-
-          {/* Right — response time + social links */}
-          <div style={{ paddingTop: 8 }}>
-            {/* Response time */}
-            <div style={{
-              display: "flex", alignItems: "center", gap: 10,
-              marginBottom: 28,
-              paddingBottom: 28,
-              borderBottom: "1px solid var(--dk-brd)",
-            }}>
-              <svg viewBox="0 0 24 24" width={14} height={14} fill="none"
-                stroke="rgba(242,240,237,.28)" strokeWidth={1.6} strokeLinecap="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-              <span style={{ fontSize: 12.5, color: "rgba(242,240,237,.35)" }}>
-                Typically responds within 24 hours
-              </span>
-            </div>
-
-            {/* Learning platforms */}
-            <div style={{ marginBottom: 20 }}>
-              <div style={{
-                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
-                textTransform: "uppercase", color: "rgba(242,240,237,.25)",
-                marginBottom: 10,
-              }}>
-                Learning Platforms
-              </div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {PLATFORMS.map(({ href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={href !== "#" ? "_blank" : undefined}
-                    rel={href !== "#" ? "noopener noreferrer" : undefined}
-                    style={{
-                      fontSize: 12, fontWeight: 500,
-                      padding: "5px 12px", borderRadius: 5,
-                      border: "1px solid rgba(242,240,237,.12)",
-                      color: "rgba(242,240,237,.4)",
-                      textDecoration: "none",
-                      opacity: href === "#" ? 0.5 : 1,
-                    }}
-                  >
-                    {label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Social links — consistent arrow alignment */}
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               {SOCIALS.map(({ href, label, icon }) => (
                 <a
@@ -171,6 +172,118 @@ export default function Contact() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Right — contact form */}
+          <div style={{ paddingTop: 8 }}>
+            {sent ? (
+              <div style={{
+                padding: "32px 28px",
+                border: "1px solid rgba(242,240,237,.12)",
+                borderRadius: 10,
+                textAlign: "center",
+              }}>
+                <div style={{
+                  fontSize: 13, color: "var(--gld)", fontWeight: 600,
+                  letterSpacing: ".04em", marginBottom: 8,
+                }}>
+                  Message ready
+                </div>
+                <p style={{ fontSize: 13.5, color: "rgba(242,240,237,.45)", lineHeight: 1.7 }}>
+                  Your email client has opened with the message pre-filled. Hit send when ready.
+                </p>
+                <button
+                  onClick={() => { setSent(false); setFields({ name: "", email: "", message: "" }); }}
+                  style={{
+                    marginTop: 20, fontSize: 12.5, color: "var(--gld)",
+                    background: "none", border: "none", cursor: "pointer",
+                    textDecoration: "underline", textUnderlineOffset: 3,
+                  }}
+                >
+                  Send another
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div>
+                  <label htmlFor="contact-name" style={labelStyle}>Name</label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    maxLength={120}
+                    value={fields.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    style={{
+                      ...inputStyle,
+                      borderColor: errors.name ? "rgba(220,60,60,.6)" : undefined,
+                    }}
+                  />
+                  {errors.name && (
+                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
+                      {errors.name}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="contact-email" style={labelStyle}>Email</label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    maxLength={254}
+                    value={fields.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    style={{
+                      ...inputStyle,
+                      borderColor: errors.email ? "rgba(220,60,60,.6)" : undefined,
+                    }}
+                  />
+                  {errors.email && (
+                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
+                      {errors.email}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="contact-message" style={labelStyle}>Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={5}
+                    maxLength={2000}
+                    value={fields.message}
+                    onChange={handleChange}
+                    placeholder="What would you like to discuss?"
+                    style={{
+                      ...inputStyle,
+                      resize: "vertical",
+                      minHeight: 120,
+                      borderColor: errors.message ? "rgba(220,60,60,.6)" : undefined,
+                    }}
+                  />
+                  {errors.message && (
+                    <div style={{ fontSize: 11.5, color: "rgba(220,80,80,.9)", marginTop: 5 }}>
+                      {errors.message}
+                    </div>
+                  )}
+                </div>
+
+                <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
+                  Send message
+                  <svg viewBox="0 0 16 16" width={13} height={13} fill="none"
+                    stroke="currentColor" strokeWidth={1.8}>
+                    <path d="M3 8h10M8 3l5 5-5 5"/>
+                  </svg>
+                </button>
+              </form>
+            )}
           </div>
         </div>
         </FadeIn>

@@ -47,12 +47,25 @@ export default function About() {
               color: "var(--lt-muted)",
               marginBottom: 22,
             }}>
-              Six years across enterprise cloud, fintech, and telecommunications
-              infrastructure gave me a ground-level view of how systems behave
-              under pressure. That foundation drives the security work: SIEM
+              My career started in network operations and IT support, evolving
+              through cloud infrastructure, fintech platforms, and large-scale IoT.
+              That means real fluency in the day-to-day: reading and correlating
+              logs, Grafana and Prometheus dashboards, Linux administration, API
+              troubleshooting, SQL queries mid-incident, ITSM workflows across
+              ServiceNow, Jira, and Confluence. I write documentation that
+              engineers actually use.
+            </p>
+
+            <p style={{
+              fontSize: 14.5,
+              lineHeight: 1.82,
+              color: "var(--lt-muted)",
+              marginBottom: 22,
+            }}>
+              The security work grew out of that operational foundation: SIEM
               deployment and alert tuning, web application and API assessments,
               Active Directory attack paths and detection, container vulnerability
-              scanning. Security grounded in production systems knowledge.
+              scanning. Security grounded in systems knowledge, not just tooling.
             </p>
 
             <p style={{
@@ -60,9 +73,9 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              Alongside the security track, I build and ship products
-              independently: SaaS tools, automation workflows, mobile apps. From
-              idea to deployed, without needing a team to form first.
+              I also build and ship products independently — SaaS tools, automation
+              workflows, mobile apps — from idea to deployed. Holds a B.Sc. in
+              Business Information Technology (JKUAT, Second Class Upper).
             </p>
           </div>
 

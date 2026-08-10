@@ -115,36 +115,24 @@ export default function Experience() {
 
               {/* Content */}
               <div>
-                <div className="exp-header" style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr auto",
-                  gap: 24,
-                  alignItems: "start",
-                  marginBottom: 4,
-                }}>
-                  <div>
-                    <div style={{
-                      fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
-                      letterSpacing: "-.01em", marginBottom: 2,
-                    }}>
-                      {job.role}
-                    </div>
-                    <div style={{
-                      fontSize: 13.5, fontWeight: 600,
-                      color: "var(--gld)",
-                      marginBottom: 1,
-                    }}>
-                      {job.company}
-                    </div>
-                    <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
-                      {job.where}
-                    </div>
-                  </div>
-                  <div className="exp-period" style={{
-                    fontSize: 11.5, color: "var(--lt-dim)", whiteSpace: "nowrap",
-                    paddingTop: 3,
+                <div style={{ marginBottom: 4 }}>
+                  <div style={{
+                    fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
+                    letterSpacing: "-.01em", marginBottom: 4,
                   }}>
-                    {job.period}
+                    {job.role}
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "3px 8px", marginBottom: 2 }}>
+                    <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--gld)" }}>
+                      {job.company}
+                    </span>
+                    <span style={{ fontSize: 11, color: "var(--lt-brd)" }}>·</span>
+                    <span style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>
+                      {job.period}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
+                    {job.where}
                   </div>
                 </div>
 

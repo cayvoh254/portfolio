@@ -115,10 +115,10 @@ export default function Hero() {
               marginBottom: 28,
               maxWidth: "54ch",
             }}>
-              Security operations engineer with six years across enterprise cloud,
-              fintech, and telecommunications infrastructure. Threat detection,
-              SIEM deployment, penetration testing, and container security, backed
-              by deep production systems experience.
+              Infrastructure and security professional across enterprise cloud,
+              fintech, and telecommunications environments. Production incident
+              response, platform reliability, SIEM deployment, penetration
+              testing — grounded in real operational depth.
             </motion.p>
 
             {/* CTAs + social icons on same row */}
