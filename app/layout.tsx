@@ -21,11 +21,11 @@ const SITE_URL = "https://kevingitau.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kevin Gitau | Technical Support & Security Engineer",
+    default: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
     template: "%s | Kevin Gitau",
   },
   description:
-    "Technical support and security engineer based in Nairobi, Kenya. Five years across enterprise cloud, fintech, and telecommunications infrastructure. Production incident response, API troubleshooting, SIEM deployment, penetration testing, and Active Directory security.",
+    "IT operations, application support, and cybersecurity professional based in Nairobi, Kenya. Enterprise cloud, fintech, and telecommunications infrastructure. Production incident response, API troubleshooting, SIEM deployment, penetration testing, and Active Directory security.",
   keywords: [
     "technical support engineer",
     "cybersecurity engineer",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Kevin Gitau",
-    title: "Kevin Gitau | Technical Support & Security Engineer",
+    title: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
     description:
-      "Technical support and security engineer with five years across enterprise cloud, fintech, and telecommunications. Production incident response, SIEM, and penetration testing. Based in Nairobi, Kenya.",
+      "IT operations and application support professional with a cybersecurity track, across enterprise cloud, fintech, and telecommunications. Based in Nairobi, Kenya.",
     images: [
       {
         url: "/og-image.png",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin Gitau | Technical Support & Security Engineer",
+    title: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
     description:
-      "Technical support and security engineer with five years across enterprise cloud, fintech, and telecommunications.",
+      "IT operations and application support professional with a cybersecurity track, across enterprise cloud, fintech, and telecommunications.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -97,7 +97,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kevin Gitau",
-  jobTitle: "Technical Support & Security Engineer",
+  jobTitle: "IT Operations · Application Support · Cybersecurity",
   url: SITE_URL,
   email: "kevin.gitau27@gmail.com",
   address: {

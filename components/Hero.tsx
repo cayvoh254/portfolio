@@ -107,7 +107,7 @@ export default function Hero() {
                 fontSize: 11, fontWeight: 700, letterSpacing: ".18em",
                 textTransform: "uppercase", color: "var(--lt-dim)",
               }}>
-                Cloud Infrastructure &amp; Cybersecurity
+                IT Operations · Application Support · Cybersecurity
               </span>
             </motion.div>
 
