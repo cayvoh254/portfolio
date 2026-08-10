@@ -1,7 +1,6 @@
 import { FadeIn } from "./FadeIn";
 
 type Job = {
-  year: string;
   role: string;
   company: string;
   where: string;
@@ -13,7 +12,6 @@ type Job = {
 
 const JOBS: Job[] = [
   {
-    year: "2024",
     role: "Technical Support Engineer",
     company: "4R Digital Limited",
     where: "UK · Remote · Cloud platform",
@@ -27,7 +25,6 @@ const JOBS: Job[] = [
     tags: ["Azure", "Entra ID", "Grafana", "Prometheus", "OWASP ZAP", "Postman"],
   },
   {
-    year: "2023",
     role: "Application Support Analyst",
     company: "Ateo Finance",
     where: "US · Remote · Regulated fintech / trading",
@@ -40,7 +37,6 @@ const JOBS: Job[] = [
     tags: ["SQL", "MS SQL Server", "Jira", "Log Analysis", "QA Testing"],
   },
   {
-    year: "2022",
     role: "Technical Support Engineer",
     company: "KOKO Networks",
     where: "Nairobi, Kenya · Climate tech / IoT",
@@ -54,7 +50,6 @@ const JOBS: Job[] = [
     tags: ["Python", "Grafana", "AWS CloudWatch", "SQL", "Postman"],
   },
   {
-    year: "2020",
     role: "NOC Engineer",
     company: "Adrian Kenya Limited",
     where: "Nairobi, Kenya · Enterprise ISP",
@@ -67,7 +62,6 @@ const JOBS: Job[] = [
     tags: ["BMC Remedy", "OLT", "Network Monitoring", "SLA Management"],
   },
   {
-    year: "2017",
     role: "IT Support Engineer",
     company: "Decko Africa",
     where: "Nairobi, Kenya",
@@ -93,31 +87,15 @@ export default function Experience() {
             <FadeIn key={i} delay={i * 0.06}>
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "80px 1fr",
-                gap: "clamp(24px,4vw,48px)",
-                paddingTop: i > 0 ? 52 : 0,
-                paddingBottom: 52,
+                paddingTop: i > 0 ? 48 : 0,
+                paddingBottom: 48,
                 borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
               }}
             >
-              {/* Year column */}
-              <div style={{
-                fontFamily: "var(--font-playfair, Georgia, serif)",
-                fontSize: 13,
-                color: "var(--lt-dim)",
-                paddingTop: 4,
-                fontStyle: "italic",
-                flexShrink: 0,
-              }}>
-                {job.year}
-              </div>
-
-              {/* Content — inner 2-col: left body, right tags */}
               <div className="exp-content-grid">
                 {/* Left: role, company, description, wins */}
                 <div>
-                  <div style={{ marginBottom: 4 }}>
+                  <div style={{ marginBottom: 10 }}>
                     <div style={{
                       fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
                       letterSpacing: "-.01em", marginBottom: 4,
@@ -140,7 +118,7 @@ export default function Experience() {
 
                   <p style={{
                     fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)",
-                    marginTop: 12,
+                    marginTop: 10,
                   }}>
                     {job.desc}
                   </p>

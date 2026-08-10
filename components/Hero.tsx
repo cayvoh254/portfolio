@@ -1,30 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const item = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } } };
-
-function CountUp({ to, suffix = "", duration = 1400, delay = 600 }: {
-  to: number; suffix?: string; duration?: number; delay?: number;
-}) {
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const start = performance.now();
-      const step = (now: number) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setN(Math.round(eased * to));
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }, delay);
-    return () => clearTimeout(t);
-  }, [to, duration, delay]);
-  return <>{n.toLocaleString()}{suffix}</>;
-}
 
 const SOCIALS = [
   {
@@ -70,12 +49,6 @@ const SOCIALS = [
       </svg>
     ),
   },
-];
-
-const STATS = [
-  { to: 6,    suffix: "+", label: "Years experience" },
-  { to: 30,   suffix: "+", label: "Certifications" },
-  { to: 3000, suffix: "+", label: "Endpoints managed" },
 ];
 
 export default function Hero() {
@@ -203,8 +176,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right — photo + stats */}
-          <div className="hero-img" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          {/* Right — photo + social icons */}
+          <div className="hero-img" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
             <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -218,26 +191,29 @@ export default function Hero() {
               />
             </div>
 
-            <div style={{
-              display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 1,
-              borderRadius: 10, overflow: "hidden",
-              border: "1px solid var(--lt-brd)",
-              background: "var(--lt-brd)",
-            }}>
-              {STATS.map(({ to, suffix, label }) => (
-                <div key={label} style={{ background: "var(--lt)", padding: "14px 12px" }}>
-                  <div style={{
-                    fontFamily: "var(--font-playfair, Georgia, serif)",
-                    fontSize: 21, fontWeight: 400, letterSpacing: "-.03em",
-                    color: "var(--lt-fg)", lineHeight: 1, marginBottom: 4,
-                  }}>
-                    <CountUp to={to} suffix={suffix} />
-                  </div>
-                  <div style={{ fontSize: 10, color: "var(--lt-muted)", fontWeight: 500, lineHeight: 1.3 }}>
-                    {label}
-                  </div>
-                </div>
+            {/* Social icons under photo — brand colours, generous spacing */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 20 }}>
+              {SOCIALS.map(({ href, label, color, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  aria-label={label}
+                  title={label}
+                  style={{
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    width: 44, height: 44, borderRadius: 10,
+                    border: `1.5px solid ${color}`,
+                    color: color,
+                    textDecoration: "none", flexShrink: 0,
+                    transition: "opacity .2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.opacity = ".65")}
+                  onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+                >
+                  {icon}
+                </a>
               ))}
             </div>
           </div>

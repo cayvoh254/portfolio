@@ -146,7 +146,7 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
           fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
           textTransform: "uppercase", color: "var(--lt-dim)",
         }}>
-          {num} · {title}
+          {title}
         </span>
       </div>
 

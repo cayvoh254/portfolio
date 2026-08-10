@@ -1,9 +1,29 @@
 import { FadeIn } from "./FadeIn";
 
-const TOOLS = [
-  "Azure", "Entra ID", "Wazuh", "Burp Suite", "OWASP ZAP",
-  "Python", "Kubernetes", "Docker", "Linux", "Grafana",
-  "Zeek", "pfSense", "BloodHound", "n8n", "Supabase",
+const TECH_GROUPS = [
+  {
+    label: "Support & Operations",
+    items: ["Azure", "Entra ID", "Grafana", "Prometheus", "Linux", "Python", "Docker", "Kubernetes", "SQL", "Postman", "Jira", "ServiceNow", "Confluence"],
+  },
+  {
+    label: "Security & Ethical Hacking",
+    items: ["Wazuh", "Burp Suite", "OWASP ZAP", "BloodHound", "Impacket", "hashcat", "Hydra", "Zeek", "pfSense", "Sysmon", "nmap", "Metasploit"],
+  },
+];
+
+const TRACKS = [
+  {
+    label: "Operations & Support",
+    text: "Network operations, IT support, and application support across enterprise ISP, regulated fintech, and large-scale IoT. Incident ownership, root-cause analysis via distributed log and SQL investigation, monitoring automation, and stakeholder communication under pressure.",
+  },
+  {
+    label: "Security",
+    text: "SIEM deployment and custom detection engineering, web application and API penetration testing, Active Directory attack-path enumeration and hardening, container vulnerability scanning. Lab findings documented to professional report standard with MITRE ATT&CK mapping and CVSS scoring.",
+  },
+  {
+    label: "Building",
+    text: "Independent product development alongside the engineering track: financial tooling, mobile applications, and automation platforms from conception through production deployment.",
+  },
 ];
 
 export default function About() {
@@ -26,19 +46,20 @@ export default function About() {
             alignItems: "start",
           }}
         >
-          {/* Left — pull quote + body */}
+          {/* Left — summary */}
           <div>
             <p style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontSize: "clamp(22px,2.8vw,30px)",
+              fontSize: "clamp(20px,2.5vw,26px)",
               color: "var(--lt-fg)",
-              lineHeight: 1.35,
+              lineHeight: 1.4,
               letterSpacing: "-.02em",
               fontWeight: 400,
               marginBottom: 32,
             }}>
-              &ldquo;Six years in production taught me exactly how systems fail.
-              Security is learning to close those gaps before someone else finds them.&rdquo;
+              Production operations experience across enterprise infrastructure,
+              regulated fintech, and IoT at scale. Security built on real systems
+              knowledge, not lab theory.
             </p>
 
             <p style={{
@@ -47,13 +68,14 @@ export default function About() {
               color: "var(--lt-muted)",
               marginBottom: 22,
             }}>
-              My career started in network operations and IT support, evolving
-              through cloud infrastructure, fintech platforms, and large-scale IoT.
-              That means real fluency in the day-to-day: reading and correlating
-              logs, Grafana and Prometheus dashboards, Linux administration, API
-              troubleshooting, SQL queries mid-incident, ITSM workflows across
-              ServiceNow, Jira, and Confluence. I write documentation that
-              engineers actually use.
+              Background spanning network operations (NOC), IT support, and
+              application support across enterprise ISP infrastructure, regulated
+              fintech trading platforms, and large-scale IoT deployments.
+              Operational fluency: distributed log analysis, Grafana and Prometheus
+              dashboards, API fault diagnosis, SQL root-cause investigation, Linux
+              administration, and ITSM workflows in ServiceNow, Jira, and
+              Confluence. Technical documentation produced to engineer and
+              stakeholder standard across all environments.
             </p>
 
             <p style={{
@@ -62,10 +84,12 @@ export default function About() {
               color: "var(--lt-muted)",
               marginBottom: 22,
             }}>
-              The security work grew out of that operational foundation: SIEM
-              deployment and alert tuning, web application and API assessments,
-              Active Directory attack paths and detection, container vulnerability
-              scanning. Security grounded in systems knowledge, not just tooling.
+              Security track running in parallel: Wazuh SIEM deployment and custom
+              detection engineering, web application and API penetration testing
+              against OWASP Top 10 and API Security Top 10, Active Directory
+              attack-path enumeration and hardening, container vulnerability
+              scanning. All lab work documented to professional report standard with
+              MITRE ATT&amp;CK mapping, CVSS scoring, and remediation guidance.
             </p>
 
             <p style={{
@@ -73,28 +97,17 @@ export default function About() {
               lineHeight: 1.82,
               color: "var(--lt-muted)",
             }}>
-              I also build and ship products independently: SaaS tools, automation
-              workflows, and mobile apps, from concept to deployed. Holds a B.Sc. in
-              Business Information Technology (JKUAT, Second Class Upper).
+              Independent product development alongside the engineering track:
+              financial tooling for the Kenyan mobile-money market, family
+              engagement applications, and debt management platforms for the East
+              African market. B.Sc. Business Information Technology, JKUAT
+              (Second Class Upper).
             </p>
           </div>
 
-          {/* Right — three tracks + tools */}
+          {/* Right — tracks + categorised technologies */}
           <div>
-            {[
-              {
-                label: "Operations",
-                text: "Cloud and infrastructure operations across fintech, telecommunications, and SaaS platforms. Incident ownership, root-cause analysis, distributed system debugging, and monitoring automation. Six years of production context behind every security decision.",
-              },
-              {
-                label: "Security",
-                text: "SIEM deployments, web app and API assessments, AD attack and defence, container scanning. Certifications from Google, IBM, Cisco, APIsec. The labs run continuously.",
-              },
-              {
-                label: "Building",
-                text: "SaaS, automation platforms, and developer tooling. I ship products end-to-end without needing a team to form around me.",
-              },
-            ].map(({ label, text }, i) => (
+            {TRACKS.map(({ label, text }, i) => (
               <div key={label} style={{
                 paddingTop: i > 0 ? 24 : 0,
                 paddingBottom: 24,
@@ -112,16 +125,20 @@ export default function About() {
               </div>
             ))}
 
-            <div style={{ marginTop: 28 }}>
-              <div style={{
-                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
-                textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 12,
-              }}>
-                Technologies
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {TOOLS.map(t => <span key={t} className="tag">{t}</span>)}
-              </div>
+            <div style={{ marginTop: 28, display: "flex", flexDirection: "column", gap: 20 }}>
+              {TECH_GROUPS.map(({ label, items }) => (
+                <div key={label}>
+                  <div style={{
+                    fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
+                    textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 10,
+                  }}>
+                    {label}
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {items.map(t => <span key={t} className="tag">{t}</span>)}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

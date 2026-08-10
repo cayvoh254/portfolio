@@ -353,6 +353,7 @@ button { font-family: inherit; }
 @media (max-width: 960px) {
   .hero-grid    { grid-template-columns: 1fr !important; }
   .hero-img     { display: none !important; }
+  #top          { min-height: 0 !important; padding-bottom: 48px !important; }
   .about-grid   { grid-template-columns: 1fr !important; }
   .skill-row    { grid-template-columns: 1fr !important; gap: 12px !important; }
   .cert-cols    { grid-template-columns: 1fr !important; }
@@ -372,4 +373,5 @@ button { font-family: inherit; }
   .exp-header { grid-template-columns: 1fr !important; }
   .exp-period { display: none !important; }
   .exp-content-grid { grid-template-columns: 1fr !important; }
+  .writeup-sidebar  { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 }

@@ -2,10 +2,8 @@ import { FadeIn } from "./FadeIn";
 
 const LABS = [
   {
-    num: "01",
     title: "Home SOC Lab",
     subtitle: "Wazuh SIEM · Multi-Host Log Ingestion · Custom Detection Rules · Grafana",
-    date: "2026",
     overview: "Replicates the core SOC analyst workflow: ingest logs from multiple hosts, write and tune detection rules, triage alerts, and investigate incidents end-to-end. Goes beyond 'install SIEM and see alerts': custom rules written from scratch, noise tuned out, Grafana dashboards built for analyst use, and a structured investigation workflow applied to every simulated incident.",
     techniques: [
       "Multi-source log ingestion: Linux syslog, auditd, auth.log; Windows Event Logs; Sysmon EIDs 1, 3, 7, 10, 11",
@@ -19,11 +17,9 @@ const LABS = [
     href: "https://github.com/cayvoh254/lab-01-soc-wazuh-siem",
   },
   {
-    num: "02",
     title: "Web App & API Pentesting Lab",
     subtitle: "OWASP Top 10 · API Security Top 10 · Burp Suite · Structured Reporting",
-    date: "2026",
-    overview: "Hands-on penetration testing against intentionally vulnerable targets with a focus on producing professional-grade findings reports, not just exploiting but documenting reproduction steps, impact, and remediation guidance. Lab targets span OWASP Top 10 web vulnerabilities and the OWASP API Security Top 10, with emphasis on the API-specific issues most common in fintech and SaaS environments.",
+    overview: "Hands-on penetration testing against intentionally vulnerable targets with a focus on producing professional-grade findings reports — not just exploiting but documenting reproduction steps, impact, and remediation guidance. Lab targets span OWASP Top 10 web vulnerabilities and the OWASP API Security Top 10, with emphasis on the API-specific issues most common in fintech and SaaS environments.",
     techniques: [
       "BOLA (API1): accessed other users' vehicle location data by modifying GUIDs; no server-side ownership check",
       "OTP brute force (API2): no rate limiting on 4-digit OTP; account takeover via Burp Intruder in under 3 minutes",
@@ -37,10 +33,8 @@ const LABS = [
     href: "https://github.com/cayvoh254/lab-02-web-api-pentesting",
   },
   {
-    num: "03",
     title: "Home Network Security Lab",
     subtitle: "pfSense · VLAN Segmentation · Zeek Traffic Analysis · Wireshark",
-    date: "2025",
     overview: "Mirrors the segmented network architecture found in enterprise environments: separate VLANs for different trust zones, strict inter-VLAN routing enforced by firewall rules, and passive traffic analysis to validate that isolation is actually working, not just assumed. Built to understand network segmentation decisions from the ground up after years of monitoring enterprise networks without designing them.",
     techniques: [
       "5-VLAN design: Management (high trust), Servers, User Workstations, IoT/Untrusted (internet-only, zero RFC1918 access), DMZ",
@@ -55,10 +49,8 @@ const LABS = [
     href: "https://github.com/cayvoh254/lab-03-network-security-pfsense",
   },
   {
-    num: "04",
     title: "Active Directory Attack & Defense",
     subtitle: "BloodHound · Kerberoasting · Pass-the-Hash · Sysmon Hardening · Wazuh Detection",
-    date: "2026",
     overview: "Two-phase approach: attack a virtualised Windows Server AD environment using real adversary techniques, then harden the same environment and validate that the attacks now produce detectable signals. The two-phase structure is deliberate: detection rules can only be written well if you know exactly what attack traffic and logs look like from the attacker side.",
     techniques: [
       "BloodHound enumeration: shortest path from low-priv domain user to Domain Admin identified in 3 hops via machine account ACL",
@@ -91,92 +83,85 @@ export default function Writeups() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
           {LABS.map((lab, i) => (
-            <FadeIn key={lab.num} delay={i * 0.07}>
+            <FadeIn key={lab.title} delay={i * 0.07}>
             <article className="writeup-card" style={{
               background: "var(--lt)",
               border: "1px solid var(--lt-brd)",
               borderRadius: 12,
               padding: "28px 32px",
             }}>
-              {/* Header row */}
+              {/* Header */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16, flexWrap: "wrap", gap: 12 }}>
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                    <span style={{
-                      fontSize: 10, fontWeight: 700, color: "var(--lt-dim)",
-                      fontVariantNumeric: "tabular-nums", letterSpacing: ".04em",
-                    }}>{lab.num}</span>
-                    <h3 style={{
-                      fontSize: 16, fontWeight: 700, color: "var(--lt-fg)",
-                      letterSpacing: "-.02em", lineHeight: 1.2,
-                    }}>{lab.title}</h3>
-                  </div>
+                  <h3 style={{
+                    fontSize: 16, fontWeight: 700, color: "var(--lt-fg)",
+                    letterSpacing: "-.02em", lineHeight: 1.2, marginBottom: 6,
+                  }}>{lab.title}</h3>
                   <div style={{ fontSize: 11.5, color: "var(--gld)", fontWeight: 500, letterSpacing: ".01em" }}>
                     {lab.subtitle}
                   </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ fontSize: 11, color: "var(--lt-dim)" }}>{lab.date}</span>
-                  <a
-                    href={lab.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex", alignItems: "center", gap: 5,
-                      fontSize: 12, fontWeight: 600, color: "var(--lt-fg)",
-                      padding: "6px 14px", border: "1px solid var(--lt-brd)",
-                      borderRadius: 6, textDecoration: "none",
-                      transition: "border-color .2s, color .2s",
-                    }}
-                  >
-                    <svg viewBox="0 0 24 24" width={13} height={13} fill="currentColor">
-                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-                    </svg>
-                    GitHub
-                  </a>
-                </div>
+                <a
+                  href={lab.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 5,
+                    fontSize: 12, fontWeight: 600, color: "var(--lt-fg)",
+                    padding: "6px 14px", border: "1px solid var(--lt-brd)",
+                    borderRadius: 6, textDecoration: "none",
+                    transition: "border-color .2s, color .2s", flexShrink: 0,
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" width={13} height={13} fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  GitHub
+                </a>
               </div>
 
-              <p style={{ fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.78, marginBottom: 20 }}>
+              <p style={{ fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.78, marginBottom: 24 }}>
                 {lab.overview}
               </p>
 
-              <div className="writeup-body" style={{ display: "grid", gridTemplateColumns: "1fr 200px", gap: "0 32px", alignItems: "start" }}>
-                {/* Techniques */}
+              {/* Body: Techniques left, MITRE+Tools right */}
+              <div className="writeup-body" style={{ display: "grid", gridTemplateColumns: "1fr 220px", gap: "0 40px", alignItems: "start" }}>
                 <div>
-                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 10 }}>
+                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 12 }}>
                     Techniques Practiced
                   </div>
-                  <ul style={{ paddingLeft: 16, display: "flex", flexDirection: "column", gap: 5 }}>
-                    {lab.techniques.map((t, i) => (
-                      <li key={i} style={{ fontSize: 12.5, color: "var(--lt-muted)", lineHeight: 1.65, listStyleType: "disc" }}>
+                  <ul style={{ paddingLeft: 16, display: "flex", flexDirection: "column", gap: 6 }}>
+                    {lab.techniques.map((t, ti) => (
+                      <li key={ti} style={{ fontSize: 12.5, color: "var(--lt-muted)", lineHeight: 1.65, listStyleType: "disc" }}>
                         {t}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Right column: MITRE + Tools */}
-                <div>
-                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 8 }}>
-                    MITRE ATT&amp;CK
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 20 }}>
-                    {lab.mitre.map(m => (
-                      <span key={m} style={{
-                        fontSize: 11, color: "var(--gld)", fontFamily: "ui-monospace, monospace",
-                        fontWeight: 500,
-                      }}>{m}</span>
-                    ))}
+                <div className="writeup-sidebar">
+                  <div>
+                    <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 10 }}>
+                      MITRE ATT&amp;CK
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 24 }}>
+                      {lab.mitre.map(m => (
+                        <span key={m} style={{
+                          fontSize: 11, color: "var(--gld)", fontFamily: "ui-monospace, monospace", fontWeight: 500,
+                        }}>{m}</span>
+                      ))}
+                    </div>
                   </div>
 
-                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 8 }}>
-                    Tools
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                    {lab.tools.map(t => (
-                      <span key={t} className="tag" style={{ fontSize: 10.5 }}>{t}</span>
-                    ))}
+                  <div>
+                    <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--lt-dim)", marginBottom: 10 }}>
+                      Tools
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                      {lab.tools.map(t => (
+                        <span key={t} className="tag" style={{ fontSize: 10.5 }}>{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
