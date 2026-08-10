@@ -80,7 +80,7 @@ const PRODUCTS: Project[] = [
   },
 ];
 
-function ProjCard({ p, index }: { p: Project; index: number }) {
+function ProjCard({ p }: { p: Project }) {
   return (
     <a
       href={p.href}
@@ -88,14 +88,8 @@ function ProjCard({ p, index }: { p: Project; index: number }) {
       rel={p.href !== "#" ? "noopener noreferrer" : undefined}
       className="proj-card"
     >
-      {/* Card top: index + badge */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-        <span style={{
-          fontSize: 11, color: "var(--lt-dim)", fontWeight: 500,
-          fontVariantNumeric: "tabular-nums", letterSpacing: ".02em",
-        }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
+      {/* Card top: badge only */}
+      <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start", marginBottom: 14 }}>
         <span className={BADGE[p.status]}>{p.status}</span>
       </div>
 
@@ -159,7 +153,7 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
       <div className="proj-grid">
         {projects.map((p, i) => (
           <FadeIn key={p.name} delay={i * 0.07}>
-            <ProjCard p={p} index={i} />
+            <ProjCard p={p} />
           </FadeIn>
         ))}
       </div>
