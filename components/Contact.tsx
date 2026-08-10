@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const PLATFORMS = [
   { href: "#", label: "HackTheBox", placeholder: true },
   { href: "#", label: "TryHackMe", placeholder: true },
@@ -44,6 +46,7 @@ export default function Contact() {
       style={{ padding: "clamp(80px,10vw,120px) 0" }}
     >
       <div className="wrap">
+        <FadeIn>
         <div
           className="contact-grid"
           style={{
@@ -79,8 +82,8 @@ export default function Contact() {
               maxWidth: "38ch",
               marginBottom: 36,
             }}>
-              Open to technical support, cybersecurity, and infrastructure roles,
-              remote or hybrid. If you have something worth discussing, reach out directly.
+              Based in Nairobi, Kenya. If you have something worth discussing,
+              reach out directly.
             </p>
 
             <a href="mailto:kevin.gitau27@gmail.com" className="btn-primary">
@@ -92,40 +95,8 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* Right — availability card + response time + social links */}
+          {/* Right — response time + social links */}
           <div style={{ paddingTop: 8 }}>
-            {/* Availability status */}
-            <div style={{
-              display: "flex", alignItems: "flex-start", gap: 14,
-              padding: "22px 24px",
-              border: "1px solid rgba(34,197,94,.2)",
-              borderRadius: 10,
-              background: "rgba(34,197,94,.06)",
-              marginBottom: 28,
-            }}>
-              <span style={{
-                width: 8, height: 8, borderRadius: "50%",
-                background: "#22C55E",
-                boxShadow: "0 0 0 3px rgba(34,197,94,.2)",
-                flexShrink: 0, marginTop: 6,
-              }} />
-              <div>
-                <div style={{
-                  fontSize: 13, fontWeight: 600,
-                  color: "var(--dk-fg)", marginBottom: 6,
-                  letterSpacing: ".01em",
-                }}>
-                  Currently available
-                </div>
-                <div style={{
-                  fontSize: 13, color: "rgba(242,240,237,.5)", lineHeight: 1.68,
-                }}>
-                  Actively seeking remote or hybrid roles in technical support,
-                  security operations, or infrastructure. Nairobi, Kenya · EAT (UTC+3).
-                </div>
-              </div>
-            </div>
-
             {/* Response time */}
             <div style={{
               display: "flex", alignItems: "center", gap: 10,
@@ -202,6 +173,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

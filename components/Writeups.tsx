@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const LABS = [
   {
     num: "01",
@@ -78,16 +80,19 @@ export default function Writeups() {
   return (
     <section className="sec sec-alt" id="writeups">
       <div className="wrap">
-        <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">Writeups</div>
-          <p style={{ fontSize: 14, color: "var(--lt-muted)", marginTop: 8, maxWidth: "52ch", lineHeight: 1.7 }}>
-            Lab documentation written to professional report standard: setup, methodology, findings, detections, and lessons learned.
-          </p>
-        </div>
+        <FadeIn>
+          <div style={{ marginBottom: 48 }}>
+            <div className="sec-num">Writeups</div>
+            <p style={{ fontSize: 14, color: "var(--lt-muted)", marginTop: 8, maxWidth: "52ch", lineHeight: 1.7 }}>
+              Lab documentation written to professional report standard: setup, methodology, findings, detections, and lessons learned.
+            </p>
+          </div>
+        </FadeIn>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-          {LABS.map((lab) => (
-            <article key={lab.num} className="writeup-card" style={{
+          {LABS.map((lab, i) => (
+            <FadeIn key={lab.num} delay={i * 0.07}>
+            <article className="writeup-card" style={{
               background: "var(--lt)",
               border: "1px solid var(--lt-brd)",
               borderRadius: 12,
@@ -176,6 +181,7 @@ export default function Writeups() {
                 </div>
               </div>
             </article>
+            </FadeIn>
           ))}
         </div>
       </div>

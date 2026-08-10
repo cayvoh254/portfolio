@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 type Status = "Live lab" | "Shipped" | "Beta" | "In dev" | "Stealth";
 
 type Project = {
@@ -163,7 +165,9 @@ function ProjGroup({ title, num, projects }: { title: string; num: string; proje
 
       <div className="proj-grid">
         {projects.map((p, i) => (
-          <ProjCard key={p.name} p={p} index={i} />
+          <FadeIn key={p.name} delay={i * 0.07}>
+            <ProjCard p={p} index={i} />
+          </FadeIn>
         ))}
       </div>
     </div>
@@ -174,9 +178,11 @@ export default function Projects() {
   return (
     <section className="sec" id="projects">
       <div className="wrap">
-        <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">Projects</div>
-        </div>
+        <FadeIn>
+          <div style={{ marginBottom: 48 }}>
+            <div className="sec-num">Projects</div>
+          </div>
+        </FadeIn>
 
         <ProjGroup title="Security Labs" num="A" projects={SECURITY} />
         <ProjGroup title="Products" num="B" projects={PRODUCTS} />

@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 type Cert = { name: string; issuer: string; featured?: boolean };
 type CertGroup = { domain: string; certs: Cert[] };
 
@@ -64,6 +66,7 @@ export default function Certifications() {
   return (
     <section className="sec" id="certifications">
       <div className="wrap">
+        <FadeIn>
         <div style={{
           display: "flex", justifyContent: "space-between",
           alignItems: "flex-end", marginBottom: 48,
@@ -85,7 +88,9 @@ export default function Certifications() {
             </svg>
           </a>
         </div>
+        </FadeIn>
 
+        <FadeIn delay={0.1}>
         <div style={{
           display: "grid", gridTemplateColumns: "auto 1fr",
           gap: "clamp(24px,5vw,60px)", alignItems: "center",
@@ -115,7 +120,9 @@ export default function Certifications() {
             </a>.
           </p>
         </div>
+        </FadeIn>
 
+        <FadeIn delay={0.15}>
         <div style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -164,6 +171,7 @@ export default function Certifications() {
             </div>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

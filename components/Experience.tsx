@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 type Job = {
   year: string;
   role: string;
@@ -80,14 +82,16 @@ export default function Experience() {
   return (
     <section className="sec sec-alt" id="experience">
       <div className="wrap">
-        <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">Experience</div>
-        </div>
+        <FadeIn>
+          <div style={{ marginBottom: 48 }}>
+            <div className="sec-num">Experience</div>
+          </div>
+        </FadeIn>
 
         <div>
           {JOBS.map((job, i) => (
+            <FadeIn key={i} delay={i * 0.06}>
             <div
-              key={i}
               style={{
                 display: "grid",
                 gridTemplateColumns: "80px 1fr",
@@ -173,6 +177,7 @@ export default function Experience() {
                 </div>
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>

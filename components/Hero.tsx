@@ -1,3 +1,10 @@
+"use client";
+import { motion } from "framer-motion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
+const item = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } };
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } } };
+
 const SOCIALS = [
   {
     href: "mailto:kevin.gitau27@gmail.com",
@@ -70,31 +77,21 @@ export default function Hero() {
           }}
         >
           {/* ── Left ── */}
-          <div>
+          <motion.div variants={stagger} initial="hidden" animate="show">
             {/* Label row */}
-            <div style={{
-              display: "flex", alignItems: "center",
-              justifyContent: "space-between", marginBottom: 28,
-            }}>
+            <motion.div variants={item} style={{ marginBottom: 28 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: ".18em",
                 textTransform: "uppercase", color: "var(--lt-dim)",
               }}>
                 Security Operations Engineer
               </span>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 12, color: "var(--lt-dim)" }}>
-                <span style={{
-                  width: 7, height: 7, borderRadius: "50%", background: "#22C55E",
-                  boxShadow: "0 0 0 3px rgba(34,197,94,.15)", flexShrink: 0,
-                }} />
-                Available
-              </span>
-            </div>
+            </motion.div>
 
-            <hr className="rule" />
+            <motion.hr variants={item} className="rule" />
 
             {/* Name */}
-            <h1 style={{
+            <motion.h1 variants={item} style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
               fontSize: "clamp(60px, 9vw, 108px)",
               color: "var(--lt-fg)",
@@ -105,12 +102,12 @@ export default function Hero() {
             }}>
               Kevin<br />
               <em style={{ fontStyle: "italic", color: "var(--lt-dim)" }}>Gitau.</em>
-            </h1>
+            </motion.h1>
 
-            <hr className="rule" />
+            <motion.hr variants={item} className="rule" />
 
             {/* Bio */}
-            <p style={{
+            <motion.p variants={item} style={{
               fontSize: "clamp(14px, 1.3vw, 16px)",
               lineHeight: 1.82,
               color: "var(--lt-muted)",
@@ -122,10 +119,10 @@ export default function Hero() {
               fintech, and telecommunications infrastructure. Threat detection,
               SIEM deployment, penetration testing, and container security, backed
               by deep production systems experience.
-            </p>
+            </motion.p>
 
             {/* CTAs + social icons on same row */}
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
+            <motion.div variants={item} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
               <a href="#projects" className="btn-primary">
                 View my work
                 <svg viewBox="0 0 16 16" width={13} height={13} fill="none" stroke="currentColor" strokeWidth={1.8}>
@@ -163,10 +160,10 @@ export default function Hero() {
                   </a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Location */}
-            <div style={{
+            <motion.div variants={item} style={{
               display: "flex", alignItems: "center", gap: 6,
               fontSize: 12, color: "var(--lt-dim)",
             }}>
@@ -174,8 +171,8 @@ export default function Hero() {
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
               Nairobi, Kenya · EAT (UTC+3) · Remote-ready
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* ── Right — photo (10% larger column) + stats card directly below ── */}
           <div className="hero-img" style={{ display: "flex", flexDirection: "column", gap: 16 }}>

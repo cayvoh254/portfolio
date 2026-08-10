@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const SKILLS = [
   {
     cat: "Security Operations & AppSec",
@@ -37,13 +39,16 @@ export default function Skills() {
   return (
     <section className="sec sec-alt" id="skills">
       <div className="wrap">
-        <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">Skills</div>
-        </div>
+        <FadeIn>
+          <div style={{ marginBottom: 48 }}>
+            <div className="sec-num">Skills</div>
+          </div>
+        </FadeIn>
 
         <div>
-          {SKILLS.map((s) => (
-            <div key={s.cat} className="skill-row">
+          {SKILLS.map((s, i) => (
+            <FadeIn key={s.cat} delay={i * 0.05}>
+            <div className="skill-row">
               <div style={{
                 fontSize: 12, fontWeight: 700, color: "var(--lt-fg)",
                 letterSpacing: ".01em", paddingTop: 4,
@@ -56,6 +61,7 @@ export default function Skills() {
                 ))}
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>

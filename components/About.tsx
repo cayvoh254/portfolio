@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const TOOLS = [
   "Azure", "Entra ID", "Wazuh", "Burp Suite", "OWASP ZAP",
   "Python", "Kubernetes", "Docker", "Linux", "Grafana",
@@ -8,10 +10,13 @@ export default function About() {
   return (
     <section className="sec" id="about">
       <div className="wrap">
-        <div style={{ marginBottom: 48 }}>
-          <div className="sec-num">About</div>
-        </div>
+        <FadeIn>
+          <div style={{ marginBottom: 48 }}>
+            <div className="sec-num">About</div>
+          </div>
+        </FadeIn>
 
+        <FadeIn delay={0.1}>
         <div
           className="about-grid"
           style={{
@@ -107,6 +112,7 @@ export default function About() {
             </div>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );
