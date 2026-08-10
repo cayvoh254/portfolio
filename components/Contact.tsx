@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, FormEvent } from "react";
 import { FadeIn } from "./FadeIn";
@@ -24,7 +24,7 @@ const SOCIALS = [
     ),
   },
   {
-    href: "https://www.credly.com/users/kevin-kibe",
+    href: "https://www.credly.com/users/kevin-gitau1",
     label: "Credly",
     icon: (
       <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round">
@@ -126,7 +126,7 @@ export default function Contact() {
     <section
       className="dark-sec"
       id="contact"
-      style={{ padding: "clamp(72px,9vw,108px) 0" }}
+      style={{ padding: "clamp(56px,7vw,80px) 0" }}
     >
       <div className="wrap">
         <FadeIn>
@@ -194,7 +194,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — form */}
+          {/* Right â€” form */}
           <div style={{ paddingTop: 4 }}>
             {sent ? (
               <div style={{

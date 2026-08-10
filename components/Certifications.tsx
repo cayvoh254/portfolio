@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { FadeIn } from "./FadeIn";
 
 const FEATURED = [
@@ -38,7 +38,7 @@ export default function Certifications() {
         <FadeIn delay={0.08}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 clamp(40px,6vw,80px)" }} className="cert-cols">
 
-            {/* Left — selected credentials */}
+            {/* Left â€” selected credentials */}
             <div>
               <div style={{
                 fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
@@ -58,7 +58,7 @@ export default function Certifications() {
                 </div>
               ))}
               <a
-                href="https://www.credly.com/users/kevin-kibe"
+                href="https://www.credly.com/users/kevin-gitau1"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -74,7 +74,7 @@ export default function Certifications() {
               </a>
             </div>
 
-            {/* Right — education */}
+            {/* Right â€” education */}
             <div>
               <div style={{
                 fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
@@ -86,7 +86,7 @@ export default function Certifications() {
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--lt-fg)", lineHeight: 1.3, marginBottom: 2 }}>
                   B.Sc. Business Information Technology
                 </div>
-                <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>Jomo Kenyatta University · Second Class Upper</div>
+                <div style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>Jomo Kenyatta University Â· Second Class Upper</div>
               </div>
 
               <div style={{ padding: "13px 0", borderBottom: "1px solid var(--lt-brd)" }}>

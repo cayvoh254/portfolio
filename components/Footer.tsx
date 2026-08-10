@@ -4,7 +4,7 @@ export default function Footer() {
       className="dark-sec"
       style={{
         borderTop: "1px solid rgba(242,240,237,.07)",
-        padding: "24px var(--e)",
+        padding: "20px var(--e)",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -13,7 +13,7 @@ export default function Footer() {
       }}
     >
       <span style={{ fontSize: 12, color: "var(--dk-dim)" }}>
-        &copy; {new Date().getFullYear()} Kevin Gitau &middot; Nairobi, Kenya
+        {"© "}{new Date().getFullYear()}{" Kevin Gitau · Nairobi, Kenya"}
       </span>
 
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -21,7 +21,7 @@ const SITE_URL = "https://kevingitau.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
+    default: "Kevin Gitau | IT Operations Â· Application Support Â· Cybersecurity",
     template: "%s | Kevin Gitau",
   },
   description:
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Kevin Gitau",
-    title: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
+    title: "Kevin Gitau | IT Operations Â· Application Support Â· Cybersecurity",
     description:
       "IT operations and application support professional with a cybersecurity track, across enterprise cloud, fintech, and telecommunications. Based in Nairobi, Kenya.",
     images: [
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin Gitau | IT Operations · Application Support · Cybersecurity",
+    title: "Kevin Gitau | IT Operations Â· Application Support Â· Cybersecurity",
     description:
       "IT operations and application support professional with a cybersecurity track, across enterprise cloud, fintech, and telecommunications.",
     images: ["/og-image.png"],
@@ -97,7 +97,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kevin Gitau",
-  jobTitle: "IT Operations · Application Support · Cybersecurity",
+  jobTitle: "IT Operations Â· Application Support Â· Cybersecurity",
   url: SITE_URL,
   email: "kevin.gitau27@gmail.com",
   address: {
@@ -108,7 +108,7 @@ const jsonLd = {
   sameAs: [
     "https://linkedin.com/in/kevinkgitau",
     "https://github.com/cayvoh254",
-    "https://www.credly.com/users/kevin-kibe",
+    "https://www.credly.com/users/kevin-gitau1",
   ],
   knowsAbout: [
     "Security Operations",

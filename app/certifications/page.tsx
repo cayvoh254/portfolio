@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -92,7 +92,7 @@ export default function CertificationsPage() {
               }}>
                 <div className="sec-num">Certifications &amp; Education</div>
                 <a
-                  href="https://www.credly.com/users/kevin-kibe"
+                  href="https://www.credly.com/users/kevin-gitau1"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -130,7 +130,7 @@ export default function CertificationsPage() {
                   Credentials across cybersecurity, cloud, networking, and AI, from
                   foundational CCNA through Google Cybersecurity, IBM Pentesting,
                   Cisco CEH, APIsec, and Kubernetes. All verifiable on{" "}
-                  <a href="https://www.credly.com/users/kevin-kibe" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.credly.com/users/kevin-gitau1" target="_blank" rel="noopener noreferrer"
                     style={{ color: "var(--gld)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                     Credly
                   </a>{" "}and{" "}
@@ -170,7 +170,7 @@ export default function CertificationsPage() {
 
                   <div>
                     <div className="cert-domain-label">Education</div>
-                    <CertItem name="B.Sc. Business Information Technology" issuer="Jomo Kenyatta University · Second Class Upper" featured />
+                    <CertItem name="B.Sc. Business Information Technology" issuer="Jomo Kenyatta University Â· Second Class Upper" featured />
                   </div>
                 </div>
 

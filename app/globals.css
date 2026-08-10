@@ -346,7 +346,7 @@ button { font-family: inherit; }
 
 /* ─── Footer social icons ─── */
 .foot-soc {
-  color: rgba(242,240,237,.32);
+  color: rgba(242,240,237,.45);
   display: inline-flex;
   text-decoration: none;
   transition: color .2s;

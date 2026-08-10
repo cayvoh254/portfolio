@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -39,7 +39,7 @@ const SOCIALS = [
     ),
   },
   {
-    href: "https://www.credly.com/users/kevin-kibe",
+    href: "https://www.credly.com/users/kevin-gitau1",
     label: "Credly",
     color: "#F57600",
     icon: (
@@ -80,7 +80,7 @@ export default function Hero() {
                 fontSize: 11, fontWeight: 700, letterSpacing: ".18em",
                 textTransform: "uppercase", color: "var(--lt-dim)",
               }}>
-                IT Operations · Application Support · Cybersecurity
+                IT Operations Â· Application Support Â· Cybersecurity
               </span>
             </motion.div>
 
@@ -139,7 +139,7 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Social icons — brand colours */}
+            {/* Social icons â€” brand colours */}
             <motion.div variants={item} style={{ display: "flex", gap: 8, marginBottom: 20 }}>
               {SOCIALS.map(({ href, label, color, icon }) => (
                 <a
@@ -172,11 +172,11 @@ export default function Hero() {
               <svg viewBox="0 0 24 24" width={12} height={12} fill="currentColor" style={{ opacity: .45, flexShrink: 0 }}>
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
-              Nairobi, Kenya · EAT (UTC+3)
+              Nairobi, Kenya Â· EAT (UTC+3)
             </motion.div>
           </motion.div>
 
-          {/* Right — photo */}
+          {/* Right â€” photo */}
           <div className="hero-img" style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
