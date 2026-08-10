@@ -73,7 +73,7 @@ export default function Writeups() {
     <section className="sec sec-alt" id="writeups">
       <div className="wrap">
         <FadeIn>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 32 }}>
             <div className="sec-num">Writeups</div>
             <p style={{ fontSize: 14, color: "var(--lt-muted)", marginTop: 8, maxWidth: "52ch", lineHeight: 1.7 }}>
               Lab documentation written to professional report standard: setup, methodology, findings, detections, and lessons learned.
@@ -81,7 +81,7 @@ export default function Writeups() {
           </div>
         </FadeIn>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {LABS.map((lab, i) => (
             <FadeIn key={lab.title} delay={i * 0.07}>
             <article className="writeup-card" style={{

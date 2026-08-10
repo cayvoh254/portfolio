@@ -176,8 +176,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right — photo + social icons */}
-          <div className="hero-img" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          {/* Right — photo */}
+          <div className="hero-img" style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -189,32 +189,6 @@ export default function Hero() {
                   objectFit: "contain", objectPosition: "center center",
                 }}
               />
-            </div>
-
-            {/* Social icons under photo — brand colours, generous spacing */}
-            <div style={{ display: "flex", justifyContent: "center", gap: 20 }}>
-              {SOCIALS.map(({ href, label, color, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("mailto") ? undefined : "_blank"}
-                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  aria-label={label}
-                  title={label}
-                  style={{
-                    display: "inline-flex", alignItems: "center", justifyContent: "center",
-                    width: 44, height: 44, borderRadius: 10,
-                    border: `1.5px solid ${color}`,
-                    color: color,
-                    textDecoration: "none", flexShrink: 0,
-                    transition: "opacity .2s",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.opacity = ".65")}
-                  onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-                >
-                  {icon}
-                </a>
-              ))}
             </div>
           </div>
         </div>

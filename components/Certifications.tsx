@@ -69,7 +69,7 @@ export default function Certifications() {
         <FadeIn>
         <div style={{
           display: "flex", justifyContent: "space-between",
-          alignItems: "flex-end", marginBottom: 48,
+          alignItems: "flex-end", marginBottom: 32,
           flexWrap: "wrap", gap: 16,
         }}>
           <div className="sec-num">Certifications &amp; Education</div>

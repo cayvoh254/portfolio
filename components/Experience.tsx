@@ -77,7 +77,7 @@ export default function Experience() {
     <section className="sec sec-alt" id="experience">
       <div className="wrap">
         <FadeIn>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 32 }}>
             <div className="sec-num">Experience</div>
           </div>
         </FadeIn>
@@ -87,66 +87,62 @@ export default function Experience() {
             <FadeIn key={i} delay={i * 0.06}>
             <div
               style={{
-                paddingTop: i > 0 ? 48 : 0,
-                paddingBottom: 48,
+                paddingTop: i > 0 ? 36 : 0,
+                paddingBottom: 36,
                 borderBottom: i < JOBS.length - 1 ? "1px solid var(--lt-brd)" : "none",
               }}
             >
-              <div className="exp-content-grid">
-                {/* Left: role, company, description, wins */}
-                <div>
-                  <div style={{ marginBottom: 10 }}>
-                    <div style={{
-                      fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
-                      letterSpacing: "-.01em", marginBottom: 4,
+              {/* Header row: role + period right-aligned */}
+              <div style={{
+                display: "flex", justifyContent: "space-between",
+                alignItems: "flex-start", flexWrap: "wrap", gap: "4px 16px",
+                marginBottom: 6,
+              }}>
+                <div style={{
+                  fontSize: 16, fontWeight: 600, color: "var(--lt-fg)",
+                  letterSpacing: "-.01em",
+                }}>
+                  {job.role}
+                </div>
+                <div style={{ fontSize: 11.5, color: "var(--lt-dim)", flexShrink: 0, paddingTop: 2 }}>
+                  {job.period}
+                </div>
+              </div>
+
+              {/* Company + location */}
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "3px 8px", marginBottom: 10 }}>
+                <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--gld)" }}>
+                  {job.company}
+                </span>
+                <span style={{ fontSize: 11, color: "var(--lt-brd)" }}>·</span>
+                <span style={{ fontSize: 12, color: "var(--lt-dim)" }}>
+                  {job.where}
+                </span>
+              </div>
+
+              <p style={{ fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)", marginBottom: 10 }}>
+                {job.desc}
+              </p>
+
+              {job.wins.length > 0 && (
+                <ul style={{ listStyle: "none", padding: 0, marginBottom: 12 }}>
+                  {job.wins.map(w => (
+                    <li key={w} style={{
+                      fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.6,
+                      paddingLeft: 14, position: "relative", marginBottom: 2,
                     }}>
-                      {job.role}
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "3px 8px", marginBottom: 2 }}>
-                      <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--gld)" }}>
-                        {job.company}
-                      </span>
-                      <span style={{ fontSize: 11, color: "var(--lt-brd)" }}>·</span>
-                      <span style={{ fontSize: 11.5, color: "var(--lt-dim)" }}>
-                        {job.period}
-                      </span>
-                    </div>
-                    <div style={{ fontSize: 12, color: "var(--lt-dim)" }}>
-                      {job.where}
-                    </div>
-                  </div>
+                      <span style={{
+                        position: "absolute", left: 0, top: ".6em",
+                        width: 5, height: 1, background: "var(--lt-dim)",
+                      }} />
+                      {w}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-                  <p style={{
-                    fontSize: 13.5, lineHeight: 1.78, color: "var(--lt-muted)",
-                    marginTop: 10,
-                  }}>
-                    {job.desc}
-                  </p>
-
-                  {job.wins.length > 0 && (
-                    <ul style={{ marginTop: 10, listStyle: "none", padding: 0 }}>
-                      {job.wins.map(w => (
-                        <li key={w} style={{
-                          fontSize: 13, color: "var(--lt-muted)", lineHeight: 1.6,
-                          paddingLeft: 14, position: "relative", marginBottom: 2,
-                        }}>
-                          <span style={{
-                            position: "absolute", left: 0, top: ".6em",
-                            width: 5, height: 1, background: "var(--lt-dim)",
-                          }} />
-                          {w}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {/* Right: tags */}
-                <div style={{ paddingTop: 4 }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                    {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                  </div>
-                </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                {job.tags.map(t => <span key={t} className="tag">{t}</span>)}
               </div>
             </div>
             </FadeIn>

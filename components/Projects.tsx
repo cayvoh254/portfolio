@@ -140,8 +140,8 @@ function ProjCard({ p }: { p: Project }) {
 
 function ProjGroup({ title, num, projects }: { title: string; num: string; projects: Project[] }) {
   return (
-    <div style={{ marginBottom: 64 }}>
-      <div style={{ marginBottom: 20 }}>
+    <div style={{ marginBottom: 36 }}>
+      <div style={{ marginBottom: 14 }}>
         <span style={{
           fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
           textTransform: "uppercase", color: "var(--lt-dim)",
@@ -166,7 +166,7 @@ export default function Projects() {
     <section className="sec" id="projects">
       <div className="wrap">
         <FadeIn>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 32 }}>
             <div className="sec-num">Projects</div>
           </div>
         </FadeIn>

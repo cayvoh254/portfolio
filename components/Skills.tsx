@@ -40,7 +40,7 @@ export default function Skills() {
     <section className="sec sec-alt" id="skills">
       <div className="wrap">
         <FadeIn>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 32 }}>
             <div className="sec-num">Skills</div>
           </div>
         </FadeIn>
