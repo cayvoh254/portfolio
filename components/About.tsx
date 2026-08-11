@@ -22,11 +22,15 @@ export default function About() {
               fontWeight: 400,
               marginBottom: 20,
             }}>
-              Background spanning network operations, cloud platform support,
-              regulated fintech, and large-scale IoT. Security running in
-              parallel across SIEM deployment, penetration testing, and Active
-              Directory hardening. Independent products built for the Kenyan
-              and East African market.
+              My background runs through telecommunications, climate tech,
+              fintech, and startup environments within these industries. The
+              core of the work has always been production systems and cloud
+              infrastructure: Azure-hosted platforms, microservices
+              architecture, distributed IoT, and application support under real
+              commercial pressure. Security is a second discipline built
+              deliberately alongside: application hardening, penetration
+              testing, SIEM engineering, and Active Directory defense. Also
+              builds independent products.
             </p>
 
             <Link
