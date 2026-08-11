@@ -380,12 +380,8 @@ button { font-family: inherit; }
   margin-bottom: 14px;
 }
 
-/* ─── Section background differentiation ─── */
-#projects { background: #E5E8ED; position: relative; }
-#writeups  { background: #E9EAED; }
-
-:root[data-theme="dark"] #projects { background: #13161D; }
-:root[data-theme="dark"] #writeups  { background: #111419; }
+/* ─── Section positioning ─── */
+#projects { position: relative; }
 
 /* ─── Experience timeline ─── */
 .exp-tl {
@@ -528,11 +524,6 @@ button { font-family: inherit; }
   .lab-carousel { grid-template-columns: 1fr; }
   .lab-preview  { aspect-ratio: 16/9; }
   .lab-body     { padding: 24px 22px 22px; }
-}
-
-@media (max-width: 720px) {
-  .foot-grid { grid-template-columns: 1fr 1fr !important; }
-  .foot-grid > *:first-child { grid-column: 1 / -1; }
 }
 
 @media (max-width: 640px) {

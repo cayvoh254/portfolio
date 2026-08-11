@@ -8,24 +8,25 @@ const STATS = [
 export default function StatsBar() {
   return (
     <div style={{
-      background: "var(--dk2)",
-      borderBottom: "1px solid rgba(242,240,237,.06)",
+      background: "var(--lt-alt)",
+      borderTop: "1px solid var(--lt-brd)",
+      borderBottom: "1px solid var(--lt-brd)",
     }}>
       <div className="wrap">
         <div className="stats-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(4,1fr)",
-          borderLeft: "1px solid rgba(242,240,237,.06)",
+          borderLeft: "1px solid var(--lt-brd)",
         }}>
           {STATS.map(({ n, sub }) => (
             <div key={n} style={{
               padding: "28px 28px 24px",
-              borderRight: "1px solid rgba(242,240,237,.06)",
+              borderRight: "1px solid var(--lt-brd)",
             }}>
               <div style={{
                 fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontSize: "clamp(28px,3.5vw,38px)",
-                color: "var(--dk-fg)",
+                color: "var(--lt-fg)",
                 letterSpacing: "-.04em",
                 lineHeight: 1,
                 marginBottom: 5,
@@ -37,7 +38,7 @@ export default function StatsBar() {
                 fontWeight: 600,
                 letterSpacing: ".1em",
                 textTransform: "uppercase",
-                color: "var(--dk-dim)",
+                color: "var(--lt-muted)",
               }}>
                 {sub}
               </div>
