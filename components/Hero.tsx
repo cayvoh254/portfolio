@@ -111,11 +111,11 @@ export default function Hero() {
               marginBottom: 22,
               maxWidth: "52ch",
             }}>
-              Built across enterprise network operations, cloud platform support,
-              regulated fintech, and IoT at scale. Distributed systems diagnosed
-              at the API and log level. Incidents owned from first alert through
-              post-mortem. Security runs alongside: SIEM deployment, penetration
-              testing, Active Directory hardening, container scanning.
+              IT operations and application support engineer with a
+              cybersecurity track. Six years keeping distributed systems
+              healthy — across enterprise networks, regulated fintech, and
+              IoT at scale — with every incident owned from first alert
+              through post-mortem.
             </motion.p>
 
             <motion.div variants={item} style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 18 }}>

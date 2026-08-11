@@ -522,6 +522,11 @@ button { font-family: inherit; }
   .lab-body     { padding: 24px 22px 22px; }
 }
 
+@media (max-width: 720px) {
+  .foot-grid { grid-template-columns: 1fr 1fr !important; }
+  .foot-grid > *:first-child { grid-column: 1 / -1; }
+}
+
 @media (max-width: 640px) {
   .sec { padding: 48px 0; }
   .nav-links  { display: none !important; }

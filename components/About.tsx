@@ -22,15 +22,13 @@ export default function About() {
               fontWeight: 400,
               marginBottom: 20,
             }}>
-              My background runs through telecommunications, climate tech,
-              fintech, and startup environments within these industries. The
-              core of the work has always been production systems and cloud
-              infrastructure: Azure-hosted platforms, microservices
-              architecture, distributed IoT, and application support under real
-              commercial pressure. Security is a second discipline built
-              deliberately alongside: application hardening, penetration
-              testing, SIEM engineering, and Active Directory defense. I also
-              build and ship independent products.
+              Two disciplines, built in parallel. The core is production
+              systems and cloud infrastructure — Azure-hosted platforms,
+              distributed IoT, and application support under real commercial
+              pressure. Security is the second, built deliberately alongside:
+              SIEM engineering, penetration testing, and Active Directory
+              defense. And alongside both, I build and ship independent
+              products.
             </p>
 
             <Link
