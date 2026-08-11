@@ -17,7 +17,7 @@
 
   /* Light surfaces — neutral stone */
   --lt:      #EFECE6;
-  --lt-alt:  #E6E3DC;
+  --lt-alt:  #E3DFD6;
   --lt-fg:   #111111;
   --lt-muted:#5A5E63;
   --lt-dim:  #A09A93;
@@ -63,7 +63,7 @@ button { font-family: inherit; }
 
 /* ─── Surface classes ─── */
 .dark-sec { background: var(--dk); color: var(--dk-fg); }
-.sec      { padding: 64px 0; }
+.sec      { padding: 80px 0; }
 .sec-alt  { background: var(--lt-alt); }
 
 /* ─── Section label ─── */

@@ -29,8 +29,8 @@ export default function About() {
               architecture, distributed IoT, and application support under real
               commercial pressure. Security is a second discipline built
               deliberately alongside: application hardening, penetration
-              testing, SIEM engineering, and Active Directory defense. Also
-              builds independent products.
+              testing, SIEM engineering, and Active Directory defense. I also
+              build and ship independent products.
             </p>
 
             <Link

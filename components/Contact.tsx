@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, FormEvent } from "react";
 import { FadeIn } from "./FadeIn";
@@ -194,7 +194,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right â€” form */}
+          {/* Right — form */}
           <div style={{ paddingTop: 4 }}>
             {sent ? (
               <div style={{

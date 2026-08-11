@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -170,7 +170,7 @@ export default function CertificationsPage() {
 
                   <div>
                     <div className="cert-domain-label">Education</div>
-                    <CertItem name="B.Sc. Business Information Technology" issuer="Jomo Kenyatta University Â· Second Class Upper" featured />
+                    <CertItem name="B.Sc. Business Information Technology" issuer="Jomo Kenyatta University · Second Class Upper" featured />
                   </div>
                 </div>
 
