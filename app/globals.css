@@ -440,8 +440,16 @@ button { font-family: inherit; }
   touch-action: pan-y;
 }
 .lab-carousel:active { cursor: grabbing; }
-.lab-preview { overflow: hidden; }
-.lab-preview svg { display: block; width: 100%; height: 100%; }
+.lab-preview { position: relative; overflow: hidden; background: #EFECE6; min-height: 240px; }
+
+/* Technical SVG figure — project detail pages */
+.lab-figure {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--lt-brd);
+  margin-bottom: 40px; line-height: 0;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+.lab-figure svg { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; }
 .lab-body {
   padding: 32px 32px 28px;
   display: flex; flex-direction: column; justify-content: center;

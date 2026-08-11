@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn } from "@/components/FadeIn";
 import { LABS, getLabBySlug } from "@/lib/writeups";
+import { LAB_PREVIEWS } from "@/lib/labPreviews";
 
 export async function generateStaticParams() {
   return LABS.map(l => ({ slug: l.slug }));
@@ -73,6 +74,15 @@ export default async function ProjectPage(
                 </div>
               </div>
             </FadeIn>
+
+            {/* Technical visual */}
+            {LAB_PREVIEWS[lab.slug] && (
+              <FadeIn delay={0.08}>
+                <div className="lab-figure">
+                  {LAB_PREVIEWS[lab.slug]}
+                </div>
+              </FadeIn>
+            )}
 
             {/* Overview */}
             <FadeIn delay={0.1}>
