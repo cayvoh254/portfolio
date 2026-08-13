@@ -76,7 +76,7 @@ export default function LabCarousel() {
           alt={`${lab.name} — architecture illustration`}
           fill
           sizes="(max-width: 768px) 100vw, 590px"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           priority={active === 0}
         />
       </div>

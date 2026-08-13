@@ -360,7 +360,9 @@ button { font-family: inherit; }
 .foot-soc:hover { color: var(--dk-fg); }
 
 /* ─── Homepage Skills 2-col grid ─── */
-.skills-home-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.skills-home-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; grid-auto-rows: 1fr; }
+.skills-home-grid > * { display: flex; flex-direction: column; }
+.skills-home-grid .skill-group-card { flex: 1 1 auto; }
 
 /* ─── Skill group cards (homepage) ─── */
 .skill-group-card {
@@ -436,7 +438,8 @@ button { font-family: inherit; }
   touch-action: pan-y;
 }
 .lab-carousel:active { cursor: grabbing; }
-.lab-preview { position: relative; overflow: hidden; background: #EFECE6; min-height: 240px; }
+.lab-preview { position: relative; overflow: hidden; background: #EFECE6; min-height: 280px; }
+.lab-preview img { padding: 12px; }
 
 /* Technical SVG figure — project detail pages */
 .lab-figure {
@@ -511,7 +514,7 @@ button { font-family: inherit; }
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
   .hero-grid    { grid-template-columns: 1fr !important; }
-  .hero-img     { display: none !important; }
+  .hero-img     { order: -1; width: 100%; max-width: 220px; margin: 0 auto 8px; }
   #top          { min-height: 0 !important; padding-bottom: 48px !important; }
   .about-grid   { grid-template-columns: 1fr !important; }
   .skill-row    { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -522,7 +525,7 @@ button { font-family: inherit; }
 
 @media (max-width: 768px) {
   .lab-carousel { grid-template-columns: 1fr; }
-  .lab-preview  { aspect-ratio: 16/9; }
+  .lab-preview  { aspect-ratio: 1/1; min-height: 300px; }
   .lab-body     { padding: 24px 22px 22px; }
 }
 

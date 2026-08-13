@@ -126,7 +126,7 @@ export default function Contact() {
     <section
       className="dark-sec"
       id="contact"
-      style={{ padding: "clamp(56px,7vw,80px) 0" }}
+      style={{ padding: "clamp(72px,9vw,112px) 0" }}
     >
       <div className="wrap">
         <FadeIn>
@@ -134,63 +134,129 @@ export default function Contact() {
           className="contact-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(40px,6vw,88px)",
+            gridTemplateColumns: "1fr 1.05fr",
+            gap: "clamp(40px,6vw,96px)",
             alignItems: "start",
           }}
         >
-          {/* Left */}
+          {/* Left — pitch */}
           <div>
-            <div className="sec-num" style={{ marginBottom: 20 }}>Contact</div>
+            <div className="sec-num" style={{ marginBottom: 24 }}>Contact</div>
 
             <h2 style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontSize: "clamp(36px,5vw,58px)",
+              fontSize: "clamp(40px,5.4vw,64px)",
               color: "var(--dk-fg)",
-              letterSpacing: "-.04em",
-              lineHeight: 1.05,
+              letterSpacing: "-.035em",
+              lineHeight: 1.02,
               fontWeight: 400,
-              marginBottom: 20,
+              marginBottom: 24,
             }}>
               Let&apos;s work<br />
-              <em style={{ fontStyle: "italic", color: "var(--dk-dim)" }}>together.</em>
+              <em style={{ fontStyle: "italic", color: "var(--gld)" }}>together.</em>
             </h2>
 
             <p style={{
-              fontSize: 14.5,
-              lineHeight: 1.75,
-              color: "var(--dk-dim)",
-              maxWidth: "36ch",
-              marginBottom: 32,
+              fontSize: 15,
+              lineHeight: 1.72,
+              color: "rgba(242,240,237,.62)",
+              maxWidth: "38ch",
+              marginBottom: 36,
             }}>
-              Based in Nairobi, Kenya. Open to roles in IT operations,
-              application support, and cybersecurity.
+              Open to roles in IT operations, application support, and
+              cybersecurity — or a good conversation about any of the above.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              {SOCIALS.map(({ href, label, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="soc-link"
-                  style={{
-                    display: "flex", alignItems: "center", gap: 10,
-                    padding: "12px 0",
-                    borderBottom: "1px solid rgba(242,240,237,.07)",
-                    fontSize: 13, fontWeight: 500,
-                  }}
-                >
-                  <span style={{ opacity: .5, display: "flex", alignItems: "center" }}>{icon}</span>
-                  {label}
-                  <svg viewBox="0 0 16 16" width={11} height={11} fill="none"
-                    stroke="currentColor" strokeWidth={1.8} strokeLinecap="round"
-                    style={{ marginLeft: "auto" }}>
-                    <path d="M3 8h10M8 3l5 5-5 5"/>
-                  </svg>
-                </a>
-              ))}
+            {/* Primary — email as first-class action */}
+            <a
+              href="mailto:kevin.gitau27@gmail.com"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 12,
+                padding: "18px 22px",
+                background: "rgba(184,134,11,.08)",
+                border: "1px solid rgba(184,134,11,.32)",
+                borderRadius: 10,
+                textDecoration: "none",
+                marginBottom: 32,
+                transition: "background .2s, border-color .2s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = "rgba(184,134,11,.14)"; e.currentTarget.style.borderColor = "rgba(184,134,11,.5)"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "rgba(184,134,11,.08)"; e.currentTarget.style.borderColor = "rgba(184,134,11,.32)"; }}
+            >
+              <span style={{
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                width: 40, height: 40, borderRadius: 8,
+                background: "rgba(184,134,11,.18)", color: "var(--gld)",
+                flexShrink: 0,
+              }}>
+                <svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </span>
+              <span style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
+                <span style={{
+                  fontSize: 10, fontWeight: 700, letterSpacing: ".14em",
+                  textTransform: "uppercase", color: "rgba(242,240,237,.4)",
+                }}>
+                  Email
+                </span>
+                <span style={{
+                  fontSize: 14.5, color: "var(--dk-fg)", fontWeight: 500,
+                  overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+                }}>
+                  kevin.gitau27@gmail.com
+                </span>
+              </span>
+            </a>
+
+            {/* Secondary — social icon row */}
+            <div>
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: ".16em",
+                textTransform: "uppercase", color: "rgba(242,240,237,.35)",
+                marginBottom: 14,
+              }}>
+                Also on
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                {SOCIALS.map(({ href, label, icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    title={label}
+                    style={{
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      width: 42, height: 42, borderRadius: 8,
+                      background: "rgba(242,240,237,.04)",
+                      border: "1px solid rgba(242,240,237,.12)",
+                      color: "rgba(242,240,237,.65)",
+                      textDecoration: "none",
+                      transition: "color .2s, background .2s, border-color .2s",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.color = "var(--gld)"; e.currentTarget.style.borderColor = "rgba(184,134,11,.4)"; e.currentTarget.style.background = "rgba(184,134,11,.08)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = "rgba(242,240,237,.65)"; e.currentTarget.style.borderColor = "rgba(242,240,237,.12)"; e.currentTarget.style.background = "rgba(242,240,237,.04)"; }}
+                  >
+                    {icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div style={{
+              marginTop: 36, paddingTop: 20,
+              borderTop: "1px solid rgba(242,240,237,.08)",
+              display: "flex", alignItems: "center", gap: 8,
+              fontSize: 12, color: "rgba(242,240,237,.4)",
+            }}>
+              <span style={{
+                display: "inline-block", width: 7, height: 7, borderRadius: "50%",
+                background: "var(--success)", boxShadow: "0 0 0 3px rgba(59,165,93,.15)",
+              }} />
+              Available now · Nairobi, Kenya (UTC+3)
             </div>
           </div>
 
